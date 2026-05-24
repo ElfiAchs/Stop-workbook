@@ -16,7 +16,9 @@
 
 /* ---- Kapselung: alle Regeln gelten nur innerhalb von #mr-stopp ---- */
 #mr-stopp *{box-sizing:border-box;margin:0;padding:0;}
-#mr-stopp{font-family:'Inter',sans-serif;color:#3D2E20;background:#FAF6F0;line-height:1.5;-webkit-font-smoothing:antialiased;}
+#mr-stopp{font-family:'Inter',sans-serif;color:#3D2E20;background:#FAF6F0;line-height:1.5;-webkit-font-smoothing:antialiased;
+  /* Voll-Breite: bricht aus dem Elementor-Container aus und nutzt die ganze Fensterbreite */
+  width:100vw;max-width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;}
 #mr-stopp img{display:block;max-width:100%;height:auto;}
 #mr-stopp a{text-decoration:none;color:inherit;}
 #mr-stopp button{font-family:inherit;cursor:pointer;background:transparent !important;border:none !important;box-shadow:none !important;border-radius:0 !important;-webkit-appearance:none !important;appearance:none !important;text-shadow:none !important;}
