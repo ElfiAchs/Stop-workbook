@@ -1,0 +1,521 @@
+<!--
+  ============================================================================
+  STOPP – Landingpage (Mental Rising® Akademie)
+  Eigenständige HTML-Version zum Einbau in WordPress (Custom-HTML-Block).
+
+  >>> WICHTIG: 4 BILDER UND DIE FAQ-ANTWORTEN MUSST DU NOCH EINSETZEN <<<
+  Suche im Code nach den Markierungen  ===> HIER ...  und ersetze sie.
+
+  1) BILDER: Lade deine Bilder in die WordPress-Mediathek hoch, kopiere die
+     jeweilige URL und setze sie an den 4 markierten Stellen ein:
+        - HERO-PORTRAIT   (großes Bild oben rechts / auf dem Handy oben)
+        - ELFI-PORTRAIT   (Abschnitt "Wer dich begleitet")
+        - KURS-MOCKUP     (Abschnitt "Der vollständige Kurs")
+        - LOGO            (Kopfzeile + Fußzeile) – aktuell ist deine
+                          Original-Logo-URL eingetragen, die funktioniert.
+  2) FAQ-ANTWORTEN: Im FAQ-Abschnitt sind 4 Fragen, die Antworten sind als
+     Platzhalter "Hier deine Antwort ..." eingetragen – einfach überschreiben.
+  ============================================================================
+-->
+<div id="mr-stopp">
+<style>
+/* ---- Schriftarten ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+/* ---- Kapselung: alle Regeln gelten nur innerhalb von #mr-stopp ---- */
+#mr-stopp *{box-sizing:border-box;margin:0;padding:0;}
+#mr-stopp{font-family:'Inter',sans-serif;color:#3D2E20;background:#FAF6F0;line-height:1.5;-webkit-font-smoothing:antialiased;}
+#mr-stopp img{display:block;max-width:100%;height:auto;}
+#mr-stopp a{text-decoration:none;color:inherit;}
+#mr-stopp button{font-family:inherit;cursor:pointer;border:none;background:none;}
+
+/* ---- Layout-Helfer ---- */
+#mr-stopp .mr-wrap{margin-left:auto;margin-right:auto;padding-left:1.5rem;padding-right:1.5rem;}
+#mr-stopp .mr-6xl{max-width:72rem;}
+#mr-stopp .mr-5xl{max-width:64rem;}
+#mr-stopp .mr-4xl{max-width:56rem;}
+#mr-stopp .mr-3xl{max-width:48rem;}
+#mr-stopp .mr-2xl{max-width:42rem;}
+#mr-stopp .mr-640{max-width:640px;}
+#mr-stopp .mr-lg{max-width:32rem;}
+
+/* ---- Header ---- */
+#mr-stopp .mr-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(61,46,32,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+#mr-stopp .mr-header-inner{max-width:72rem;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+#mr-stopp .mr-logo{height:2.5rem;width:auto;}
+#mr-stopp .mr-nav{display:none;align-items:center;gap:2rem;}
+#mr-stopp .mr-nav button{color:#E8DDCE;font-size:.875rem;font-weight:500;letter-spacing:.03em;transition:color .2s;}
+#mr-stopp .mr-nav button:hover{color:#fff;}
+#mr-stopp .mr-nav .mr-nav-cta{background:#B5825F;color:#FAF6F0;padding:.5rem 1.25rem;border-radius:4px;transition:all .3s;}
+#mr-stopp .mr-nav .mr-nav-cta:hover{background:#5C4232;transform:scale(1.05);}
+#mr-stopp .mr-burger{color:#E8DDCE;padding:.25rem;}
+
+/* ---- Buttons / CTA ---- */
+#mr-stopp .mr-btn{display:inline-flex;align-items:center;gap:.75rem;font-weight:500;border-radius:4px;transition:all .3s;color:#FAF6F0;}
+#mr-stopp .mr-btn:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(0,0,0,.25);}
+#mr-stopp .mr-btn-hero{padding:1rem 2rem;font-size:1rem;background:linear-gradient(135deg,#B5825F 0%,#5C4232 100%);box-shadow:0 4px 20px rgba(92,66,50,.28);}
+#mr-stopp .mr-btn-gold{padding:1.25rem 2.5rem;font-size:1rem;background:linear-gradient(135deg,#C9966B 0%,#B5825F 100%);box-shadow:0 8px 32px rgba(0,0,0,.3);}
+#mr-stopp .mr-btn-light{padding:1.25rem 2.5rem;font-size:1rem;background:linear-gradient(135deg,#E8C9A8 0%,#C9966B 100%);color:#3D2E20;box-shadow:0 8px 32px rgba(0,0,0,.3);}
+
+/* ---- Überschriften ---- */
+#mr-stopp .mr-serif{font-family:'Playfair Display',serif;}
+#mr-stopp .mr-eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;}
+
+/* ---- HERO ---- */
+#mr-stopp .mr-hero{position:relative;overflow:hidden;min-height:100svh;background:#FAF6F0;}
+#mr-stopp .mr-hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 20% 70%,rgba(201,150,107,.08) 0%,transparent 55%),radial-gradient(ellipse at 85% 15%,rgba(232,205,168,.10) 0%,transparent 50%);}
+#mr-stopp .mr-hero-desktop{display:none;}
+#mr-stopp .mr-hero-mobile{position:relative;z-index:10;display:flex;flex-direction:column;min-height:100svh;}
+#mr-stopp .mr-hero h1{font-family:'Playfair Display',serif;font-weight:700;color:#3D2E20;line-height:1.08;}
+#mr-stopp .mr-hero h2{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;color:#5C4232;line-height:1.08;}
+#mr-stopp .mr-hero-lead{color:#6B4E38;line-height:1.6;}
+#mr-stopp .mr-hero-sub{color:#A67F68;font-size:.875rem;letter-spacing:.02em;}
+#mr-stopp .mr-hero-note{color:#A67F68;font-size:.875rem;}
+
+/* ---- Allgemeine Abschnitte ---- */
+#mr-stopp section{position:relative;}
+#mr-stopp .mr-divider{border-top:1px solid rgba(201,150,107,.3);}
+#mr-stopp .mr-tick{display:flex;align-items:center;gap:.75rem;}
+#mr-stopp .mr-tick .mr-line{width:2rem;height:1px;background:#C9966B;}
+#mr-stopp .mr-tick .mr-eyebrow{color:#C9966B;}
+
+/* ---- Pain-Abschnitt ---- */
+#mr-stopp .mr-pain{background:#FAF6F0;padding:6rem 0;}
+#mr-stopp .mr-pain h2{font-family:'Playfair Display',serif;color:#3D2E20;font-weight:700;line-height:1.15;font-size:clamp(1.75rem,3.5vw,2.75rem);margin-bottom:2.5rem;}
+#mr-stopp .mr-pain p{margin-bottom:2rem;line-height:1.75;color:#3D2E20;font-size:clamp(1rem,1.3vw,1.125rem);}
+#mr-stopp .mr-pain .mr-p-strong{font-family:'Playfair Display',serif;font-weight:600;line-height:1.65;font-size:clamp(1.05rem,1.5vw,1.2rem);}
+#mr-stopp .mr-pain .mr-quote{font-family:'Playfair Display',serif;font-style:italic;color:#5C4232;line-height:1.65;font-size:clamp(1rem,1.4vw,1.15rem);padding-left:1.5rem;border-left:2px solid #C9966B;}
+
+/* ---- Dunkle Abschnitte ---- */
+#mr-stopp .mr-grad-down{height:32px;background:linear-gradient(to bottom,#FAF6F0,#5C4232);}
+#mr-stopp .mr-grad-up{height:32px;background:linear-gradient(to bottom,#5C4232,#FAF6F0);}
+
+/* ---- FAQ ---- */
+#mr-stopp .mr-faq{background:#F5EFE6;padding:5rem 0;}
+#mr-stopp .mr-faq-item{background:#FAF6F0;border-radius:4px;border:1px solid #D9C9B5;overflow:hidden;margin-bottom:.75rem;}
+#mr-stopp .mr-faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1.5rem;text-align:left;transition:background .2s;}
+#mr-stopp .mr-faq-q:hover{background:#F5EFE6;}
+#mr-stopp .mr-faq-q span{font-weight:500;font-size:1rem;line-height:1.4;color:#3D2E20;}
+#mr-stopp .mr-faq-q .mr-chev{color:#B5825F;flex-shrink:0;transition:transform .25s;}
+#mr-stopp .mr-faq-item.open .mr-chev{transform:rotate(180deg);}
+#mr-stopp .mr-faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+#mr-stopp .mr-faq-a-inner{padding:0 1.5rem 1.25rem;color:#5C4232;line-height:1.7;}
+
+/* ---- Footer ---- */
+#mr-stopp .mr-footer{padding:2.5rem 0;background:#3D2E20;border-top:1px solid #5C4232;}
+#mr-stopp .mr-footer-top{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:1.5rem;}
+#mr-stopp .mr-footer a{color:#FAF6F0;font-size:.75rem;}
+#mr-stopp .mr-footer a:hover{text-decoration:underline;}
+
+/* ---- Karten / Listen ---- */
+#mr-stopp .mr-feature{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;background:#5C4232;border-radius:4px;border:1px solid #7A5C44;}
+#mr-stopp .mr-feature-ic{flex-shrink:0;width:2.25rem;height:2.25rem;display:flex;align-items:center;justify-content:center;background:#C9966B;border-radius:4px;margin-top:2px;}
+#mr-stopp .mr-feature p{font-size:.875rem;line-height:1.6;color:#E8DDCE;}
+
+/* ---- Utility ---- */
+#mr-stopp .mr-center{text-align:center;}
+#mr-stopp .mr-mxauto{margin-left:auto;margin-right:auto;}
+
+/* ===========================  RESPONSIVE  =========================== */
+@media (min-width:640px){
+  #mr-stopp .mr-hero-actions{flex-direction:row;align-items:center;}
+}
+@media (min-width:768px){
+  #mr-stopp .mr-pain{padding:9rem 0;}
+  #mr-stopp .mr-footer-top{flex-direction:row;}
+  #mr-stopp .mr-h2-lg{font-size:2.5rem;}
+  #mr-stopp .mr-about-grid{flex-direction:row !important;gap:5rem !important;}
+  #mr-stopp .mr-about-img{width:18rem !important;}
+}
+@media (min-width:1024px){
+  #mr-stopp .mr-h2-lg{font-size:3rem;}
+  #mr-stopp .mr-about-img{width:20rem !important;}
+}
+@media (min-width:1024px){
+  #mr-stopp .mr-nav{display:flex;}
+  #mr-stopp .mr-burger{display:none;}
+  #mr-stopp .mr-hero-desktop{display:flex;}
+  #mr-stopp .mr-hero-mobile{display:none;}
+}
+</style>
+
+<!-- ============================ HEADER ============================ -->
+<header class="mr-header">
+  <div class="mr-header-inner">
+    <!-- ===> HIER LOGO-URL (aktuell: Original-Logo, funktioniert) -->
+    <img class="mr-logo" alt="Mental Rising® Akademie"
+         src="https://wuwglvodpsroizmpfbhq.supabase.co/storage/v1/object/public/brand-kit-assets/c22bdfc7-d33d-4dc9-8632-1ace7a71929f/c3bac251-2907-442a-aed9-184332d2f52e/logo_url.png?v=1778847212040">
+    <nav class="mr-nav">
+      <button onclick="document.querySelector('#mr-stopp #kurs-inhalte-detail').scrollIntoView({behavior:'smooth'})">Kurs-Inhalte</button>
+      <button onclick="document.querySelector('#mr-stopp #preis').scrollIntoView({behavior:'smooth'})">Preis</button>
+      <button onclick="document.querySelector('#mr-stopp #faq').scrollIntoView({behavior:'smooth'})">FAQ</button>
+      <button class="mr-nav-cta" onclick="document.querySelector('#mr-stopp #preis').scrollIntoView({behavior:'smooth'})">Jetzt Zugang sichern</button>
+    </nav>
+    <button class="mr-burger" aria-label="Menü" onclick="document.querySelector('#mr-stopp #preis').scrollIntoView({behavior:'smooth'})">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="mr-hero">
+  <div class="mr-hero-glow"></div>
+
+  <!-- Desktop -->
+  <div class="mr-hero-desktop" style="position:relative;z-index:10;max-width:80rem;margin:0 auto;padding:0 3rem;flex-direction:row;align-items:stretch;min-height:100svh;">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding-right:5rem;max-width:42rem;padding-top:clamp(7rem,18vh,13rem);">
+      <p class="mr-eyebrow" style="color:#B5825F;opacity:.7;margin-bottom:2.5rem;">Mental Rising® Akademie</p>
+      <h1 style="font-size:clamp(2.2rem,4.6vw,3.96rem);margin-bottom:1.4rem;">Du weißt genau, was los ist.</h1>
+      <h2 style="font-size:clamp(1.65rem,3.45vw,2.97rem);margin-bottom:2rem;">Und es ändert nichts.</h2>
+      <p class="mr-hero-lead" style="font-size:1.125rem;margin-bottom:1.5rem;max-width:32rem;">Du hast reflektiert, gelesen, verstanden. Du kannst dein Muster erklären, und es läuft trotzdem weiter. Das ist kein Wissens-Problem. Und kein Willens-Problem.</p>
+      <p class="mr-hero-sub" style="margin-bottom:3rem;">Aus 17 Jahren Praxis mit Biofeedback. Ein sieben-tägiger Übungskurs.</p>
+      <div class="mr-hero-actions" style="display:flex;flex-direction:column;gap:.75rem;align-items:flex-start;">
+        <a href="#preis" class="mr-btn mr-btn-hero" onclick="event.preventDefault();document.querySelector('#mr-stopp #preis').scrollIntoView({behavior:'smooth'})">Jetzt Zugang sichern <span style="color:#E8C9A8;">→</span></a>
+        <span class="mr-hero-note">Einmalig 47 € · kein Abo</span>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;align-items:flex-end;justify-content:center;position:relative;max-width:480px;">
+      <div style="position:absolute;left:0;right:0;bottom:0;top:6rem;background:linear-gradient(160deg,#EDE4D8 0%,#E0D2C0 100%);border-radius:4px 4px 0 0;"></div>
+      <div style="position:relative;z-index:10;width:100%;max-width:400px;">
+        <!-- ===> HIER HERO-PORTRAIT-URL einsetzen -->
+        <img src="HIER_BILD_URL_HERO_PORTRAIT" alt="Elfi Achs – Biofeedback-Expertin und Gründerin von Mental Rising®" style="width:100%;border-radius:4px 4px 0 0;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile -->
+  <div class="mr-hero-mobile">
+    <div style="padding:7rem 1.5rem 0;">
+      <p class="mr-eyebrow" style="color:#B5825F;opacity:.7;margin-bottom:2rem;">Mental Rising® Akademie</p>
+      <h1 style="font-size:clamp(2rem,8.5vw,2.8rem);margin-bottom:1.2rem;">Du weißt genau, was los ist.</h1>
+      <h2 style="font-size:clamp(1.5rem,6.4vw,2.1rem);margin-bottom:2rem;">Und es ändert nichts.</h2>
+    </div>
+    <div style="padding:0 1.5rem;margin-bottom:2rem;">
+      <div style="position:relative;overflow:hidden;width:100%;border-radius:4px;box-shadow:0 12px 40px rgba(92,66,50,.16);">
+        <!-- ===> HIER HERO-PORTRAIT-URL einsetzen (gleiches Bild wie oben) -->
+        <img src="HIER_BILD_URL_HERO_PORTRAIT" alt="Elfi Achs – Biofeedback-Expertin" style="width:100%;height:56vw;object-fit:cover;object-position:top;">
+      </div>
+    </div>
+    <div style="padding:0 1.5rem;">
+      <p class="mr-hero-lead" style="margin-bottom:1.25rem;">Du hast reflektiert, gelesen, verstanden. Du kannst dein Muster erklären, und es läuft trotzdem weiter. Das ist kein Wissens-Problem. Und kein Willens-Problem.</p>
+      <p class="mr-hero-sub" style="margin-bottom:2.5rem;">Aus 17 Jahren Praxis mit Biofeedback. Ein sieben-tägiger Übungskurs.</p>
+      <div style="display:flex;flex-direction:column;gap:.75rem;align-items:flex-start;padding-bottom:5rem;">
+        <a href="#preis" class="mr-btn mr-btn-hero" onclick="event.preventDefault();document.querySelector('#mr-stopp #preis').scrollIntoView({behavior:'smooth'})">Jetzt Zugang sichern <span style="color:#E8C9A8;">→</span></a>
+        <span class="mr-hero-note">Einmalig 47 € · kein Abo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PAIN ============================ -->
+<section class="mr-pain">
+  <div class="mr-wrap mr-640">
+    <h2>Du kennst den Moment.</h2>
+    <p>Eine Reaktion, die da ist, bevor du denken kannst. Ein Gedanke, der nachts nicht aufhört. Ein Selbstvorwurf, der trotz aller Reflexion nicht abreißt.</p>
+    <p class="mr-p-strong">Und das Schlimmste daran ist nicht das Muster selbst.</p>
+    <p>Das Schlimmste ist, dass du es längst verstanden hast. Du hast gelesen. Du warst in Coachings. Du kennst deine Auslöser, deine Geschichte, die Theorie dahinter. Du kannst es jemand anderem erklären. Und trotzdem, im entscheidenden Moment, läuft es wieder ab. Wie immer.</p>
+    <p class="mr-quote">„Ich bin schon wieder so blöd. Das gibt es doch nicht. Das weiß ich doch.“</p>
+    <p>Und langsam setzt sich eine leise Überzeugung fest: Vielleicht bin ich einfach zu schwach für diese Sache. Zu undiszipliniert. Andere kriegen das hin, ich nicht.</p>
+    <p>Du hast schon vieles probiert. Achtsamkeit. Meditation. Apps. Vieles hat ein bisschen geholfen, in der Sitzung, beim ersten Üben. Im Alltag war es wieder weg. Und jedes Mal, wenn es weg war, hast du es als weiteren Beweis verbucht: Ich krieg es nicht hin.</p>
+    <div class="mr-divider" style="margin:3rem 0;"></div>
+    <p style="margin-bottom:1.5rem;">Lies den Satz von vorhin noch einmal: <em style="font-style:italic;color:#5C4232;">„Das weiß ich doch.“</em></p>
+    <p style="margin-bottom:0;">Dieser Satz ist nicht dein Versagen. Er ist eine Information. Er bedeutet: Hier wird auf der falschen Ebene gearbeitet, was auf einer ganz anderen Ebene entstanden ist.</p>
+  </div>
+</section>
+
+<!-- ============================ WENDEPUNKT (dunkel) ============================ -->
+<section style="background:#5C4232;">
+  <div class="mr-grad-down"></div>
+  <div class="mr-wrap mr-2xl" style="padding-bottom:6rem;">
+    <p class="mr-eyebrow" style="color:#C9966B;opacity:.75;margin:5rem 0 4rem;">Der Wendepunkt</p>
+    <h2 class="mr-serif mr-h2-lg" style="font-size:1.875rem;font-weight:700;color:#FAF6F0;line-height:1.15;margin-bottom:3.5rem;">Was du für einen Charakterfehler hältst, ist ein messbarer Vorgang.</h2>
+    <p class="mr-serif" style="font-size:1.5rem;font-weight:600;color:#C9966B;line-height:1.3;margin-bottom:3.5rem;">Ja, du hast richtig gelesen. Messbar.</p>
+    <div style="color:#E8DDCE;font-size:1.125rem;line-height:1.7;display:flex;flex-direction:column;gap:2rem;">
+      <p>Seit 17 Jahren sitze ich Menschen gegenüber, an der Biofeedback-Messtechnik. Und ich sehe ihr Muster auf dem Bildschirm, oft bevor sie den ersten Satz zu Ende gesprochen haben.</p>
+      <div style="padding:1.5rem 0 1.5rem 1.25rem;margin:.5rem 0;border-left:2px solid #C9966B;">
+        <p class="mr-serif" style="font-size:1.5rem;font-weight:600;color:#FAF6F0;line-height:1.35;">Du kannst dein Muster wegreden.<br>Dein Körper kann es nicht.</p>
+      </div>
+      <p>Das ist die eigentliche Nachricht: Was du dir als Schwäche auslegst, ist kein Versagen deines Willens. Es ist ein Vorgang in deinem Nervensystem, der abläuft, bevor dein Verstand überhaupt eine Chance hat.</p>
+      <p>Und in diesen 17 Jahren habe ich eines immer wieder gesehen, egal welche Methode ich eingesetzt habe, egal wie gut das Werkzeug war: Es entfaltete nur einen Bruchteil seiner Kraft, wenn der Mensch nicht zuerst eines konnte.</p>
+      <p class="mr-serif" style="font-size:2rem;font-weight:700;color:#C9966B;letter-spacing:.04em;padding:1rem 0;">Anhalten.</p>
+      <p>Stopp ist nicht eine Technik unter vielen. Stopp ist das Fundament, auf dem alle anderen stehen.</p>
+      <p>Wer ein Haus auf Sand baut, kann die besten Wände hochziehen. Es trägt nicht. Genau deshalb hat vieles, was du schon probiert hast, nicht gehalten. Nicht, weil es schlechte Werkzeuge waren. Sondern weil der Boden fehlte.</p>
+      <p class="mr-serif" style="font-size:1.5rem;font-weight:600;color:#FAF6F0;border-top:1px solid rgba(201,150,107,.25);padding-top:2rem;margin-top:2rem;line-height:1.4;">Erst das Fundament. Dann alles Weitere.</p>
+    </div>
+    <div style="margin-top:5rem;">
+      <div style="position:relative;width:100%;overflow:hidden;border-radius:4px;box-shadow:0 8px 48px rgba(0,0,0,.35);aspect-ratio:16/9;">
+        <iframe src="https://player.vimeo.com/video/1194952050?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen title="STOPP – Mental Rising® Akademie" style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+      </div>
+      <div style="margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;">
+        <a href="https://www.digistore24.com/product/695317" target="_blank" rel="noopener noreferrer" class="mr-btn mr-btn-gold">Jetzt Zugang sichern — 47 €</a>
+        <p style="font-size:.75rem;color:#C9966B;opacity:.6;">Die Abrechnung erfolgt über Digistore24.</p>
+      </div>
+    </div>
+  </div>
+  <div class="mr-grad-up"></div>
+</section>
+
+<!-- ============================ SPIELERISCHER ZUGANG ============================ -->
+<section style="background:#FAF6F0;padding:6rem 0;">
+  <div class="mr-wrap mr-2xl">
+    <div class="mr-tick" style="margin-bottom:2.5rem;">
+      <div class="mr-line"></div>
+      <span class="mr-eyebrow">Der spielerische Zugang</span>
+    </div>
+    <h2 class="mr-serif mr-h2-lg" style="font-size:1.875rem;font-weight:700;color:#3D2E20;line-height:1.15;margin-bottom:3rem;">Du hast es schon versucht. Und vermutlich zu ernst.</h2>
+    <div style="color:#3D2E20;font-size:1.125rem;line-height:1.7;display:flex;flex-direction:column;gap:1.75rem;">
+      <p>Die meisten beginnen falsch. Sie wollen das Stoppen genau dann lernen, wenn sie es am dringendsten brauchen - mitten in der Belastung, im schwierigen Moment. Und scheitern. Niemand lernt das Bremsen im Moment des Sturzes.</p>
+      <p>Eine Grundfertigkeit übt man vorher. In Ruhe. Ohne Druck. Spielerisch, in ganz neutralen Momenten, wenn nichts auf dem Spiel steht.</p>
+      <p>Diese Form habe ich vor über dreißig Jahren selbst gelernt, lange bevor ich mit Messtechnik gearbeitet habe. Und als ich später Jahr für Jahr an der Biofeedback-Anlage saß, habe ich denselben Mechanismus immer wieder gesehen - bei jedem Menschen, egal welcher Bildungsgrad, egal welche Ausgangslage.</p>
+      <p>Wer verstanden hatte, dass zuerst das Stoppen geübt werden muss, kam danach mit allem Weiteren ungleich schneller voran. Wer es übersprang, blieb im alten Muster.</p>
+      <div style="padding-top:2rem;margin-top:1rem;border-top:1px solid rgba(201,150,107,.3);">
+        <p>Es war immer dieselbe Reihenfolge.</p>
+        <p class="mr-serif" style="font-size:1.5rem;font-weight:600;color:#5C4232;line-height:1.3;margin-top:.75rem;">Erst spielerisch üben, bis die Bewegung verfügbar ist. Dann steht sie auch da, wenn es ernst wird.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ÜBER / WER DICH BEGLEITET ============================ -->
+<section style="background:#FAF6F0;padding:5rem 0;">
+  <div class="mr-wrap mr-5xl">
+    <p class="mr-eyebrow" style="color:#C9966B;margin-bottom:3rem;">Wer dich begleitet</p>
+    <div class="mr-about-grid" style="display:flex;flex-direction:column-reverse;gap:3rem;align-items:flex-start;">
+      <div style="flex:1;">
+        <h2 class="mr-serif" style="font-size:2.25rem;font-weight:700;color:#3D2E20;margin-bottom:2.5rem;">Wer dich begleitet</h2>
+        <div style="color:#3D2E20;font-size:1.125rem;line-height:1.7;display:flex;flex-direction:column;gap:1.5rem;max-width:52ch;">
+          <p>Ich bin Elfi Achs. Biofeedback-Expertin, in eigener Praxis im Burgenland seit 2009.</p>
+          <p>Ich bin nicht die, die dir sagt, dass du großartig bist und alles schon irgendwie wird. Davon gibt es genug. Ich bin die, die hinschaut, und die dir sagt, was sie sieht. Auch dann, wenn es unbequem ist.</p>
+          <p>Das klingt hart. Ist es aber nicht. Es ist das Gegenteil von dem, was die meisten gewohnt sind: Ich rede nicht um den heißen Brei herum, weil ich an der Messtechnik gelernt habe, dass es nichts bringt. Die Daten sind da. Der Körper zeigt, was er zeigt. Da kann man nicht lange diskutieren.</p>
+          <blockquote class="mr-serif" style="font-style:italic;font-size:1.125rem;line-height:1.6;padding:1.25rem 0 1.25rem 1.5rem;border-left:3px solid #C9966B;color:#5C4232;">„Wenn das jemand anderer zu mir gesagt hätte, wäre ich gegangen.“</blockquote>
+          <p>Meine Klienten schätzen genau das. Viele sagen mir irgendwann: Wenn das jemand anderer zu mir gesagt hätte, wäre ich gegangen. Aber weil ich nicht urteile, sondern übersetze, was ohnehin sichtbar ist, können sie es hören. Und dann bewegt sich etwas.</p>
+          <p>Mental Rising® ist aus dieser Arbeit gewachsen. Was du in diesem Kurs übst, ist die Grundbewegung von allem, was ich tue. Sie wurde in der Einzelarbeit mit Biofeedback messbar gemacht. Jetzt ist sie zum ersten Mal als Kurs zugänglich, ohne dass du dafür in meine Praxis kommen musst.</p>
+        </div>
+        <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid #E8DDCE;">
+          <p style="font-weight:600;font-size:.875rem;color:#3D2E20;">Elfi Achs</p>
+          <p style="font-size:.875rem;margin-top:.25rem;color:#B5825F;">Biofeedback-Expertin · Mental Rising® · Eigene Praxis im Burgenland seit 2009</p>
+        </div>
+      </div>
+      <div class="mr-about-img" style="flex-shrink:0;width:100%;">
+        <div style="position:relative;overflow:hidden;border-radius:4px;box-shadow:0 8px 40px rgba(92,66,50,.15);">
+          <!-- ===> HIER ELFI-PORTRAIT-URL einsetzen -->
+          <img src="HIER_BILD_URL_ELFI_PORTRAIT" alt="Elfi Achs – Biofeedback-Expertin und Gründerin von Mental Rising®" style="width:100%;object-fit:cover;object-position:top;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ KURS-INHALTE (dunkel) ============================ -->
+<section id="kurs-inhalte-detail" style="background:#3D2E20;padding:5rem 0;overflow:hidden;">
+  <div class="mr-wrap mr-6xl">
+    <div class="mr-center" style="margin-bottom:4rem;">
+      <div class="mr-tick" style="justify-content:center;margin-bottom:1.5rem;">
+        <div class="mr-line"></div><span class="mr-eyebrow" style="color:#C9966B;">Was enthalten ist</span><div class="mr-line"></div>
+      </div>
+      <h2 class="mr-serif" style="font-size:2.25rem;font-weight:700;color:#FAF6F0;margin-bottom:1rem;">Der vollständige Kurs</h2>
+      <p style="color:#C9966B;">Alles, was du für sieben Tage strukturierten Übens brauchst.</p>
+      <div style="margin-top:2.5rem;max-width:48rem;margin-left:auto;margin-right:auto;">
+        <!-- ===> HIER KURS-MOCKUP-URL einsetzen -->
+        <img src="HIER_BILD_URL_KURS_MOCKUP" alt="STOPP Kurs – Alle Materialien im Überblick" style="width:100%;border-radius:4px;">
+      </div>
+    </div>
+    <div class="mr-2xl mr-mxauto" style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="mr-feature">
+        <div class="mr-feature-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg></div>
+        <p>7 Videolektionen, zusammen rund 50 Minuten</p>
+      </div>
+      <div class="mr-feature">
+        <div class="mr-feature-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+        <p>Workbook (PDF, 21 Seiten) in drei Teilen: Vor dem Üben, sieben Tage Beobachtungs-Seiten, Übergang zum nächsten Kurs</p>
+      </div>
+      <div class="mr-feature">
+        <div class="mr-feature-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></div>
+        <p>7 tägliche Audio-Erinnerungen (je 3-5 Min.) per E-Mail mit Übungsimpuls für den jeweiligen Tag</p>
+      </div>
+      <div class="mr-feature">
+        <div class="mr-feature-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></div>
+        <p>Stoppschild-Wallpaper im Mental Rising® Design als Handy-Hintergrund</p>
+      </div>
+      <div class="mr-feature">
+        <div class="mr-feature-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"/></svg></div>
+        <p>Lebenslanger Zugriff auf alle Materialien - keine Folgekosten, keine Abo-Verlängerung</p>
+      </div>
+    </div>
+    <div style="margin-top:4rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;">
+      <a href="https://www.digistore24.com/product/695317" target="_blank" rel="noopener noreferrer" class="mr-btn mr-btn-gold">Jetzt Zugang sichern — 47 €</a>
+      <p style="font-size:.75rem;color:#C9966B;opacity:.6;">Die Abrechnung erfolgt über Digistore24.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABLAUF ============================ -->
+<section style="background:#FAF6F0;padding:6rem 0;">
+  <div class="mr-wrap mr-2xl">
+    <p class="mr-eyebrow" style="color:#C9966B;opacity:.75;margin-bottom:2.5rem;">Der Ablauf</p>
+    <h2 class="mr-serif" style="font-size:2.25rem;font-weight:700;color:#3D2E20;margin-bottom:4rem;">So läuft es ab</h2>
+    <div style="display:flex;flex-direction:column;gap:3.5rem;">
+      <div style="display:flex;gap:1.75rem;">
+        <div style="flex-shrink:0;margin-top:.25rem;"><span class="mr-serif" style="font-size:2.25rem;font-weight:700;color:#C9966B;opacity:.5;line-height:1;">1</span></div>
+        <div>
+          <h3 class="mr-serif" style="font-size:1.25rem;font-weight:700;color:#3D2E20;margin-bottom:.75rem;">Sofort beginnen</h3>
+          <p style="color:#5C4232;line-height:1.7;">Nach dem Kauf bist du sofort in der Akademie. Alle Materialien sind da, das Workbook lädst du dir herunter und druckst es aus. Du musst auf nichts warten.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:1.75rem;">
+        <div style="flex-shrink:0;margin-top:.25rem;"><span class="mr-serif" style="font-size:2.25rem;font-weight:700;color:#C9966B;opacity:.5;line-height:1;">2</span></div>
+        <div>
+          <h3 class="mr-serif" style="font-size:1.25rem;font-weight:700;color:#3D2E20;margin-bottom:.75rem;">Sieben Tage üben</h3>
+          <p style="color:#5C4232;line-height:1.7;">Jeden Tag eine kurze Audio-Erinnerung von mir, eine kleine Übung, ein Eintrag im Workbook. Wenige Minuten am Tag. Kein Pensum, das du nicht schaffst. Nur die Bewegung, immer wieder, bis sie verfügbar ist.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:1.75rem;">
+        <div style="flex-shrink:0;margin-top:.25rem;"><span class="mr-serif" style="font-size:2.25rem;font-weight:700;color:#C9966B;opacity:.5;line-height:1;">3</span></div>
+        <div>
+          <h3 class="mr-serif" style="font-size:1.25rem;font-weight:700;color:#3D2E20;margin-bottom:.75rem;">Die Bewegung sitzt</h3>
+          <p style="color:#5C4232;line-height:1.7;">Nach sieben Tagen hast du das Stoppen nicht nur verstanden. Du hast es geübt. Und was sich dabei zeigt, deine Muster, deine Widerstände, das, was sich wiederholt, ist genau das Material, mit dem du im nächsten Schritt arbeiten kannst.</p>
+        </div>
+      </div>
+    </div>
+    <p class="mr-serif" style="font-style:italic;color:#3D2E20;font-size:1.1rem;line-height:1.7;margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(201,150,107,.3);">Was du brauchst, ist nicht viel Zeit. Sondern die Bereitschaft, sieben Tage lang täglich zu üben.</p>
+  </div>
+</section>
+
+<!-- ============================ PREIS ============================ -->
+<section id="preis" style="background:#FAF6F0;padding:5rem 0;overflow:hidden;">
+  <div class="mr-wrap mr-4xl">
+    <div class="mr-center" style="margin-bottom:3.5rem;">
+      <div class="mr-tick" style="justify-content:center;margin-bottom:1.5rem;">
+        <div class="mr-line" style="background:#B5825F;"></div><span class="mr-eyebrow" style="color:#B5825F;">Zugang</span><div class="mr-line" style="background:#B5825F;"></div>
+      </div>
+      <h2 class="mr-serif" style="font-size:2.25rem;font-weight:700;color:#3D2E20;">Beginne mit der Grundfertigkeit, die trägt</h2>
+    </div>
+    <div class="mr-lg mr-mxauto">
+      <div style="position:relative;overflow:hidden;border-radius:4px;box-shadow:0 20px 60px rgba(92,66,50,.22),0 4px 16px rgba(92,66,50,.10);background:linear-gradient(160deg,#5C4232 0%,#3D2E20 100%);">
+        <div style="position:absolute;top:1.25rem;right:1.25rem;"><span style="padding:.25rem .75rem;font-size:.75rem;font-weight:500;letter-spacing:.02em;background:#C9966B;color:#FAF6F0;border-radius:4px;">Einmalzahlung</span></div>
+        <div style="padding:2.5rem;">
+          <div style="margin-bottom:1.5rem;">
+            <p class="mr-eyebrow" style="color:#C9966B;margin-bottom:.5rem;">7-Tage-Kurs</p>
+            <h3 class="mr-serif" style="font-size:1.5rem;font-weight:700;color:#FAF6F0;">Stopp</h3>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:.5rem;margin-bottom:1rem;">
+            <span class="mr-serif" style="font-size:3.75rem;font-weight:700;color:#FAF6F0;line-height:1;">47</span>
+            <div style="padding-bottom:.5rem;"><span style="font-size:1.5rem;font-weight:300;color:#E8C9A8;">€</span><p style="font-size:.75rem;color:#C9966B;">einmalig</p></div>
+          </div>
+          <p style="font-size:.875rem;color:#C9966B;line-height:1.4;margin-bottom:2rem;">Rund 50 Minuten Videozeit. Verdichtete Essenz aus 17 Jahren Praxis, keine Füllminuten.</p>
+          <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem;">
+            <div style="display:flex;align-items:flex-start;gap:.75rem;"><div style="flex-shrink:0;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;background:#C9966B;border-radius:2px;margin-top:2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><span style="font-size:.875rem;color:#E8DDCE;line-height:1.6;">7 Videolektionen, zusammen rund 50 Minuten</span></div>
+            <div style="display:flex;align-items:flex-start;gap:.75rem;"><div style="flex-shrink:0;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;background:#C9966B;border-radius:2px;margin-top:2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><span style="font-size:.875rem;color:#E8DDCE;line-height:1.6;">Workbook (PDF, 21 Seiten) in drei Teilen</span></div>
+            <div style="display:flex;align-items:flex-start;gap:.75rem;"><div style="flex-shrink:0;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;background:#C9966B;border-radius:2px;margin-top:2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><span style="font-size:.875rem;color:#E8DDCE;line-height:1.6;">7 tägliche Audio-Erinnerungen per E-Mail</span></div>
+            <div style="display:flex;align-items:flex-start;gap:.75rem;"><div style="flex-shrink:0;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;background:#C9966B;border-radius:2px;margin-top:2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><span style="font-size:.875rem;color:#E8DDCE;line-height:1.6;">Stoppschild-Wallpaper für dein Handy</span></div>
+            <div style="display:flex;align-items:flex-start;gap:.75rem;"><div style="flex-shrink:0;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;background:#C9966B;border-radius:2px;margin-top:2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FAF6F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><span style="font-size:.875rem;color:#E8DDCE;line-height:1.6;">Lebenslanger Zugriff – kein Abo</span></div>
+          </div>
+          <a href="https://www.digistore24.com/product/695317" target="_blank" rel="noopener noreferrer" class="mr-btn" style="display:block;width:100%;text-align:center;padding:1rem 1.5rem;background:linear-gradient(135deg,#C9966B 0%,#B5825F 100%);border-radius:4px;">Jetzt Zugang sichern</a>
+          <p class="mr-center" style="font-size:.75rem;margin-top:.75rem;color:#C9966B;opacity:.7;">Die Abrechnung erfolgt über Digistore24.</p>
+          <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:1.25rem;">
+            <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9966B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg><span style="font-size:.75rem;color:#C9966B;">Sofortiger Zugang zu allen Materialien</span></div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9966B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"/></svg><span style="font-size:.75rem;color:#C9966B;">Lebenslanger Zugriff</span></div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9966B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span style="font-size:.75rem;color:#C9966B;">Keine Abo-Verlängerung, keine Folgekosten</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="mr-center" style="font-size:.875rem;margin-top:2rem;color:#7A5C44;">Sofortiger Zugang zu allen Materialien · Lebenslanger Zugriff · Keine Abo-Verlängerung · Keine Folgekosten · Verkauf und Abwicklung über Digistore24 GmbH.</p>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" class="mr-faq">
+  <div class="mr-wrap mr-3xl">
+    <div class="mr-center" style="margin-bottom:3.5rem;">
+      <div class="mr-tick" style="justify-content:center;margin-bottom:1.5rem;">
+        <div class="mr-line" style="background:#B5825F;"></div><span class="mr-eyebrow" style="color:#B5825F;">Häufige Fragen</span><div class="mr-line" style="background:#B5825F;"></div>
+      </div>
+      <h2 class="mr-serif" style="font-size:2.25rem;font-weight:700;color:#3D2E20;">Was du wissen möchtest</h2>
+    </div>
+    <div>
+      <!-- FAQ 1 -->
+      <div class="mr-faq-item">
+        <button class="mr-faq-q" type="button"><span>Was unterscheidet diesen Kurs von einer Achtsamkeitsapp?</span><span class="mr-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="mr-faq-a"><div class="mr-faq-a-inner">===> HIER DEINE ANTWORT auf Frage 1 einsetzen.</div></div>
+      </div>
+      <!-- FAQ 2 -->
+      <div class="mr-faq-item">
+        <button class="mr-faq-q" type="button"><span>Ist der Kurs ein Therapie-Ersatz?</span><span class="mr-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="mr-faq-a"><div class="mr-faq-a-inner">===> HIER DEINE ANTWORT auf Frage 2 einsetzen.</div></div>
+      </div>
+      <!-- FAQ 3 -->
+      <div class="mr-faq-item">
+        <button class="mr-faq-q" type="button"><span>Was, wenn ich keine Zeit habe?</span><span class="mr-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="mr-faq-a"><div class="mr-faq-a-inner">===> HIER DEINE ANTWORT auf Frage 3 einsetzen.</div></div>
+      </div>
+      <!-- FAQ 4 -->
+      <div class="mr-faq-item">
+        <button class="mr-faq-q" type="button"><span>Was, wenn ich die Übung nicht hinbekomme?</span><span class="mr-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="mr-faq-a"><div class="mr-faq-a-inner">===> HIER DEINE ANTWORT auf Frage 4 einsetzen.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINALE (dunkel) ============================ -->
+<section style="background:#5C4232;">
+  <div class="mr-grad-down"></div>
+  <div class="mr-wrap mr-2xl" style="padding-top:5rem;padding-bottom:5rem;">
+    <p class="mr-eyebrow" style="color:#C9966B;opacity:.75;margin-bottom:3rem;">Jetzt entscheiden</p>
+    <h2 class="mr-serif" style="font-weight:700;color:#FAF6F0;font-size:clamp(1.75rem,3.5vw,2.75rem);line-height:1.15;margin-bottom:3rem;">Es ändert sich nichts. <em style="color:#E8C9A8;">Oder du fängst beim Anfang an.</em></h2>
+    <div style="color:#E8DDCE;font-size:1.125rem;line-height:1.7;display:flex;flex-direction:column;gap:1.5rem;margin-bottom:4rem;">
+      <p>Du kannst diese Seite schließen und weitermachen wie bisher. Das Muster bleibt, der Kreis dreht sich weiter, und in ein paar Monaten stehst du an derselben Stelle. Das ist ein Weg. Ein legitimer.</p>
+      <p>Oder du übst sieben Tage lang das Eine, das vor allem anderen kommt. Nicht, weil es dich großartig macht. Sondern weil ohne dieses Fundament alles Weitere nicht trägt.</p>
+    </div>
+    <p style="color:#FAF6F0;font-size:1.125rem;line-height:1.7;margin-bottom:4rem;padding-top:2rem;border-top:1px solid rgba(201,150,107,.25);">Du weißt jetzt, worum es geht. Die Entscheidung liegt bei dir.</p>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:.75rem;">
+      <a href="https://www.digistore24.com/product/695317" target="_blank" rel="noopener noreferrer" class="mr-btn mr-btn-light">Jetzt Zugang sichern</a>
+      <p style="font-size:.75rem;color:#C9966B;opacity:.75;">Einmalig 47 € · sofortiger Zugang · kein Abo</p>
+      <p style="font-size:.75rem;color:#C9966B;opacity:.5;">Die Abrechnung erfolgt über Digistore24.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="mr-footer">
+  <div class="mr-wrap mr-6xl">
+    <div class="mr-footer-top">
+      <!-- ===> HIER LOGO-URL (gleiches Logo wie oben) -->
+      <img alt="Mental Rising® Akademie" style="height:2rem;width:auto;"
+           src="https://wuwglvodpsroizmpfbhq.supabase.co/storage/v1/object/public/brand-kit-assets/c22bdfc7-d33d-4dc9-8632-1ace7a71929f/c3bac251-2907-442a-aed9-184332d2f52e/logo_url.png?v=1778847212040">
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <a href="https://elfi-achs.at/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
+        <a href="https://elfi-achs.at/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+      </div>
+      <p style="font-size:.75rem;color:#FAF6F0;">© 2026 Mental Rising® Akademie</p>
+    </div>
+    <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #5C4232;">
+      <p class="mr-center mr-mxauto" style="font-size:.75rem;line-height:1.7;max-width:42rem;color:#FAF6F0;opacity:.65;">Dieser Kurs ist im Rahmen der Lebens- und Sozialberatung verankert. Er ersetzt keine psychotherapeutische oder ärztliche Behandlung. Bei akuten psychischen Krisen wende dich bitte an den Arzt deines Vertrauens.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.getElementById('mr-stopp');
+  if(!root) return;
+  root.querySelectorAll('.mr-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.mr-faq-item');
+      var ans = item.querySelector('.mr-faq-a');
+      var isOpen = item.classList.contains('open');
+      // andere schließen
+      root.querySelectorAll('.mr-faq-item.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.mr-faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+</script>
+</div>
