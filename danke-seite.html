@@ -17,8 +17,9 @@
     --brown:#5C4232; --tan:#B5825F; --gold:#C9966B; --gold-light:#E8C9A8;
     --cream:#E8DDCE; --border:#D9C9B4; --muted:#A67F68;
   }
+  html,body{overflow-x:hidden}
   body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
-  .mr{min-height:100vh}
+  .mr{min-height:100vh;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw}
   .mr img{max-width:100%;height:auto;display:block}
   .mr a{text-decoration:none}
   .serif{font-family:'Playfair Display',Georgia,serif}
