@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vielen Dank - Mental Rising® Akademie</title>
+<meta name="description" content="Vielen Dank für deine Anmeldung. Hier findest du alle Informationen zu deinen nächsten Schritten.">
+<link rel="icon" href="https://api.christiani.ai/storage/v1/object/public/brand-kit-assets/292f6948-2d7d-497d-91db-6d221feb9219/c3bac251-2907-442a-aed9-184332d2f52e/scraped-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== Mental Rising® – Danke-Seite (eigenständig, kein Framework nötig) ===== */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#FAF6F0; --bg-alt:#F0E6D8; --text:#3D2E20; --text-soft:#7A5E4A;
+    --brown:#5C4232; --tan:#B5825F; --gold:#C9966B; --gold-light:#E8C9A8;
+    --cream:#E8DDCE; --border:#D9C9B4; --muted:#A67F68;
+  }
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .mr{min-height:100vh}
+  .mr img{max-width:100%;height:auto;display:block}
+  .mr a{text-decoration:none}
+  .serif{font-family:'Playfair Display',Georgia,serif}
+  .container{max-width:1024px;margin:0 auto;padding:0 24px}
+  .container-sm{max-width:768px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  .mr-header{position:absolute;top:0;left:0;right:0;z-index:50;padding:16px 0}
+  .mr-header .inner{display:flex;align-items:center;justify-content:space-between}
+  .mr-header img{height:40px;width:auto;filter:brightness(0) invert(1)}
+  .mr-header a{font-size:14px;font-weight:500;color:var(--gold-light);transition:color .2s}
+  .mr-header a:hover{color:#fff}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:4px;transition:transform .3s,box-shadow .3s}
+  .btn:hover{transform:scale(1.05)}
+  .btn svg{width:18px;height:18px}
+  .btn-gold{background:linear-gradient(90deg,var(--gold-light),var(--gold));color:var(--text);padding:16px 32px;font-size:16px}
+  .btn-gold:hover{box-shadow:0 20px 40px rgba(0,0,0,.2)}
+  .btn-gold-lg{padding:20px 40px;font-size:18px}
+  .btn-brown{background:linear-gradient(90deg,var(--brown),var(--tan));color:var(--bg);padding:14px 28px;font-size:14px}
+  .btn-brown:hover{box-shadow:0 12px 24px rgba(0,0,0,.18)}
+
+  /* Hero */
+  .hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(61,46,32,.82) 0%,rgba(92,66,50,.70) 50%,rgba(61,46,32,.75) 100%)}
+  .hero-inner{position:relative;z-index:10;max-width:768px;margin:0 auto;padding:128px 24px;text-align:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,150,107,.2);border:1px solid rgba(201,150,107,.4);color:var(--gold-light);font-size:14px;font-weight:500;padding:8px 16px;border-radius:9999px;margin-bottom:32px}
+  .badge svg{width:16px;height:16px;color:var(--gold)}
+  .hero h1{font-size:clamp(2.25rem,6vw,3.75rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:24px}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--gold-light),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:clamp(1.125rem,2.5vw,1.25rem);color:var(--cream);margin:0 auto 40px;max-width:36rem}
+
+  /* Sections */
+  .section{padding:80px 0}
+  @media(min-width:768px){.section{padding:112px 0}}
+  .bg-cream{background:var(--bg)}
+  .bg-sand{background:var(--bg-alt)}
+  .eyebrow{font-size:14px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--tan);margin-bottom:12px}
+  .section h2{font-size:clamp(1.875rem,4vw,2.25rem);color:var(--text);line-height:1.2;margin-bottom:24px}
+  .lead{font-size:1.125rem;color:var(--text-soft);line-height:1.7}
+
+  /* Decorative blobs */
+  .blob{position:absolute;border-radius:9999px;filter:blur(64px);pointer-events:none}
+
+  /* Two column row */
+  .row{display:flex;flex-direction:column;align-items:center;gap:48px}
+  @media(min-width:768px){.row{flex-direction:row;gap:64px}}
+  .row .col{flex:1}
+  .row .col-fixed{flex-shrink:0;display:flex;flex-direction:column;align-items:center}
+
+  /* Cards */
+  .card{background:var(--bg);border:1px solid var(--border);border-radius:4px;box-shadow:0 4px 6px rgba(0,0,0,.05);padding:28px;transition:box-shadow .3s}
+  .card:hover{box-shadow:0 20px 40px rgba(0,0,0,.1)}
+  .icon-circle{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:9999px;background:rgba(181,130,95,.15);margin-bottom:20px}
+  .icon-circle svg{width:24px;height:24px;color:var(--tan)}
+  .card h3{font-family:'Playfair Display',serif;font-size:1.125rem;font-weight:600;color:var(--text);margin-bottom:12px;line-height:1.3}
+  .card p{font-size:14px;color:var(--text-soft);line-height:1.7}
+
+  .grid-2{display:grid;grid-template-columns:1fr;gap:24px;margin-top:24px}
+  @media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr}}
+
+  .caption{margin-top:16px;font-size:14px;color:var(--muted);font-style:italic;text-align:center;max-width:360px}
+  .shadow-img{filter:drop-shadow(0 25px 25px rgba(0,0,0,.15))}
+
+  /* Feature list (Paket) */
+  .feat-list{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:640px){.feat-list{grid-template-columns:1fr 1fr}}
+  .feat{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:4px}
+  .feat svg{width:20px;height:20px;color:var(--tan);flex-shrink:0;margin-top:2px}
+  .feat span{font-size:14px;color:var(--text);line-height:1.6}
+  .tag{display:inline-block;background:var(--brown);color:var(--gold-light);font-size:14px;font-weight:600;padding:8px 20px;border-radius:4px}
+
+  /* FAQ */
+  .faq-item{border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:12px}
+  .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;text-align:left;background:#F5EDE2;border:none;cursor:pointer;font-family:inherit;font-size:16px;font-weight:500;color:var(--text);line-height:1.3;transition:background .2s}
+  .faq-q:hover{background:#EFE4D6}
+  .faq-q svg{flex-shrink:0;width:20px;height:20px;color:var(--tan);transition:transform .3s}
+  .faq-item.open .faq-q svg{transform:rotate(180deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--bg)}
+  .faq-a-inner{padding:0 24px;color:var(--text-soft);font-size:15px;line-height:1.7}
+  .faq-item.open .faq-a{max-height:240px}
+  .faq-item.open .faq-a-inner{padding:20px 24px}
+
+  /* CTA */
+  .cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#5C4232 0%,#7A5040 50%,#5C4232 100%)}
+  .cta-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.15}
+  .cta-inner{position:relative;z-index:10;max-width:768px;margin:0 auto;padding:0 24px;text-align:center}
+  .cta .eyebrow{color:var(--gold-light)}
+  .cta h2{font-size:clamp(1.875rem,5vw,3rem);font-weight:700;color:#fff;margin-bottom:24px;line-height:1.2}
+  .cta p{font-size:1.125rem;color:var(--cream);margin:0 auto 40px;max-width:36rem}
+  .trust{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;margin-bottom:40px}
+  .trust-item{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--cream)}
+  .trust-item svg{width:16px;height:16px;color:var(--gold)}
+
+  /* Footer */
+  .mr-footer{background:var(--text);color:var(--cream);padding:40px 0}
+  .mr-footer .inner{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:24px}
+  @media(min-width:768px){.mr-footer .inner{flex-direction:row}}
+  .mr-footer img{height:40px;width:auto;filter:brightness(0) invert(1)}
+  .mr-footer p{font-size:14px;color:var(--tan);text-align:center}
+  .mr-footer nav{display:flex;align-items:center;gap:24px;font-size:14px}
+  .mr-footer nav a{color:var(--gold);transition:color .2s}
+  .mr-footer nav a:hover{color:var(--cream)}
+
+  .sticky-img{position:static}
+  @media(min-width:768px){.sticky-img{position:sticky;top:96px}}
+</style>
+</head>
+<body>
+<main class="mr">
+
+  <!-- Header -->
+  <header class="mr-header">
+    <div class="container inner">
+      <img src="https://wuwglvodpsroizmpfbhq.supabase.co/storage/v1/object/public/brand-kit-assets/c22bdfc7-d33d-4dc9-8632-1ace7a71929f/c3bac251-2907-442a-aed9-184332d2f52e/logo_url.png?v=1778847212040" alt="Mental Rising Akademie">
+      <a href="https://mentalrising.com/" target="_blank" rel="noopener noreferrer">Zur Akademie →</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="blob" style="top:0;right:0;width:500px;height:500px;opacity:.1;background:var(--gold)"></div>
+    <div class="blob" style="bottom:0;left:0;width:400px;height:400px;opacity:.1;background:var(--tan)"></div>
+    <div class="hero-bg" style="background-image:url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/zPtCzEEmN9zZ4qMpLpIYP-L5Zv0ugAQXZHKxYpwTrwOltNqRwUjL.png')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+        Anmeldung erfolgreich
+      </div>
+      <h1 class="serif">Vielen Dank <span class="grad">für deine Anmeldung</span></h1>
+      <p>Schön, dass du den ersten Schritt gegangen bist. Ich freue mich, dich auf diesem Weg zu begleiten – und so geht es jetzt weiter.</p>
+      <a href="https://mentalrising.com/" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+        Zur Mental Rising® Akademie
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Was jetzt passiert -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="col" style="text-align:left;max-width:680px">
+        <p class="eyebrow">Was jetzt passiert</p>
+        <h2 class="serif">In Kürze erhältst du alle weiteren Informationen</h2>
+        <p class="lead">Alles, was du für den Einstieg brauchst, kommt jetzt per E-Mail zu dir – wie du dich anmeldest und in deinen Kurs gelangst.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- So meldest du dich an -->
+  <section class="section bg-sand" style="position:relative;overflow:hidden">
+    <div class="blob" style="top:40px;right:40px;width:288px;height:288px;opacity:.15;background:var(--gold)"></div>
+    <div class="blob" style="bottom:40px;left:0;width:320px;height:320px;opacity:.1;background:var(--tan)"></div>
+    <div class="container" style="position:relative;z-index:10">
+      <div style="text-align:center;margin-bottom:56px">
+        <p class="eyebrow">Dein Zugang</p>
+        <h2 class="serif" style="margin-bottom:16px">So meldest du dich an</h2>
+        <div style="position:relative;margin:32px 0 24px">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/jrjdw2GUEHEEwiLryCuSO-qX7SEnz9DEXqhiamVFvrwOwSC7NLgn.png" alt="Die Mental Rising® Akademie auf iPhone, MacBook und iPad" class="shadow-img" style="width:100%;max-width:672px;margin:0 auto;border-radius:4px">
+        </div>
+        <p class="lead" style="max-width:672px;margin:0 auto">Mit deinen Zugangsdaten meldest du dich an – ganz gleich, ob am Laptop, Tablet oder Handy.</p>
+      </div>
+
+      <div class="row" style="align-items:flex-start">
+        <div class="col">
+          <div class="card" style="height:100%">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            </div>
+            <h3>Deine Zugangsdaten kommen</h3>
+            <p>Du bekommst eine E-Mail mit deinen Zugangsdaten, mit denen du in die Mental Rising® Akademie einsteigst. Schau am besten gleich in dein E-Mail-Postfach.</p>
+          </div>
+        </div>
+        <div class="col-fixed sticky-img">
+          <div style="position:relative">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/cXk2zNmnoZLrlkIoIIXcR-ch6QkRlfPAlCTKAZ97Bsdhy41RYow1.png" alt="Vorschau der Willkommens-E-Mail mit Zugangsdaten auf dem Smartphone" class="shadow-img" style="width:320px;max-width:100%;border-radius:4px">
+          </div>
+          <p class="caption">So sieht deine E-Mail mit den Zugangsdaten aus.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3>Etwas Geduld mitbringen</h3>
+          <p>Manchmal dauert es bis zu 10 Minuten, bis im Hintergrund alles eingerichtet ist. Wirf auch einen Blick in deinen Spam-Ordner, falls keine Mail angekommen ist.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+          </div>
+          <h3>Willkommens-E-Mail folgt</h3>
+          <p>Anschließend erhältst du unsere Willkommens-E-Mail zu deinem Kurs – mit allen wichtigen Informationen zu Inhalt und Ablauf.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sofort loslegen -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="row">
+        <div class="col" style="text-align:left">
+          <p class="eyebrow">Dein Kurs wartet</p>
+          <h2 class="serif">Sofort loslegen möglich</h2>
+          <p class="lead" style="margin-bottom:16px">Wenn du dich in der Akademie einloggst, ist dein neuer Kurs schon für dich bereit – du kannst sofort loslegen.</p>
+          <p style="font-size:1rem;color:var(--text-soft);line-height:1.7">Du erkennst die Freischaltung daran, dass beim Kurs der Button <span style="font-weight:600;color:var(--brown)">„START KURS"</span> angezeigt wird.</p>
+          <a href="https://mentalrising.com/" target="_blank" rel="noopener noreferrer" class="btn btn-brown" style="margin-top:32px">
+            Jetzt einloggen
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+          </a>
+        </div>
+        <div class="col-fixed">
+          <div style="position:relative;width:100%;max-width:384px">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/QlSjAT2c0Die5qcXhHDHk-hvYYu6bs4J8gKpTwQNp9kTsz4T3km2.png" alt="Mental Rising® Akademie Dashboard auf einem iPad – Kurs mit START KURS Button" class="shadow-img" style="width:100%;border-radius:4px">
+          </div>
+          <p class="caption" style="max-width:none">Der Button „START KURS" zeigt dir, dass dein Kurs bereit ist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dein Paket -->
+  <section class="section bg-sand">
+    <div class="container">
+      <div class="row" style="margin-bottom:40px">
+        <div class="col">
+          <p class="eyebrow">Dein Paket</p>
+          <h2 class="serif">Was du erhalten hast</h2>
+          <p class="lead" style="margin-bottom:24px">Mit deinem Kauf hast du Zugang zu allem, was du für deinen Lernweg brauchst – ohne Zeitdruck, ohne Folgekosten.</p>
+          <div class="tag">Bereits bezahlt</div>
+        </div>
+        <div class="col-fixed">
+          <div style="position:relative;width:100%;max-width:384px">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/oLvZGTgQMIlYPXftZHSRG-t6hSg6Gsmsj9E3abpBXWRpBNo9eDHN.png" alt="Kursseite in der Mental Rising® Akademie auf einem MacBook" class="shadow-img" style="width:100%;border-radius:4px">
+          </div>
+          <p class="caption" style="max-width:280px;font-size:12px;margin-top:12px">So sieht dein Kurs in der Mental Rising® Akademie aus.</p>
+        </div>
+      </div>
+
+      <div class="feat-list">
+        <div class="feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span>Zugangsdaten zur Mental Rising® Akademie per E-Mail</span></div>
+        <div class="feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span>Willkommens-E-Mail mit allen Kursinformationen</span></div>
+        <div class="feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span>Sofortiger Zugang zu deinem gebuchten Kurs</span></div>
+        <div class="feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span>Zugang über Desktop, Tablet und Smartphone möglich</span></div>
+        <div class="feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span>Keine Mindestlaufzeit, keine versteckten Kosten</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-cream">
+    <div class="container-sm">
+      <div style="text-align:center;margin-bottom:56px">
+        <p class="eyebrow">Häufige Fragen</p>
+        <h2 class="serif">Noch Fragen? Wir haben Antworten.</h2>
+      </div>
+      <div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span>Ich habe keine E-Mail erhalten. Was soll ich tun?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Bitte habe etwas Geduld – manchmal dauert es bis zu 10 Minuten, bis alles eingerichtet ist. Schau anschließend auch in deinen Spam- bzw. Werbe-Ordner. Sollte nach einiger Zeit keine Mail angekommen sein, melde dich gerne bei uns.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span>Kann ich den Kurs auch am Handy machen?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Ja. Du kannst die Mental Rising® Akademie bequem am Smartphone, Tablet oder Laptop nutzen – ganz wie es dir am besten passt.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span>Wer bucht die Zahlung ab?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Die Zahlung wurde bereits über unseren Zahlungsanbieter abgewickelt. Es entstehen keine weiteren Kosten, keine Mindestlaufzeit und kein Abo.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta">
+    <div class="cta-bg" style="background-image:url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/jrjdw2GUEHEEwiLryCuSO-qX7SEnz9DEXqhiamVFvrwOwSC7NLgn.png')"></div>
+    <div class="blob" style="top:0;right:0;width:384px;height:384px;opacity:.15;background:var(--gold)"></div>
+    <div class="cta-inner">
+      <p class="eyebrow">Direkt einloggen</p>
+      <h2 class="serif">Hier kannst du dich direkt einloggen</h2>
+      <p>Wenn du bereits einen Account hast oder deine Zugangsdaten erhalten hast, gelangst du über diesen Button direkt in die Mental Rising® Akademie.</p>
+      <div class="trust">
+        <div class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Keine Folgekosten, kein Abo
+        </div>
+        <div class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg>
+          DSGVO-konform
+        </div>
+      </div>
+      <a href="https://mentalrising.com/" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-gold-lg">
+        Zur Mental Rising® Akademie
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mr-footer">
+    <div class="container inner">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://wuwglvodpsroizmpfbhq.supabase.co/storage/v1/object/public/brand-kit-assets/c22bdfc7-d33d-4dc9-8632-1ace7a71929f/c3bac251-2907-442a-aed9-184332d2f52e/logo_url.png?v=1778847212040" alt="Mental Rising® Akademie Logo">
+      </div>
+      <p>© 2026 Mental Rising® Akademie. Alle Rechte vorbehalten.</p>
+      <nav>
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
