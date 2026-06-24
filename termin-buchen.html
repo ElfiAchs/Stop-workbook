@@ -1,0 +1,190 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Mulish:wght@300;400;500;600;700&display=swap');
+
+.tb-wrap *{box-sizing:border-box;margin:0;padding:0}
+.tb-wrap{
+  width:100vw;position:relative;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;
+  font-family:'Mulish',sans-serif;color:#3A322B;
+  background:#FBF7F1;overflow-x:hidden;
+}
+
+/* -- HEADER -- */
+.tb-header{
+  background:#FBF7F1;
+  border-bottom:1px solid #E8DDD3;
+  padding:1.25rem 1.5rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.tb-logo img{height:40px;width:auto;display:block}
+
+/* -- HERO -- */
+.tb-hero{
+  text-align:center;
+  padding:3.5rem 1.5rem 2rem;
+  max-width:640px;margin:0 auto;
+}
+.tb-section-label{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:#5E6F54;margin-bottom:1rem;
+}
+.tb-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:300;line-height:1.25;
+  color:#3A322B;margin-bottom:1rem;
+}
+.tb-hero h1 em{font-style:italic;color:#5E6F54}
+.tb-hero-sub{
+  font-size:1rem;color:#6B5E54;line-height:1.75;
+  max-width:520px;margin:0 auto 1.75rem;
+}
+.tb-trust-badges{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:0.5rem 1.5rem;
+}
+.tb-trust-badge{
+  display:flex;align-items:center;gap:0.4rem;
+  font-size:0.78rem;font-weight:600;color:#5E6F54;
+}
+.tb-trust-badge svg{flex-shrink:0}
+
+/* -- BOOKING SECTION -- */
+.tb-booking{
+  padding:2rem 1.5rem 5rem;
+  max-width:720px;margin:0 auto;
+}
+.tb-card{
+  background:#fff;border-radius:4px;
+  border:1px solid #E8DDD3;
+  box-shadow:0 8px 40px rgba(58,50,43,0.08);
+  overflow:hidden;
+}
+.tb-card-header{
+  text-align:center;
+  padding:2.5rem 2rem 2rem;
+  border-bottom:1px solid #F3EDE5;
+}
+.tb-card-label{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:#5E6F54;margin-bottom:0.75rem;
+}
+.tb-card-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;
+  color:#3A322B;margin-bottom:0.5rem;
+}
+.tb-card-header p{
+  font-size:0.875rem;color:#6B5E54;line-height:1.65;
+}
+.tb-calendar-container{
+  padding:2rem;
+  min-height:500px;
+}
+
+/* -- FOOTER -- */
+.tb-footer{
+  background:#FBF7F1;border-top:1px solid #E8DDD3;
+  padding:1.25rem 1.5rem;
+}
+.tb-footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;
+  gap:0.75rem;
+}
+@media(min-width:640px){
+  .tb-footer-inner{flex-direction:row;justify-content:space-between}
+}
+.tb-footer-logo img{height:32px;width:auto;opacity:0.8}
+.tb-footer-copy{font-size:0.78rem;color:rgba(58,50,43,0.5)}
+.tb-footer-links{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:0.78rem;color:rgba(58,50,43,0.5);
+}
+.tb-footer-links a{color:inherit;text-decoration:none;transition:color 0.2s}
+.tb-footer-links a:hover{color:#3A322B}
+
+@media(max-width:480px){
+  .tb-booking{padding:1.5rem 1rem 3rem}
+  .tb-card-header{padding:2rem 1.25rem 1.5rem}
+  .tb-calendar-container{padding:1.25rem}
+}
+</style>
+
+<div class="tb-wrap">
+
+  <!-- HEADER -->
+  <header class="tb-header">
+    <a href="/" class="tb-logo">
+      <img
+        src="https://assets.cdn.filesafe.space/vVwP7kTkrmbCFyXbNWNJ/media/6a3aeab2659bec99fcbd9a5f.png"
+        alt="Vital Balance Beauty">
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <div class="tb-hero">
+    <p class="tb-section-label">Kostenfreie Hautbildanalyse</p>
+    <h1>Endlich wissen, was deine Haut<br><em>wirklich braucht</em></h1>
+    <p class="tb-hero-sub">In 30 Minuten zur individuellen Pflegeempfehlung - online per Zoom oder persönlich vor Ort. Ohne Kaufdruck.</p>
+    <div class="tb-trust-badges">
+      <span class="tb-trust-badge">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="8" fill="#5E6F54" fill-opacity="0.12"/>
+          <path d="M5 8.2L7 10.2L11 6" stroke="#5E6F54" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        100&nbsp;% kostenfrei
+      </span>
+      <span class="tb-trust-badge">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="8" fill="#5E6F54" fill-opacity="0.12"/>
+          <path d="M5 8.2L7 10.2L11 6" stroke="#5E6F54" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Keine Kaufverpflichtung
+      </span>
+      <span class="tb-trust-badge">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="8" fill="#5E6F54" fill-opacity="0.12"/>
+          <path d="M5 8.2L7 10.2L11 6" stroke="#5E6F54" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Online oder vor Ort
+      </span>
+    </div>
+  </div>
+
+  <!-- BOOKING CARD -->
+  <div class="tb-booking">
+    <div class="tb-card">
+      <div class="tb-card-header">
+        <p class="tb-card-label">Termin sichern</p>
+        <h2>Wähle deinen Wunschtermin</h2>
+        <p>Buche direkt online - du erhältst sofort eine Bestätigung.</p>
+      </div>
+      <div class="tb-calendar-container">
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!--   GHL ROUNDROBIN-KALENDER HIER EINFÜGEN            -->
+        <!--   (Calendar Widget / Embed-Element aus GHL)        -->
+        <!-- ═══════════════════════════════════════════════════ -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="tb-footer">
+    <div class="tb-footer-inner">
+      <a href="/">
+        <img
+          src="https://assets.cdn.filesafe.space/vVwP7kTkrmbCFyXbNWNJ/media/6a3aeab2659bec99fcbd9a5f.png"
+          alt="Vital Balance Beauty"
+          class="tb-footer-logo"
+          style="height:32px;width:auto;opacity:0.8">
+      </a>
+      <p class="tb-footer-copy">&#169; 2025 Vital Balance Beauty &middot; Alle Rechte vorbehalten</p>
+      <nav class="tb-footer-links">
+        <a href="/impressum">Impressum</a>
+        <span>|</span>
+        <a href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
