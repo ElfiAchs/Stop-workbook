@@ -1,0 +1,769 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Mulish:wght@300;400;500;600;700&display=swap');
+
+.hba-wrap *{box-sizing:border-box;margin:0;padding:0}
+.hba-wrap{
+  width:100vw;position:relative;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;
+  font-family:'Mulish',sans-serif;color:#3A322B;
+  background:#FBF7F1;overflow-x:hidden;
+}
+
+/* -- HEADER -- */
+.hba-header{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  background:rgba(20,16,12,0.4);
+  transition:background 0.3s ease,border-color 0.3s ease,backdrop-filter 0.3s ease;
+  border-bottom:1px solid transparent;
+}
+.hba-header.hba-scrolled{
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(10px);
+  border-bottom-color:rgba(232,221,211,0.6);
+}
+.hba-header-inner{
+  max-width:1200px;margin:0 auto;
+  padding:1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+}
+.hba-logo img{height:36px;width:auto;display:block}
+.hba-nav{display:flex;align-items:center;gap:2rem}
+.hba-nav a{
+  font-size:0.85rem;font-weight:500;letter-spacing:0.04em;
+  color:rgba(255,255,255,0.9);text-decoration:none;
+  transition:color 0.2s;white-space:nowrap;
+}
+.hba-header.hba-scrolled .hba-nav a{color:#3A322B}
+.hba-nav a:hover{color:#fff}
+.hba-header.hba-scrolled .hba-nav a:hover{color:#5E6F54}
+.hba-header-btn{
+  display:inline-flex;align-items:center;
+  padding:0.6rem 1.25rem;border-radius:4px;
+  font-family:'Mulish',sans-serif;font-size:0.85rem;font-weight:600;
+  color:#fff;text-decoration:none;white-space:nowrap;
+  background:linear-gradient(135deg,#5E6F54,#879A7B);
+  transition:opacity 0.2s,transform 0.2s;
+}
+.hba-header-btn:hover{opacity:0.9;transform:scale(1.03)}
+.hba-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:0.25rem}
+
+/* -- HERO -- */
+.hba-hero{
+  position:relative;min-height:90vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hba-hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/jIbsHiFc2zBYye6orCHWz-uf8yo4B0J8QXOItf1UAU5kgidHGS1V.png');
+  background-size:cover;background-position:center;
+  transform:scale(1.05);
+}
+.hba-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.75),rgba(0,0,0,0.6),rgba(0,0,0,0.7));
+}
+.hba-hero-overlay2{position:absolute;inset:0;background:rgba(58,50,43,0.35)}
+.hba-hero-glow{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:700px;height:300px;
+  background:radial-gradient(ellipse,#C3A468 0%,transparent 70%);
+  filter:blur(60px);opacity:0.2;pointer-events:none;
+}
+.hba-hero-inner{
+  position:relative;z-index:10;
+  max-width:900px;margin:0 auto;
+  padding:calc(80px + 5rem) 1.5rem 5rem;
+  text-align:center;color:#fff;
+}
+.hba-hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.5rem 1rem;border-radius:999px;
+  border:1px solid rgba(195,164,104,0.4);
+  background:rgba(195,164,104,0.15);
+  font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:#C3A468;margin-bottom:2rem;
+}
+.hba-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;line-height:1.2;
+  margin-bottom:1.5rem;
+}
+.hba-hero h1 em{font-style:italic;color:#C3A468}
+.hba-hero-sub{
+  font-size:clamp(1rem,2vw,1.2rem);font-weight:300;
+  color:rgba(255,255,255,0.85);max-width:600px;margin:0 auto 2.5rem;line-height:1.7;
+}
+.hba-hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.hba-btn-primary{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:1rem 2rem;border-radius:4px;
+  font-family:'Mulish',sans-serif;font-size:1rem;font-weight:600;
+  color:#fff;text-decoration:none;
+  background:linear-gradient(135deg,#5E6F54,#879A7B);
+  transition:opacity 0.2s,transform 0.2s;
+}
+.hba-btn-primary:hover{opacity:0.9;transform:scale(1.03)}
+.hba-btn-outline{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:1rem 2rem;border-radius:4px;
+  font-family:'Mulish',sans-serif;font-size:1rem;font-weight:600;
+  color:#fff;text-decoration:none;
+  border:1px solid rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.08);
+  transition:background 0.2s;
+}
+.hba-btn-outline:hover{background:rgba(255,255,255,0.15)}
+.hba-hero-trust{
+  display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;
+  padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.15);
+  font-size:0.8rem;color:rgba(255,255,255,0.7);
+}
+.hba-hero-trust-stars{color:#C3A468;letter-spacing:2px}
+
+/* -- KENNST DU DAS -- */
+.hba-kdt{background:#FBF7F1;padding:5rem 1.5rem}
+.hba-kdt-inner{max-width:1100px;margin:0 auto}
+.hba-kdt-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hba-section-label{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:#879A7B;margin-bottom:1rem;
+}
+.hba-kdt h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;line-height:1.3;
+  color:#3A322B;margin-bottom:1.5rem;
+}
+.hba-kdt h2 em{font-style:italic;color:#5E6F54}
+.hba-kdt-lead{font-size:1.05rem;color:#6B5E54;line-height:1.75;margin-bottom:2rem}
+.hba-prob-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem}
+.hba-prob-list li{
+  display:flex;align-items:flex-start;gap:0.75rem;
+  font-size:0.95rem;color:#5A4E46;line-height:1.6;
+}
+.hba-prob-icon{
+  flex-shrink:0;width:20px;height:20px;border-radius:50%;
+  background:rgba(195,164,104,0.15);
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+}
+.hba-kdt-quote{
+  background:#F3EDE5;border-radius:12px;padding:2.5rem;
+  border-left:4px solid #C3A468;
+}
+.hba-kdt-quote blockquote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:400;font-style:italic;
+  color:#3A322B;line-height:1.6;margin-bottom:1.5rem;
+}
+.hba-kdt-quote-author{display:flex;align-items:center;gap:0.75rem}
+.hba-kdt-quote-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,#C3A468,#879A7B);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;
+}
+.hba-kdt-quote-name{font-weight:600;font-size:0.9rem;color:#3A322B}
+.hba-kdt-quote-role{font-size:0.8rem;color:#879A7B}
+
+/* -- VORTEILE -- */
+.hba-vorteile{background:#F3EDE5;padding:5rem 1.5rem}
+.hba-vorteile-inner{max-width:1100px;margin:0 auto;text-align:center}
+.hba-vorteile h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;
+  color:#3A322B;margin-bottom:0.75rem;
+}
+.hba-vorteile h2 em{font-style:italic;color:#5E6F54}
+.hba-vorteile-lead{font-size:1rem;color:#6B5E54;line-height:1.7;max-width:600px;margin:0 auto 3rem}
+.hba-vort-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.hba-vort-card{
+  background:#fff;border-radius:12px;padding:2rem;
+  border:1px solid #E8DDD3;text-align:left;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.hba-vort-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(58,50,43,0.1)}
+.hba-vort-icon{
+  width:48px;height:48px;border-radius:10px;
+  background:linear-gradient(135deg,#5E6F54,#879A7B);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.25rem;
+}
+.hba-vort-card h3{font-size:1rem;font-weight:700;color:#3A322B;margin-bottom:0.5rem}
+.hba-vort-card p{font-size:0.875rem;color:#6B5E54;line-height:1.65}
+
+/* -- ANALYSE -- */
+.hba-analyse{background:#FBF7F1;padding:5rem 1.5rem}
+.hba-analyse-inner{max-width:1100px;margin:0 auto}
+.hba-analyse-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hba-analyse h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;
+  color:#3A322B;margin-bottom:1.25rem;
+}
+.hba-analyse h2 em{font-style:italic;color:#5E6F54}
+.hba-analyse-lead{font-size:1rem;color:#6B5E54;line-height:1.75;margin-bottom:2rem}
+.hba-analyse-features{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem}
+.hba-analyse-feat{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 1.25rem;border-radius:8px;
+  background:#F3EDE5;border:1px solid #E8DDD3;
+}
+.hba-analyse-feat-icon{
+  flex-shrink:0;width:36px;height:36px;border-radius:8px;
+  background:linear-gradient(135deg,#5E6F54,#879A7B);
+  display:flex;align-items:center;justify-content:center;
+}
+.hba-analyse-feat h4{font-size:0.9rem;font-weight:700;color:#3A322B;margin-bottom:0.2rem}
+.hba-analyse-feat p{font-size:0.82rem;color:#6B5E54;line-height:1.55}
+.hba-analyse-img-wrap{position:relative;border-radius:16px;overflow:hidden}
+.hba-analyse-img-wrap img{width:100%;height:auto;display:block;border-radius:16px}
+.hba-analyse-badge{
+  position:absolute;bottom:1.5rem;left:1.5rem;
+  background:rgba(255,255,255,0.95);border-radius:10px;
+  padding:1rem 1.25rem;border:1px solid #E8DDD3;
+  backdrop-filter:blur(8px);
+}
+.hba-analyse-badge-val{font-size:1.5rem;font-weight:700;color:#5E6F54}
+.hba-analyse-badge-label{font-size:0.75rem;color:#879A7B;margin-top:0.1rem}
+.hba-analyse-badge2{
+  position:absolute;top:1.5rem;right:1.5rem;
+  background:linear-gradient(135deg,#5E6F54,#879A7B);
+  border-radius:10px;padding:1rem 1.25rem;color:#fff;
+}
+.hba-analyse-badge2-val{font-size:1.4rem;font-weight:700}
+.hba-analyse-badge2-label{font-size:0.7rem;opacity:0.85;margin-top:0.1rem}
+
+/* -- ABLAUF -- */
+.hba-ablauf{background:#F3EDE5;padding:5rem 1.5rem}
+.hba-ablauf-inner{max-width:900px;margin:0 auto;text-align:center}
+.hba-ablauf h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;
+  color:#3A322B;margin-bottom:0.75rem;
+}
+.hba-ablauf h2 em{font-style:italic;color:#5E6F54}
+.hba-ablauf-lead{font-size:1rem;color:#6B5E54;line-height:1.7;max-width:600px;margin:0 auto 3rem}
+.hba-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:left}
+.hba-step{position:relative;padding-top:1rem}
+.hba-step-num{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,#5E6F54,#879A7B);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff;
+  margin-bottom:1.25rem;position:relative;z-index:1;
+}
+.hba-step-num::after{
+  content:'';position:absolute;left:52px;top:50%;transform:translateY(-50%);
+  width:calc(100% + 1.5rem - 52px + 8px);height:1px;
+  background:linear-gradient(to right,#879A7B,transparent);
+}
+.hba-steps .hba-step:last-child .hba-step-num::after{display:none}
+.hba-step h3{font-size:0.95rem;font-weight:700;color:#3A322B;margin-bottom:0.4rem}
+.hba-step p{font-size:0.82rem;color:#6B5E54;line-height:1.6}
+
+/* -- TESTIMONIALS -- */
+.hba-testi{background:#FBF7F1;padding:5rem 1.5rem}
+.hba-testi-inner{max-width:900px;margin:0 auto;text-align:center}
+.hba-testi h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;
+  color:#3A322B;margin-bottom:0.75rem;
+}
+.hba-testi h2 em{font-style:italic;color:#5E6F54}
+.hba-testi-lead{font-size:1rem;color:#6B5E54;line-height:1.7;margin-bottom:3rem}
+.hba-testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.hba-testi-card{
+  background:#fff;border-radius:12px;padding:2rem;
+  border:1px solid #E8DDD3;text-align:left;
+}
+.hba-testi-stars{color:#C3A468;font-size:1rem;letter-spacing:2px;margin-bottom:1rem}
+.hba-testi-card blockquote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-style:italic;color:#3A322B;line-height:1.65;margin-bottom:1.25rem;
+}
+.hba-testi-author{display:flex;align-items:center;gap:0.75rem}
+.hba-testi-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,#C3A468,#879A7B);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;
+}
+.hba-testi-name{font-weight:600;font-size:0.85rem;color:#3A322B}
+.hba-testi-role{font-size:0.75rem;color:#879A7B}
+
+/* -- CTA/TERMIN -- */
+.hba-cta{background:linear-gradient(135deg,#3A4A35,#5E6F54);padding:5rem 1.5rem;position:relative;overflow:hidden}
+.hba-cta::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:400px;height:400px;border-radius:50%;
+  background:rgba(195,164,104,0.1);pointer-events:none;
+}
+.hba-cta-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hba-cta h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;
+  color:#fff;margin-bottom:1.25rem;line-height:1.3;
+}
+.hba-cta h2 em{font-style:italic;color:#C3A468}
+.hba-cta-lead{font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:2rem}
+.hba-cta-bullets{list-style:none;display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2.5rem}
+.hba-cta-bullets li{
+  display:flex;align-items:center;gap:0.75rem;
+  font-size:0.95rem;color:rgba(255,255,255,0.9);
+}
+.hba-cta-bullets li::before{
+  content:'✓';flex-shrink:0;
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(195,164,104,0.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;color:#C3A468;font-weight:700;
+  line-height:22px;text-align:center;
+}
+.hba-cta-img{border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.hba-cta-img img{width:100%;height:auto;display:block}
+.hba-btn-gold{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:1rem 2rem;border-radius:4px;
+  font-family:'Mulish',sans-serif;font-size:1rem;font-weight:600;
+  color:#3A322B;text-decoration:none;
+  background:linear-gradient(135deg,#C3A468,#D4B87A);
+  transition:opacity 0.2s,transform 0.2s;
+}
+.hba-btn-gold:hover{opacity:0.9;transform:scale(1.03)}
+
+/* -- FAQ -- */
+.hba-faq{background:#FBF7F1;padding:5rem 1.5rem}
+.hba-faq-inner{max-width:800px;margin:0 auto}
+.hba-faq h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;
+  color:#3A322B;margin-bottom:0.75rem;text-align:center;
+}
+.hba-faq h2 em{font-style:italic;color:#5E6F54}
+.hba-faq-lead{font-size:1rem;color:#6B5E54;text-align:center;margin-bottom:3rem}
+.hba-faq-list{display:flex;flex-direction:column;gap:0.75rem}
+.hba-faq details{
+  border:1px solid #E8DDD3;border-radius:10px;
+  background:#fff;overflow:hidden;
+}
+.hba-faq summary{
+  padding:1.25rem 1.5rem;
+  font-weight:600;font-size:0.95rem;color:#3A322B;
+  cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+}
+.hba-faq summary::-webkit-details-marker{display:none}
+.hba-faq summary::after{
+  content:'+';flex-shrink:0;
+  width:24px;height:24px;border-radius:50%;
+  background:#F3EDE5;border:1px solid #E8DDD3;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:#5E6F54;line-height:24px;text-align:center;
+  transition:transform 0.2s;
+}
+.hba-faq details[open] summary::after{transform:rotate(45deg)}
+.hba-faq details p{
+  padding:0 1.5rem 1.25rem;
+  font-size:0.9rem;color:#6B5E54;line-height:1.7;
+}
+
+/* -- FOOTER -- */
+.hba-footer{
+  background:#3A322B;padding:3rem 1.5rem;
+  text-align:center;color:rgba(255,255,255,0.6);
+}
+.hba-footer-logo{margin-bottom:1.25rem}
+.hba-footer-logo img{height:32px;width:auto;opacity:0.8;display:inline-block}
+.hba-footer-links{
+  display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;
+  margin-bottom:1.5rem;
+}
+.hba-footer-links a{font-size:0.8rem;color:rgba(255,255,255,0.5);text-decoration:none}
+.hba-footer-links a:hover{color:rgba(255,255,255,0.8)}
+.hba-footer-copy{font-size:0.78rem}
+
+/* -- RESPONSIVE -- */
+@media(max-width:1024px){
+  .hba-vort-grid{grid-template-columns:repeat(2,1fr)}
+  .hba-steps{grid-template-columns:repeat(2,1fr)}
+  .hba-step-num::after{display:none}
+}
+@media(max-width:900px){
+  .hba-kdt-grid,.hba-analyse-grid,.hba-cta-inner{grid-template-columns:1fr}
+  .hba-cta-img{order:-1}
+}
+@media(max-width:640px){
+  .hba-nav,.hba-header-btn{display:none}
+  .hba-menu-btn{display:block}
+  .hba-vort-grid{grid-template-columns:1fr}
+  .hba-testi-grid{grid-template-columns:1fr}
+  .hba-steps{grid-template-columns:1fr}
+  .hba-hero-ctas{flex-direction:column;align-items:center}
+}
+</style>
+
+<div class="hba-wrap">
+
+  <!-- HEADER -->
+  <header class="hba-header" id="hbaHeader">
+    <div class="hba-header-inner">
+      <a href="/" class="hba-logo">
+        <img id="hbaLogo"
+          src="https://assets.cdn.filesafe.space/vVwP7kTkrmbCFyXbNWNJ/media/6a3ae88e967e20d627c6c6f9.png"
+          alt="Vital Balance Beauty">
+      </a>
+      <nav class="hba-nav">
+        <a href="#vorteile">Vorteile</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://vitalbalancebeauty.com/termin-buchen" class="hba-header-btn">Termin buchen</a>
+      </nav>
+      <button class="hba-menu-btn" aria-label="Menue">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hba-hero">
+    <div class="hba-hero-bg"></div>
+    <div class="hba-hero-overlay"></div>
+    <div class="hba-hero-overlay2"></div>
+    <div class="hba-hero-glow"></div>
+    <div class="hba-hero-inner">
+      <div class="hba-hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Professionelle Hautbildanalyse
+      </div>
+      <h1>Endlich verstehen, was<br><em>deine Haut wirklich braucht</em></h1>
+      <p class="hba-hero-sub">Mit modernster Analysemethode erkennen wir, was deine Haut wirklich braucht - individuell, präzise und nachhaltig wirksam.</p>
+      <div class="hba-hero-ctas">
+        <a href="https://vitalbalancebeauty.com/termin-buchen" class="hba-btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Termin buchen
+        </a>
+        <a href="#ablauf" class="hba-btn-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Mehr erfahren
+        </a>
+      </div>
+      <div class="hba-hero-trust">
+        <div class="hba-hero-trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <span>Über 200 zufriedene Kundinnen</span>
+        <span>·</span>
+        <span>Zertifizierte Kosmetikerin</span>
+        <span>·</span>
+        <span>Individuelle Beratung</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- KENNST DU DAS -->
+  <section class="hba-kdt" id="vorteile">
+    <div class="hba-kdt-inner">
+      <div class="hba-kdt-grid">
+        <div>
+          <p class="hba-section-label">Das Problem</p>
+          <h2>Kennst du das Gefühl, wenn nichts so richtig <em>funktioniert?</em></h2>
+          <p class="hba-kdt-lead">Du probierst Produkt um Produkt, doch deine Haut bleibt unzufrieden. Vielleicht kennst du diese Situationen:</p>
+          <ul class="hba-prob-list">
+            <li>
+              <span class="hba-prob-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C3A468" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+              Deine Haut fühlt sich gleichzeitig fettig und trocken an
+            </li>
+            <li>
+              <span class="hba-prob-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C3A468" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+              Teure Produkte zeigen keine Wirkung
+            </li>
+            <li>
+              <span class="hba-prob-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C3A468" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+              Du weißt nicht, welche Inhaltsstoffe deiner Haut gut tun
+            </li>
+            <li>
+              <span class="hba-prob-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C3A468" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+              Unreinheiten, Rötungen oder vorzeitige Alterung machen dir Sorgen
+            </li>
+            <li>
+              <span class="hba-prob-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C3A468" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+              Die Beratung im Drogeriemarkt überfordert statt zu helfen
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="hba-kdt-quote">
+            <blockquote>"Ich habe jahrelang das Falsche für meine Haut gekauft - bis ich endlich wusste, was sie wirklich braucht."</blockquote>
+            <div class="hba-kdt-quote-author">
+              <div class="hba-kdt-quote-avatar">S</div>
+              <div>
+                <div class="hba-kdt-quote-name">Sandra M.</div>
+                <div class="hba-kdt-quote-role">Kundin seit 2023</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VORTEILE -->
+  <section class="hba-vorteile" id="analyse">
+    <div class="hba-vorteile-inner">
+      <p class="hba-section-label">Deine Vorteile</p>
+      <h2>Was die Analyse dir <em>bringt</em></h2>
+      <p class="hba-vorteile-lead">Eine professionelle Hautbildanalyse ist der erste Schritt zu einer Pflegeroutine, die wirklich funktioniert.</p>
+      <div class="hba-vort-grid">
+        <div class="hba-vort-card">
+          <div class="hba-vort-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>Präzise Analyse</h3>
+          <p>Wir analysieren deinen Hauttyp, dein Hautbild und deinen individuellen Bedarf mit modernsten Methoden.</p>
+        </div>
+        <div class="hba-vort-card">
+          <div class="hba-vort-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Individuelle Pflege</h3>
+          <p>Du erhältst eine massgeschneiderte Empfehlung - abgestimmt auf deine Haut, dein Leben und dein Budget.</p>
+        </div>
+        <div class="hba-vort-card">
+          <div class="hba-vort-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Messbare Ergebnisse</h3>
+          <p>Verfolge den Fortschritt deiner Haut mit Vorher-Nachher-Vergleichen und regelmässigen Kontrollen.</p>
+        </div>
+        <div class="hba-vort-card">
+          <div class="hba-vort-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Expertenwissen</h3>
+          <p>Du bekommst keine Empfehlung auf Verdacht - sondern auf Basis einer genauen Analyse und jahrelanger Erfahrung als zertifizierte Kosmetikerin.</p>
+        </div>
+        <div class="hba-vort-card">
+          <div class="hba-vort-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Zeiteffizient</h3>
+          <p>In nur 30 Minuten erhältst du alle Informationen, die du für eine optimale Hautpflege brauchst.</p>
+        </div>
+        <div class="hba-vort-card">
+          <div class="hba-vort-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Kostentransparenz</h3>
+          <p>Spare langfristig Geld durch gezielte Produktempfehlungen statt teurer Irrwege.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYSE DETAIL -->
+  <section class="hba-analyse">
+    <div class="hba-analyse-inner">
+      <div class="hba-analyse-grid">
+        <div>
+          <p class="hba-section-label">So funktioniert's</p>
+          <h2>Persönliche Analyse statt <em>Produkt-Raten</em></h2>
+          <p class="hba-analyse-lead">Mit einer strukturierten Online-Hautbildanalyse und gezielten Fragen erfassen wir, was deine Haut wirklich braucht - ganz ohne Raten oder Ausprobieren.</p>
+          <div class="hba-analyse-features">
+            <div class="hba-analyse-feat">
+              <div class="hba-analyse-feat-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <div>
+                <h4>Zoom-Analyse</h4>
+                <p>Die Online-Hautanalyse ist die Grundlage - das persönliche Gespräch über Zoom macht daraus echte Beratung. So geht es nicht nur um Produkte, sondern auch um Anwendung, Gewohnheiten und das, was zu dir als Mensch passt.</p>
+              </div>
+            </div>
+            <div class="hba-analyse-feat">
+              <div class="hba-analyse-feat-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div>
+                <h4>Schriftlicher Bericht</h4>
+                <p>Du erhältst ein detailliertes Protokoll mit allen Ergebnissen und Empfehlungen.</p>
+              </div>
+            </div>
+          </div>
+          <a href="https://vitalbalancebeauty.com/termin-buchen" class="hba-btn-primary">Jetzt Termin buchen</a>
+        </div>
+        <div class="hba-analyse-img-wrap">
+          <img src="https://assets.cdn.filesafe.space/vVwP7kTkrmbCFyXbNWNJ/media/6a3addd02ed3b9e323c30cb8.png" alt="Hautbildanalyse Zoom">
+          <div class="hba-analyse-badge">
+            <div class="hba-analyse-badge-val">98%</div>
+            <div class="hba-analyse-badge-label">Kundenzufriedenheit</div>
+          </div>
+          <div class="hba-analyse-badge2">
+            <div class="hba-analyse-badge2-val">30 min</div>
+            <div class="hba-analyse-badge2-label">Intensive Beratung</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
+  <section class="hba-ablauf" id="ablauf">
+    <div class="hba-ablauf-inner">
+      <p class="hba-section-label">Der Ablauf</p>
+      <h2>So läuft deine Analyse <em>ab</em></h2>
+      <p class="hba-ablauf-lead">In vier einfachen Schritten zu deiner perfekten Pflegeroutine.</p>
+      <div class="hba-steps">
+        <div class="hba-step">
+          <div class="hba-step-num">1</div>
+          <h3>Beratungsgespräch</h3>
+          <p>Wir sprechen über deine Haut, deine Gewohnheiten und deine Ziele.</p>
+        </div>
+        <div class="hba-step">
+          <div class="hba-step-num">2</div>
+          <h3>Persönliche Analyse</h3>
+          <p>Mit einer strukturierten Online-Hautbildanalyse erfassen wir dein Hautbild im Detail.</p>
+        </div>
+        <div class="hba-step">
+          <div class="hba-step-num">3</div>
+          <h3>Auswertung &amp; Bericht</h3>
+          <p>Du erhältst einen detaillierten Bericht mit allen Ergebnissen.</p>
+        </div>
+        <div class="hba-step">
+          <div class="hba-step-num">4</div>
+          <h3>Deine Pflegeroutine</h3>
+          <p>Massgeschneiderte Produktempfehlungen für deine individuelle Haut.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="hba-testi">
+    <div class="hba-testi-inner">
+      <p class="hba-section-label">Kundenstimmen</p>
+      <h2>Was meine Kundinnen <em>sagen</em></h2>
+      <p class="hba-testi-lead">Echte Erfahrungen von echten Menschen - keine bezahlten Bewertungen.</p>
+      <div class="hba-testi-grid">
+        <div class="hba-testi-card">
+          <div class="hba-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Die Analyse hat mein Hautpflegeleben komplett verändert. Endlich weiss ich, was meine Haut wirklich braucht!"</blockquote>
+          <div class="hba-testi-author">
+            <div class="hba-testi-avatar">M</div>
+            <div>
+              <div class="hba-testi-name">Maria K.</div>
+              <div class="hba-testi-role">Lehrerin, 38 Jahre</div>
+            </div>
+          </div>
+        </div>
+        <div class="hba-testi-card">
+          <div class="hba-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"So professionell und herzlich. Nach Jahren der Frustration habe ich endlich eine Pflegeroutine, die funktioniert."</blockquote>
+          <div class="hba-testi-author">
+            <div class="hba-testi-avatar">A</div>
+            <div>
+              <div class="hba-testi-name">Anna S.</div>
+              <div class="hba-testi-role">Marketing Managerin, 45 Jahre</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / TERMIN -->
+  <section class="hba-cta">
+    <div class="hba-cta-inner">
+      <div>
+        <p class="hba-section-label" style="color:rgba(195,164,104,0.8)">Bereit für den nächsten Schritt?</p>
+        <h2>Buche jetzt deine <em>Hautbildanalyse</em></h2>
+        <p class="hba-cta-lead">Investiere in deine Haut - einmalig, nachhaltig und mit sofort sichtbaren Ergebnissen. Deine Haut wird es dir danken.</p>
+        <ul class="hba-cta-bullets">
+          <li>30-minütige intensive Beratung</li>
+          <li>Professionelle Analyse</li>
+          <li>Schriftlicher Bericht mit Empfehlungen</li>
+          <li>Massgeschneiderte Pflegeroutine</li>
+          <li>Nachbetreuung inklusive</li>
+        </ul>
+        <a href="https://vitalbalancebeauty.com/termin-buchen" class="hba-btn-gold">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Termin buchen
+        </a>
+      </div>
+      <div class="hba-cta-img">
+        <img src="https://assets.cdn.filesafe.space/vVwP7kTkrmbCFyXbNWNJ/media/6a3addd02ed3b9e323c30cb8.png" alt="Hautbildanalyse">
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="hba-faq" id="faq">
+    <div class="hba-faq-inner">
+      <p class="hba-section-label" style="text-align:center">Häufige Fragen</p>
+      <h2>Alles, was du wissen <em>möchtest</em></h2>
+      <p class="hba-faq-lead">Hast du noch Fragen? Hier findest du die wichtigsten Antworten.</p>
+      <div class="hba-faq-list">
+        <details>
+          <summary>Wie lange dauert die Hautbildanalyse?</summary>
+          <p>Die Analyse dauert in der Regel 30 Minuten. In dieser Zeit analysieren wir deine Haut gründlich, besprechen die Ergebnisse und erstellen gemeinsam deine individuelle Pflegeroutine.</p>
+        </details>
+        <details>
+          <summary>Was soll ich zur Analyse mitbringen?</summary>
+          <p>Bitte komme ungeschminkt oder reinige dein Gesicht vor dem Termin gründlich. Bring gerne deine aktuellen Pflegeprodukte mit, damit wir sie in die Beratung einbeziehen können.</p>
+        </details>
+        <details>
+          <summary>Für wen ist die Hautbildanalyse geeignet?</summary>
+          <p>Die Analyse ist für alle geeignet - egal ob du Hautprobleme hast oder einfach nur deine Pflege optimieren möchtest. Besonders hilfreich ist sie bei Unreinheiten, Trockenheit, Rötungen oder wenn du nicht weisst, welcher Hauttyp du bist.</p>
+        </details>
+        <details>
+          <summary>Bekomme ich die Analyse auch schriftlich?</summary>
+          <p>Du erhältst einen schriftlichen Bericht mit allen Analyseergebnissen, deinem Hauttyp, identifizierten Problemen und konkreten Produktempfehlungen - abgestimmt auf dein Budget.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="hba-footer">
+    <div class="hba-footer-logo">
+      <img src="https://assets.cdn.filesafe.space/vVwP7kTkrmbCFyXbNWNJ/media/6a3ae88e967e20d627c6c6f9.png" alt="Vital Balance Beauty">
+    </div>
+    <div class="hba-footer-links">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+      <a href="/kontakt">Kontakt</a>
+    </div>
+    <p class="hba-footer-copy">&#169; 2025 Vital Balance Beauty &middot; Alle Rechte vorbehalten</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var header = document.getElementById('hbaHeader');
+  var logo   = document.getElementById('hbaLogo');
+  var logoLight = 'https://assets.cdn.filesafe.space/vVwP7kTkrmbCFyXbNWNJ/media/6a3ae88e967e20d627c6c6f9.png';
+  var logoDark  = 'https://assets.cdn.filesafe.space/vVwP7kTkrmbCFyXbNWNJ/media/6a3aeab2659bec99fcbd9a5f.png';
+  document.body.appendChild(header);
+
+  var el = document.querySelector('.hba-wrap');
+  while(el && el !== document.body){
+    el.style.cssText += ';background:transparent!important;padding-top:0!important;margin-top:0!important';
+    el = el.parentElement;
+  }
+
+  function onScroll(){
+    var scrolled = window.scrollY > 60;
+    header.classList.toggle('hba-scrolled', scrolled);
+    logo.src = scrolled ? logoDark : logoLight;
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
