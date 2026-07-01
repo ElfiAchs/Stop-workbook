@@ -1,0 +1,584 @@
+<!--
+  ============================================================================
+  BIOFEEDBACK CHECK-UP – Landingpage (Mental Rising® Institut · Elfi Achs)
+  Eigenständige HTML-Version zum Einbau in WordPress (Custom-HTML-Block).
+
+  Einbau in WordPress:
+  Neue Seite -> Block "Custom HTML" -> kompletten Inhalt dieser Datei einfügen.
+
+  ===> BUCHUNGS-LINK: Suche im Code nach  BUCHUNGS-LINK  und ersetze das "#"
+       durch deinen echten Termin-/Buchungslink (z. B. Calendly, E-Mail, o. Ä.).
+
+  Bilder & Logo sind von elfi-achs.at bzw. den Original-URLs verlinkt.
+  Alle Regeln sind unter #mr-checkup gekapselt und stören kein WP-Theme.
+  ============================================================================
+-->
+<div id="mr-checkup">
+<style>
+/* ---- Schriftarten ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+/* ---- Kapselung: alle Regeln gelten nur innerhalb von #mr-checkup ---- */
+#mr-checkup *{box-sizing:border-box;margin:0;padding:0;}
+#mr-checkup{font-family:'Inter',sans-serif;color:#3D2E20;background:#FAF6F0;line-height:1.5;-webkit-font-smoothing:antialiased;
+  /* Voll-Breite: bricht aus dem Container aus und nutzt die ganze Fensterbreite */
+  width:100vw;max-width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;}
+#mr-checkup img{display:block;max-width:100%;height:auto;}
+#mr-checkup a{text-decoration:none;color:inherit;}
+#mr-checkup button{font-family:inherit;cursor:pointer;background:transparent !important;border:none !important;box-shadow:none !important;border-radius:0 !important;-webkit-appearance:none !important;appearance:none !important;text-shadow:none !important;}
+#mr-checkup h1,#mr-checkup h2,#mr-checkup h3{margin:0;}
+
+/* ---- Layout-Helfer ---- */
+#mr-checkup .cu-wrap{margin-left:auto;margin-right:auto;padding-left:1.5rem;padding-right:1.5rem;}
+#mr-checkup .cu-6xl{max-width:72rem;}
+#mr-checkup .cu-5xl{max-width:64rem;}
+#mr-checkup .cu-3xl{max-width:48rem;}
+#mr-checkup .cu-2xl{max-width:42rem;}
+#mr-checkup .cu-center{text-align:center;}
+#mr-checkup .cu-mxauto{margin-left:auto;margin-right:auto;}
+
+/* ---- Schrift-Utilities ---- */
+#mr-checkup .cu-serif{font-family:'Playfair Display',serif;}
+#mr-checkup .cu-eyebrow{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#B5825F;}
+
+/* ---- Buttons ---- */
+#mr-checkup .cu-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:500;border-radius:4px;transition:transform .3s,box-shadow .3s,background .3s;color:#FAF6F0;text-align:center;}
+#mr-checkup .cu-btn:hover{transform:scale(1.03);box-shadow:0 14px 40px rgba(92,66,50,.28);}
+#mr-checkup .cu-btn-gold{padding:1rem 2rem;font-size:1rem;background:linear-gradient(135deg,#C9966B 0%,#B5825F 100%);}
+#mr-checkup .cu-btn-brown{padding:.5rem 1.25rem;font-size:.875rem;font-weight:500;background:linear-gradient(135deg,#5C4232 0%,#B5825F 100%);}
+#mr-checkup .cu-btn-ghost{padding:1rem 2rem;font-size:1rem;color:#FAF6F0;border:1px solid rgba(250,246,240,.4) !important;background:transparent;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);transition:background .3s,border-color .3s;}
+#mr-checkup .cu-btn-ghost:hover{background:rgba(250,246,240,.10);border-color:rgba(250,246,240,.7) !important;transform:none;box-shadow:none;}
+#mr-checkup .cu-btn-light{padding:1rem 2.5rem;font-size:1rem;font-weight:600;background:#FAF6F0;color:#5C4232;}
+#mr-checkup .cu-btn-light:hover{box-shadow:0 14px 40px rgba(0,0,0,.30);}
+#mr-checkup .cu-btn-outline-light{padding:1rem 2.5rem;font-size:1rem;color:#FAF6F0;border:1px solid rgba(250,246,240,.4) !important;background:transparent;transition:background .3s,border-color .3s;}
+#mr-checkup .cu-btn-outline-light:hover{background:rgba(250,246,240,.10);border-color:rgba(250,246,240,.7) !important;transform:none;box-shadow:none;}
+
+/* ---- Header ---- */
+#mr-checkup .cu-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(61,46,32,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .3s;}
+#mr-checkup .cu-header-inner{max-width:72rem;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+#mr-checkup .cu-logo{height:2rem;width:auto;object-fit:contain;}
+#mr-checkup .cu-nav{display:none;align-items:center;gap:2rem;}
+#mr-checkup .cu-nav button{color:#FAF6F0;font-size:.875rem;transition:color .2s;padding:0 !important;line-height:1.4 !important;white-space:nowrap;}
+#mr-checkup .cu-nav button:hover{color:#fff;}
+#mr-checkup .cu-nav .cu-btn-brown{color:#FAF6F0;padding:.5rem 1.25rem !important;}
+#mr-checkup .cu-nav .cu-btn-brown:hover{transform:scale(1.05);}
+#mr-checkup .cu-burger{color:#FAF6F0;padding:.25rem;}
+
+/* ---- HERO ---- */
+#mr-checkup .cu-hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;}
+#mr-checkup .cu-hero-bg{position:absolute;inset:0;background-image:url('https://elfi-achs.at/wp-content/uploads/2026/05/Elfi-Biofeedback_erklaeren-Klientin-2_X8Q9672-scaled.jpg');background-size:cover;background-position:center;}
+#mr-checkup .cu-hero-ov1{position:absolute;inset:0;background:linear-gradient(135deg,rgba(92,66,50,0.82) 0%,rgba(92,66,50,0.55) 50%,rgba(181,130,95,0.40) 100%);}
+#mr-checkup .cu-hero-ov2{position:absolute;inset:0;opacity:.10;background:radial-gradient(ellipse at 30% 60%,rgba(201,150,107,0.5) 0%,transparent 60%);}
+#mr-checkup .cu-hero-fade{position:absolute;bottom:0;left:0;right:0;height:6rem;background:linear-gradient(to bottom,transparent,#FAF6F0);}
+#mr-checkup .cu-hero-inner{position:relative;z-index:10;max-width:72rem;margin:0 auto;padding:7rem 1.5rem 5rem;width:100%;}
+#mr-checkup .cu-hero-content{max-width:48rem;}
+#mr-checkup .cu-badge{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:2rem;padding:.5rem 1rem;border-radius:4px;border:1px solid rgba(201,150,107,.4);background:rgba(92,66,50,.30);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+#mr-checkup .cu-badge-dot{width:.375rem;height:.375rem;border-radius:50%;background:#C9966B;flex-shrink:0;}
+#mr-checkup .cu-badge span:last-child{font-size:.875rem;color:#E8C9A8;letter-spacing:.02em;}
+#mr-checkup .cu-hero h1{font-family:'Playfair Display',serif;font-weight:700;color:#FAF6F0;line-height:1.1;margin-bottom:1.5rem;font-size:clamp(2.2rem,5vw,3.75rem);}
+#mr-checkup .cu-hero-lead{font-size:clamp(1.05rem,1.6vw,1.25rem);color:#E8C9A8;line-height:1.6;margin-bottom:2.5rem;max-width:42rem;}
+#mr-checkup .cu-hero-actions{display:flex;flex-direction:column;gap:1rem;}
+#mr-checkup .cu-hero-trust{margin-top:3rem;display:flex;flex-wrap:wrap;gap:1.5rem;}
+#mr-checkup .cu-trust-item{display:flex;align-items:center;gap:.5rem;}
+#mr-checkup .cu-trust-item span{font-size:.875rem;color:#E8DDCE;}
+#mr-checkup .cu-ic-gold{color:#C9966B;flex-shrink:0;}
+
+/* ---- Abschnitte allgemein ---- */
+#mr-checkup section{position:relative;}
+#mr-checkup .cu-sec{padding:5rem 0;overflow:hidden;}
+#mr-checkup .cu-bg-cream{background:#FAF6F0;}
+#mr-checkup .cu-bg-sand{background:#F5EDE2;}
+#mr-checkup .cu-h2{font-family:'Playfair Display',serif;font-weight:700;color:#3D2E20;line-height:1.2;font-size:clamp(1.6rem,3.2vw,2.25rem);}
+#mr-checkup .cu-lead{font-size:1.125rem;color:#7A5C47;line-height:1.7;}
+#mr-checkup .cu-glow{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;}
+
+/* ---- Ausgangslage ---- */
+#mr-checkup .cu-two-col{display:grid;grid-template-columns:1fr;gap:3rem;align-items:start;}
+#mr-checkup .cu-quotebox{padding:1.5rem;border-radius:4px;background:#F5EDE2;border-left:4px solid #C9966B;}
+#mr-checkup .cu-quotebox p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.125rem;color:#5C4232;line-height:1.6;}
+#mr-checkup .cu-num-card{display:flex;gap:1rem;padding:1.25rem;border-radius:4px;background:#F5EDE2;border:1px solid #DDD0C0;transition:box-shadow .3s;}
+#mr-checkup .cu-num-card:hover{box-shadow:0 8px 24px rgba(92,66,50,.10);}
+#mr-checkup .cu-num{flex-shrink:0;width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:.875rem;color:#FAF6F0;margin-top:2px;background:linear-gradient(135deg,#5C4232,#B5825F);}
+#mr-checkup .cu-num-card p{color:#3D2E20;line-height:1.6;}
+
+/* ---- Leistungen: Karten-Grid ---- */
+#mr-checkup .cu-cards{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+#mr-checkup .cu-card{padding:1.75rem;border-radius:4px;background:#FAF6F0;border:1px solid #DDD0C0;box-shadow:0 1px 3px rgba(92,66,50,.06);transition:box-shadow .3s;}
+#mr-checkup .cu-card:hover{box-shadow:0 16px 40px rgba(92,66,50,.12);}
+#mr-checkup .cu-card-ic{width:3rem;height:3rem;border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;background:rgba(92,66,50,.10);color:#5C4232;transition:transform .3s;}
+#mr-checkup .cu-card:hover .cu-card-ic{transform:scale(1.1);}
+#mr-checkup .cu-card h3{font-family:'Playfair Display',serif;font-size:1.125rem;font-weight:700;color:#3D2E20;margin-bottom:.75rem;line-height:1.3;}
+#mr-checkup .cu-card p{font-size:.875rem;color:#7A5C47;line-height:1.6;}
+
+/* ---- Ablauf: Schritte ---- */
+#mr-checkup .cu-steps{display:grid;grid-template-columns:1fr;gap:2.5rem;}
+#mr-checkup .cu-step{display:flex;flex-direction:column;align-items:flex-start;}
+#mr-checkup .cu-step-num{width:3.5rem;height:3.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#FAF6F0;margin-bottom:1.5rem;box-shadow:0 4px 14px rgba(92,66,50,.20);background:linear-gradient(135deg,#5C4232 0%,#B5825F 100%);}
+#mr-checkup .cu-step h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#3D2E20;margin-bottom:.75rem;}
+#mr-checkup .cu-step p{font-size:.9375rem;color:#7A5C47;line-height:1.7;}
+
+/* ---- Stimmen ---- */
+#mr-checkup .cu-testis{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:4rem;align-items:stretch;}
+#mr-checkup .cu-testi{position:relative;padding:2rem;border-radius:4px;background:#FAF6F0;border:1px solid #DDD0C0;box-shadow:0 6px 20px rgba(92,66,50,.08);display:flex;flex-direction:column;transition:box-shadow .3s;}
+#mr-checkup .cu-testi:hover{box-shadow:0 16px 40px rgba(92,66,50,.14);}
+#mr-checkup .cu-testi-mark{font-family:'Playfair Display',serif;font-size:3.75rem;line-height:1;margin-bottom:1rem;color:rgba(201,150,107,.35);user-select:none;}
+#mr-checkup .cu-testi blockquote{font-size:.875rem;font-style:italic;color:#5C4232;line-height:1.7;flex:1;margin-bottom:1.5rem;}
+#mr-checkup .cu-testi-sep{border-top:1px solid #DDD0C0;margin-bottom:1rem;}
+#mr-checkup .cu-testi-person{display:flex;align-items:center;gap:.75rem;min-height:3.5rem;}
+#mr-checkup .cu-testi-person img{width:2.5rem;height:2.5rem;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;filter:grayscale(100%);}
+#mr-checkup .cu-testi-name{font-family:'Playfair Display',serif;font-weight:700;color:#3D2E20;font-size:.875rem;line-height:1.3;}
+#mr-checkup .cu-testi-role{font-size:.75rem;color:#7A5C47;margin-top:.125rem;line-height:1.3;}
+#mr-checkup .cu-statbar{border-radius:4px;padding:2rem;background:linear-gradient(135deg,#5C4232 0%,#7A5040 100%);}
+#mr-checkup .cu-stats{display:grid;grid-template-columns:1fr;gap:1.5rem;text-align:center;max-width:42rem;margin:0 auto;}
+#mr-checkup .cu-stat{display:flex;flex-direction:column;align-items:center;gap:.75rem;}
+#mr-checkup .cu-stat-ic{width:2.5rem;height:2.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(201,150,107,.25);}
+#mr-checkup .cu-stat p{font-size:.875rem;color:#E8DDCE;line-height:1.4;}
+
+/* ---- Über Elfi ---- */
+#mr-checkup .cu-about{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;}
+#mr-checkup .cu-about-imgwrap{display:flex;justify-content:center;}
+#mr-checkup .cu-about-img{position:relative;width:18rem;height:22rem;border-radius:4px;overflow:hidden;flex-shrink:0;box-shadow:0 20px 60px rgba(92,66,50,.18);}
+#mr-checkup .cu-about-img img{width:100%;height:100%;object-fit:cover;object-position:top;}
+#mr-checkup .cu-about-text p{font-size:1.125rem;color:#7A5C47;line-height:1.7;}
+#mr-checkup .cu-about-text .cu-stack{display:flex;flex-direction:column;gap:1.25rem;}
+#mr-checkup .cu-about-badge{margin-top:2rem;display:inline-flex;align-items:center;gap:.75rem;padding:.75rem 1.25rem;border-radius:4px;background:#F5EDE2;border:1px solid #DDD0C0;}
+#mr-checkup .cu-about-badge-ic{width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,#5C4232,#B5825F);}
+#mr-checkup .cu-about-badge span{font-size:.875rem;color:#5C4232;}
+
+/* ---- Buchung / Preis ---- */
+#mr-checkup .cu-pricecard{max-width:42rem;margin:0 auto;border-radius:4px;overflow:hidden;box-shadow:0 24px 60px rgba(92,66,50,.22);border:2px solid transparent;background:linear-gradient(#FAF6F0,#FAF6F0) padding-box,linear-gradient(135deg,#5C4232,#C9966B) border-box;}
+#mr-checkup .cu-price-head{padding:1.5rem 2rem;text-align:center;background:linear-gradient(135deg,#5C4232 0%,#7A5040 100%);}
+#mr-checkup .cu-price-tag{display:inline-block;padding:.375rem 1rem;font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:4px;margin-bottom:1rem;background:rgba(201,150,107,.3);color:#E8C9A8;}
+#mr-checkup .cu-price-amount{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:#FAF6F0;margin-bottom:.25rem;line-height:1;}
+#mr-checkup .cu-price-head p{font-size:.875rem;color:#E8DDCE;}
+#mr-checkup .cu-price-body{padding:2rem;}
+#mr-checkup .cu-price-body>p.cu-incl{font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#B5825F;margin-bottom:1.25rem;}
+#mr-checkup .cu-price-list{list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;}
+#mr-checkup .cu-price-list li{display:flex;align-items:flex-start;gap:.75rem;}
+#mr-checkup .cu-price-list svg{color:#B5825F;flex-shrink:0;margin-top:2px;}
+#mr-checkup .cu-price-list span{font-size:.875rem;color:#3D2E20;line-height:1.6;}
+#mr-checkup .cu-price-cta{display:block;width:100%;padding:1rem 1.5rem;margin-bottom:1.5rem;font-weight:600;}
+#mr-checkup .cu-price-notes{display:flex;flex-direction:column;gap:.5rem;border-top:1px solid #DDD0C0;padding-top:1.25rem;}
+#mr-checkup .cu-price-note{display:flex;align-items:center;gap:.5rem;}
+#mr-checkup .cu-price-note svg{color:#B5825F;flex-shrink:0;}
+#mr-checkup .cu-price-note span{font-size:.75rem;color:#7A5C47;}
+
+/* ---- FAQ ---- */
+#mr-checkup .cu-faq-list{display:flex;flex-direction:column;gap:.75rem;}
+#mr-checkup .cu-faq-item{border-radius:4px;overflow:hidden;background:#FAF6F0;border:1px solid #DDD0C0;}
+#mr-checkup .cu-faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1.5rem;text-align:left;transition:background .2s;}
+#mr-checkup .cu-faq-q:hover{background:#F5EDE2;}
+#mr-checkup .cu-faq-q>span:first-child{font-family:'Playfair Display',serif;font-weight:600;color:#3D2E20;padding-right:1rem;line-height:1.4;}
+#mr-checkup .cu-faq-ic{flex-shrink:0;width:1.75rem;height:1.75rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(92,66,50,.10);color:#5C4232;transition:transform .25s;}
+#mr-checkup .cu-faq-item.open .cu-faq-ic{transform:rotate(45deg);}
+#mr-checkup .cu-faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+#mr-checkup .cu-faq-a-inner{padding:0 1.5rem 1.25rem;color:#5C4232;line-height:1.7;font-size:.9375rem;}
+
+/* ---- Finale (dunkel) ---- */
+#mr-checkup .cu-final{padding:5rem 0;background:linear-gradient(135deg,#5C4232 0%,#7A5040 50%,#9A6A52 100%);}
+#mr-checkup .cu-final .cu-eyebrow{color:#C9966B;}
+#mr-checkup .cu-final h2{font-family:'Playfair Display',serif;font-weight:700;color:#FAF6F0;line-height:1.15;font-size:clamp(1.75rem,4vw,3rem);margin:1.5rem 0;}
+#mr-checkup .cu-final-lead{font-size:1.125rem;color:#E8DDCE;line-height:1.7;margin-bottom:2.5rem;max-width:42rem;margin-left:auto;margin-right:auto;}
+#mr-checkup .cu-final-actions{display:flex;flex-direction:column;gap:1rem;justify-content:center;margin-bottom:3rem;}
+#mr-checkup .cu-final-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;}
+
+/* ---- Footer ---- */
+#mr-checkup .cu-footer{padding:2.5rem 0;background:#3D2E20;border-top:1px solid #5C4232;}
+#mr-checkup .cu-footer-top{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:1.5rem;}
+#mr-checkup .cu-footer-logo{height:2rem;width:auto;object-fit:contain;}
+#mr-checkup .cu-footer p{font-size:.75rem;color:#A67F68;text-align:center;line-height:1.7;}
+#mr-checkup .cu-footer nav{display:flex;align-items:center;gap:1.5rem;}
+#mr-checkup .cu-footer nav a{font-size:.75rem;color:#A67F68;transition:color .2s;}
+#mr-checkup .cu-footer nav a:hover{color:#C9966B;}
+
+/* ===========================  RESPONSIVE  =========================== */
+@media (min-width:640px){
+  #mr-checkup .cu-hero-actions{flex-direction:row;align-items:center;}
+  #mr-checkup .cu-final-actions{flex-direction:row;}
+  #mr-checkup .cu-cards{grid-template-columns:repeat(2,1fr);}
+  #mr-checkup .cu-stats{grid-template-columns:repeat(2,1fr);}
+}
+@media (min-width:768px){
+  #mr-checkup .cu-sec{padding:8rem 0;}
+  #mr-checkup .cu-two-col{grid-template-columns:1fr 1fr;gap:4rem;}
+  #mr-checkup .cu-steps{grid-template-columns:repeat(3,1fr);}
+  #mr-checkup .cu-testis{grid-template-columns:repeat(3,1fr);}
+  #mr-checkup .cu-about{grid-template-columns:1fr 1fr;}
+  #mr-checkup .cu-about-imgwrap{justify-content:flex-start;}
+  #mr-checkup .cu-footer-top{flex-direction:row;}
+}
+@media (min-width:1024px){
+  #mr-checkup .cu-nav{display:flex;}
+  #mr-checkup .cu-burger{display:none;}
+  #mr-checkup .cu-cards{grid-template-columns:repeat(3,1fr);}
+  #mr-checkup .cu-about-img{width:20rem;height:24rem;}
+}
+</style>
+
+<!-- ============================ HEADER ============================ -->
+<header class="cu-header">
+  <div class="cu-header-inner">
+    <a href="#" aria-label="Mental Rising® Institut">
+      <img class="cu-logo" alt="Mental Rising® Institut - Elfi Achs"
+           src="https://elfi-achs.at/wp-content/uploads/2026/05/Mentalrising-Elfi-Achs-mit-Favicon-weiss.png">
+    </a>
+    <nav class="cu-nav">
+      <button onclick="document.querySelector('#mr-checkup #leistungen').scrollIntoView({behavior:'smooth'})">Leistungen</button>
+      <button onclick="document.querySelector('#mr-checkup #ablauf').scrollIntoView({behavior:'smooth'})">Ablauf</button>
+      <button onclick="document.querySelector('#mr-checkup #stimmen').scrollIntoView({behavior:'smooth'})">Stimmen</button>
+      <button onclick="document.querySelector('#mr-checkup #faq').scrollIntoView({behavior:'smooth'})">FAQ</button>
+      <button class="cu-btn cu-btn-brown" onclick="document.querySelector('#mr-checkup #buchung').scrollIntoView({behavior:'smooth'})">Check-up buchen</button>
+    </nav>
+    <button class="cu-burger" aria-label="Menü öffnen" onclick="document.querySelector('#mr-checkup #buchung').scrollIntoView({behavior:'smooth'})">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="cu-hero">
+  <div class="cu-hero-bg"></div>
+  <div class="cu-hero-ov1"></div>
+  <div class="cu-hero-ov2"></div>
+  <div class="cu-hero-inner">
+    <div class="cu-hero-content">
+      <div class="cu-badge">
+        <span class="cu-badge-dot"></span>
+        <span>Biofeedback-Expertin seit 2009</span>
+      </div>
+      <h1>Was läuft in deinem Nervensystem, wenn du unter Druck stehst?</h1>
+      <p class="cu-hero-lead">90 Minuten Biofeedback-Messung zeigen, wie dein Körper und Gehirn auf Belastung reagieren - und was du konkret verändern kannst.</p>
+      <div class="cu-hero-actions">
+        <a href="#buchung" class="cu-btn cu-btn-gold" onclick="event.preventDefault();document.querySelector('#mr-checkup #buchung').scrollIntoView({behavior:'smooth'})">Jetzt Check-up buchen</a>
+        <a href="#leistungen" class="cu-btn cu-btn-ghost" onclick="event.preventDefault();document.querySelector('#mr-checkup #leistungen').scrollIntoView({behavior:'smooth'})">Was wird gemessen?</a>
+      </div>
+      <div class="cu-hero-trust">
+        <div class="cu-trust-item"><svg class="cu-ic-gold" width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>269 Euro einmalig</span></div>
+        <div class="cu-trust-item"><svg class="cu-ic-gold" width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>Keine Vertragsbindung</span></div>
+        <div class="cu-trust-item"><svg class="cu-ic-gold" width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>Diskretion garantiert</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cu-hero-fade"></div>
+</section>
+
+<!-- ============================ AUSGANGSLAGE ============================ -->
+<section class="cu-sec cu-bg-cream">
+  <div class="cu-glow" style="top:0;right:0;width:24rem;height:24rem;opacity:.20;background:radial-gradient(circle,#C9966B 0%,transparent 70%);"></div>
+  <div class="cu-wrap cu-6xl">
+    <div class="cu-two-col">
+      <div>
+        <span class="cu-eyebrow" style="margin-bottom:1rem;">Die Ausgangslage</span>
+        <h2 class="cu-h2" style="margin-bottom:2rem;">Nach außen funktionierst du. Innen läuft etwas, das du nicht kontrollieren kannst.</h2>
+        <p class="cu-lead" style="margin-bottom:2rem;">Du funktionierst nach außen. Triffst Entscheidungen und trägst Verantwortung, vielleicht für ein ganzes Team. Aber innen läuft etwas, das du nicht unter Kontrolle bekommst: Du schläfst seit Jahren nicht mehr richtig durch. Dein Körper sendet Signale - Druck in der Brust, Verspannungen, die nicht weggehen - und kein Arzt findet eine Erklärung.</p>
+        <div class="cu-quotebox">
+          <p>„Was unsichtbar bleibt, lässt sich nicht gezielt verändern. Genau hier setzt der Biofeedback Check-up an."</p>
+        </div>
+      </div>
+      <div>
+        <span class="cu-eyebrow" style="margin-bottom:1rem;">Kennst du das?</span>
+        <div style="display:flex;flex-direction:column;gap:1.5rem;margin-top:.5rem;">
+          <div class="cu-num-card"><div class="cu-num">1</div><p>Du kannst nicht aufhören zu arbeiten, obwohl du wirtschaftlich längst nicht mehr müsstest. Das Abschalten funktioniert einfach nicht.</p></div>
+          <div class="cu-num-card"><div class="cu-num">2</div><p>Mehrmals am Tag sagst du dir: ‚Ich bin schon wieder so blöd.' Der innere Kritiker läuft auf Dauerschleife, egal wie viel du leistest.</p></div>
+          <div class="cu-num-card"><div class="cu-num">3</div><p>Du hast schon viel verstanden und ausprobiert, und trotzdem kommst du an derselben Stelle immer wieder an.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LEISTUNGEN ============================ -->
+<section id="leistungen" class="cu-sec cu-bg-sand">
+  <div class="cu-glow" style="bottom:0;left:0;width:20rem;height:20rem;opacity:.15;background:radial-gradient(circle,#B5825F 0%,transparent 70%);"></div>
+  <div class="cu-glow" style="top:50%;right:0;width:18rem;height:18rem;opacity:.10;background:radial-gradient(circle,#C9966B 0%,transparent 70%);"></div>
+  <div class="cu-wrap cu-6xl" style="position:relative;">
+    <div class="cu-center cu-mxauto" style="max-width:42rem;margin-bottom:4rem;">
+      <span class="cu-eyebrow" style="margin-bottom:1rem;">Was du erfährst</span>
+      <h2 class="cu-h2" style="margin-bottom:1.25rem;">Der Check-up macht sichtbar, was sonst verborgen bleibt</h2>
+      <p class="cu-lead">Dein persönliches Stressreaktionsmuster - präzise gemessen, klar ausgewertet, individuell interpretiert.</p>
+    </div>
+    <div class="cu-cards">
+      <div class="cu-card">
+        <div class="cu-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg></div>
+        <h3>Konzentration unter Druck messen</h3>
+        <p>Die Frontalhirn-Aktivität zeigt, wie viel Energie für klare Entscheidungen zur Verfügung steht - sodass du verstehst, warum manche Tage besser laufen als andere.</p>
+      </div>
+      <div class="cu-card">
+        <div class="cu-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg></div>
+        <h3>Körperspannung sichtbar machen</h3>
+        <p>EMG-Messung zeigt, wo dein Körper dauerhaft angespannt ist - sodass du weißt, wo gezieltes Training ansetzen muss, statt einfach nur ‚entspannen' zu sollen.</p>
+      </div>
+      <div class="cu-card">
+        <div class="cu-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
+        <h3>Stressreaktion verstehen</h3>
+        <p>Hautleitwert und Hauttemperatur zeigen, wie dein Nervensystem auf Belastung reagiert - sodass du erkennst, ob Entspannung oder Aktivierung die richtige Strategie ist.</p>
+      </div>
+      <div class="cu-card">
+        <div class="cu-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
+        <h3>Emotionale Belastung erkennen</h3>
+        <p>Die Messung der Angstzentren (Amygdala) zeigt, wie stark emotionale Reaktionen dein System belasten - sodass du weißt, wo die eigentliche Arbeit beginnen muss.</p>
+      </div>
+      <div class="cu-card">
+        <div class="cu-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>Individuelle Trainingsempfehlung erhalten</h3>
+        <p>Keine Standardprogramme. Die Auswertung zeigt dir genau, welche Kombination aus Werkzeugen für dein Muster passt - sodass du gezielt trainieren kannst.</p>
+      </div>
+      <div class="cu-card">
+        <div class="cu-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <h3>Laufende Entwicklung messbar machen</h3>
+        <p>Kontrollmessungen begleiten den Prozess und machen jeden Fortschritt sichtbar - sodass du siehst, was sich verändert, während es sich verändert.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABLAUF ============================ -->
+<section id="ablauf" class="cu-sec cu-bg-cream">
+  <div class="cu-wrap cu-6xl">
+    <div class="cu-center cu-mxauto" style="max-width:42rem;margin-bottom:4rem;">
+      <span class="cu-eyebrow" style="margin-bottom:1rem;">So funktioniert es</span>
+      <h2 class="cu-h2" style="margin-bottom:1.25rem;">Drei Schritte bis zur Klarheit</h2>
+      <p class="cu-lead">Kein langer Onboarding-Prozess. Kein Standardprogramm. Nur du, deine Messwerte und ein konkreter nächster Schritt.</p>
+    </div>
+    <div class="cu-steps">
+      <div class="cu-step">
+        <div class="cu-step-num">01</div>
+        <h3>Kostenloses Erstgespräch</h3>
+        <p>Ein kurzes telefonisches Gespräch klärt, ob der Check-up das Richtige für dich ist - ohne Druck, ohne Verpflichtung.</p>
+      </div>
+      <div class="cu-step">
+        <div class="cu-step-num">02</div>
+        <h3>90 Minuten Messung vor Ort</h3>
+        <p>Im Mental Rising® Institut in Gols/Burgenland werden Frontalhirn, Körperspannung, Stresslevel und emotionale Belastung mit wissenschaftlicher Messtechnik erfasst.</p>
+      </div>
+      <div class="cu-step">
+        <div class="cu-step-num">03</div>
+        <h3>Persönliches Workbook und Empfehlung</h3>
+        <p>Du erhältst deine individuellen Messergebnisse, eine konkrete Trainingsempfehlung und Zugang zur Online-Akademie mit weiterführenden Inhalten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STIMMEN ============================ -->
+<section id="stimmen" class="cu-sec cu-bg-sand">
+  <div class="cu-glow" style="top:5rem;left:50%;transform:translateX(-50%);width:600px;height:16rem;opacity:.10;background:radial-gradient(ellipse,#C9966B 0%,transparent 70%);"></div>
+  <div class="cu-wrap cu-6xl" style="position:relative;">
+    <div class="cu-center cu-mxauto" style="max-width:42rem;margin-bottom:4rem;">
+      <span class="cu-eyebrow" style="margin-bottom:1rem;">Stimmen</span>
+      <h2 class="cu-h2">Was Menschen berichten, die diesen Weg gegangen sind</h2>
+    </div>
+    <div class="cu-testis">
+      <div class="cu-testi">
+        <div class="cu-testi-mark" aria-hidden="true">“</div>
+        <blockquote>In einem beeindruckenden ersten halben Jahr habe ich an enormer Stabilität so gewonnen, dass ich durch Elfis behutsame wie fokussierte Führung zu meinem absoluten Ground Zero kam.</blockquote>
+        <div class="cu-testi-sep"></div>
+        <div class="cu-testi-person">
+          <img src="https://elfi-achs.at/wp-content/uploads/2026/07/Herzlinger-Thomas_credits-katharina-schiffl.jpg" alt="Portrait von Thomas Herzlinger">
+          <div>
+            <p class="cu-testi-name">Thomas Herzlinger</p>
+            <p class="cu-testi-role">Experte für Kundenservice</p>
+          </div>
+        </div>
+      </div>
+      <div class="cu-testi">
+        <div class="cu-testi-mark" aria-hidden="true">“</div>
+        <blockquote>Das Bullshit FM in meinem Kopf kann ich heute nicht nur erkennen, ich kann die negativen Gedanken stoppen und einen anderen, neuen positiven Sender in meinem Leben platzieren.</blockquote>
+        <div class="cu-testi-sep"></div>
+        <div class="cu-testi-person">
+          <img src="https://elfi-achs.at/wp-content/uploads/2026/07/Anji-Hinke.jpg" alt="Portrait von Anji Hinke">
+          <div>
+            <p class="cu-testi-name">Anji Hinke</p>
+            <p class="cu-testi-role">Sängerin und Vocalcoach</p>
+          </div>
+        </div>
+      </div>
+      <div class="cu-testi">
+        <div class="cu-testi-mark" aria-hidden="true">“</div>
+        <blockquote>Als ich zu Elfi kam, war ich der festen Überzeugung, dass ich für eine funktionierende Beziehung nicht geeignet bin. Heute bin ich zweifache Mutter und glücklich verheiratet.</blockquote>
+        <div class="cu-testi-sep"></div>
+        <div class="cu-testi-person">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/GLWchgcklApQDit9vzjKU-BeemaGf1AFHZZVVgbxPXAzjZHG4J45.jpg" alt="Portrait von Viki Fröis">
+          <div>
+            <p class="cu-testi-name">Viki Fröis</p>
+            <p class="cu-testi-role">Physiotherapeutin &amp; Osteopathin</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cu-statbar">
+      <div class="cu-stats">
+        <div class="cu-stat">
+          <div class="cu-stat-ic"><svg class="cu-ic-gold" width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+          <p>Biofeedback-Expertin seit 2009</p>
+        </div>
+        <div class="cu-stat">
+          <div class="cu-stat-ic"><svg class="cu-ic-gold" width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+          <p>Über 2.000 durchgeführte Biofeedback-Messungen seit 2009</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ÜBER ELFI ============================ -->
+<section class="cu-sec cu-bg-cream">
+  <div class="cu-glow" style="bottom:0;left:0;width:20rem;height:20rem;opacity:.20;background:radial-gradient(circle,#C9966B 0%,transparent 70%);"></div>
+  <div class="cu-wrap cu-6xl">
+    <div class="cu-about">
+      <div class="cu-about-imgwrap">
+        <div class="cu-about-img">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/L7uTlA62FDykjTYcbYsk3-9o3BPJJBrEP7BFfL0jwryPmIZxEIMm.jpg" alt="Elfi Achs, Biofeedback-Expertin, hält ein anatomisches Gehirnmodell in den Händen">
+        </div>
+      </div>
+      <div class="cu-about-text">
+        <span class="cu-eyebrow" style="margin-bottom:1rem;">Wer dich begleitet</span>
+        <h2 class="cu-h2" style="margin-bottom:2rem;">Elfi Achs</h2>
+        <div class="cu-stack">
+          <p>Ich bin Elfi Achs, Biofeedback-Expertin seit 2009. Im Mental Rising® Institut in Gols arbeite ich mit Menschen, die nach außen funktionieren und innen keine Ruhe finden.</p>
+          <p>Meine Arbeit verbindet Biofeedback-Messtechnik mit der Erfahrung aus über 2.000 Messungen. Ich arbeite ohne Heilsversprechen.</p>
+          <p>Ich mache sichtbar, was sonst unbemerkt im Hintergrund läuft - und zeige dir, wo dein nächster Schritt liegt.</p>
+        </div>
+        <div class="cu-about-badge">
+          <div class="cu-about-badge-ic"><svg width="16" height="16" fill="#FAF6F0" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+          <span>Eingetragene Lebens- und Sozialberaterin in Österreich</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BUCHUNG / PREIS ============================ -->
+<section id="buchung" class="cu-sec cu-bg-cream">
+  <div class="cu-glow" style="top:2.5rem;left:2.5rem;width:18rem;height:18rem;opacity:.10;background:radial-gradient(circle,#B5825F 0%,transparent 70%);"></div>
+  <div class="cu-glow" style="bottom:2.5rem;right:2.5rem;width:16rem;height:16rem;opacity:.10;background:radial-gradient(circle,#C9966B 0%,transparent 70%);"></div>
+  <div class="cu-wrap cu-5xl" style="position:relative;">
+    <div class="cu-center cu-mxauto" style="max-width:42rem;margin-bottom:3.5rem;">
+      <span class="cu-eyebrow" style="margin-bottom:1rem;">Das Angebot</span>
+      <h2 class="cu-h2" style="margin-bottom:1.25rem;">Biofeedback Check-up</h2>
+      <p class="cu-lead">Eine Investition in Klarheit. Kein Abo, keine Folgepflicht - nur deine Messergebnisse und ein konkreter nächster Schritt.</p>
+    </div>
+    <div class="cu-pricecard">
+      <div class="cu-price-head">
+        <span class="cu-price-tag">Empfohlen</span>
+        <div class="cu-price-amount">269 €</div>
+        <p>einmalig für 90 Minuten</p>
+      </div>
+      <div class="cu-price-body">
+        <p class="cu-incl">Im Check-up enthalten</p>
+        <ul class="cu-price-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>90-minütige Biofeedback-Messung vor Ort mit wissenschaftlicher Messtechnik</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Frontalhirn-Aktivität: Konzentration und Fokus unter Belastung</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Körperspannung (EMG): Wo sitzt die Anspannung wirklich?</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Stresslevel: Hautleitwert und Hauttemperatur zeigen dein Nervensystem-Profil</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Emotionale Belastung: Messung der Angstzentren (Amygdala)</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Optional: Schilddrüsenaktivität bei entsprechender Fragestellung</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Persönliches Workbook mit deinen individuellen Messergebnissen</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Individuelle Trainingsempfehlung als konkreter nächster Schritt</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Zugang zur Online-Akademie mit weiterführenden Inhalten</span></li>
+        </ul>
+        <!-- ===> BUCHUNGS-LINK: "#" durch deinen echten Buchungslink ersetzen -->
+        <a href="#" class="cu-btn cu-btn-gold cu-price-cta">Jetzt Check-up buchen</a>
+        <div class="cu-price-notes">
+          <div class="cu-price-note"><svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>269 Euro einmalig, keine Vertragsbindung</span></div>
+          <div class="cu-price-note"><svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Diskretion garantiert - Verschwiegenheitspflicht als LSB</span></div>
+          <div class="cu-price-note"><svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Kostenloses telefonisches Erstgespräch möglich</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" class="cu-sec cu-bg-sand">
+  <div class="cu-wrap cu-3xl">
+    <div class="cu-center" style="margin-bottom:3.5rem;">
+      <span class="cu-eyebrow" style="margin-bottom:1rem;">Häufige Fragen</span>
+      <h2 class="cu-h2">Was du wissen möchtest</h2>
+    </div>
+    <div class="cu-faq-list">
+      <div class="cu-faq-item">
+        <button class="cu-faq-q" type="button"><span>Ist das eine medizinische Untersuchung?</span><span class="cu-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></button>
+        <div class="cu-faq-a"><div class="cu-faq-a-inner">Nein. Der Biofeedback Check-up ist keine medizinische Diagnose und ersetzt keine ärztliche Untersuchung. Er macht mit wissenschaftlicher Messtechnik sichtbar, wie dein Nervensystem auf Belastung reagiert - als Grundlage für gezieltes Training. Die Arbeit findet im Rahmen der Lebens- und Sozialberatung statt.</div></div>
+      </div>
+      <div class="cu-faq-item">
+        <button class="cu-faq-q" type="button"><span>Was ist, wenn ich schlecht schlafe - bekomme ich dann Entspannungstraining?</span><span class="cu-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></button>
+        <div class="cu-faq-a"><div class="cu-faq-a-inner">Nicht automatisch. Erst zeigt die Messung, was in deinem System tatsächlich abläuft. Manchmal ist Entspannung genau richtig - manchmal braucht es das Gegenteil: Aktivierung. Deine individuelle Empfehlung richtet sich nach deinem gemessenen Muster, nicht nach einem Standardprogramm.</div></div>
+      </div>
+      <div class="cu-faq-item">
+        <button class="cu-faq-q" type="button"><span>Was passiert mit meinen Daten? Erfährt jemand davon?</span><span class="cu-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></button>
+        <div class="cu-faq-a"><div class="cu-faq-a-inner">Deine Messwerte und alles, was du im Gespräch teilst, bleiben streng vertraulich. Als eingetragene Lebens- und Sozialberaterin unterliege ich der gesetzlichen Verschwiegenheitspflicht. Es werden keine Daten an Dritte weitergegeben.</div></div>
+      </div>
+      <div class="cu-faq-item">
+        <button class="cu-faq-q" type="button"><span>Muss ich danach ein Programm buchen?</span><span class="cu-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></button>
+        <div class="cu-faq-a"><div class="cu-faq-a-inner">Nein. Der Check-up ist eine einmalige Investition ohne Vertragsbindung und ohne Folgepflicht. Du erhältst deine Ergebnisse und eine konkrete Empfehlung - ob und wie du weitermachst, entscheidest allein du.</div></div>
+      </div>
+      <div class="cu-faq-item">
+        <button class="cu-faq-q" type="button"><span>Kann ich den Check-up auch online machen?</span><span class="cu-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></button>
+        <div class="cu-faq-a"><div class="cu-faq-a-inner">Nein. Die Messung erfordert die Biofeedback-Sensorik vor Ort und findet im Mental Rising® Institut in Gols/Burgenland statt. Das kostenlose telefonische Erstgespräch ist selbstverständlich ortsunabhängig möglich.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINALE (dunkel) ============================ -->
+<section class="cu-final">
+  <div class="cu-glow" style="top:0;left:25%;width:20rem;height:20rem;opacity:.10;background:radial-gradient(circle,#C9966B 0%,transparent 70%);"></div>
+  <div class="cu-glow" style="bottom:0;right:25%;width:16rem;height:16rem;opacity:.10;background:radial-gradient(circle,#E8C9A8 0%,transparent 70%);"></div>
+  <div class="cu-wrap cu-3xl cu-center" style="position:relative;">
+    <span class="cu-eyebrow">Nächster Schritt</span>
+    <h2>Termin online buchen und Klarheit gewinnen</h2>
+    <p class="cu-final-lead">Der Check-up dauert 90 Minuten und findet vor Ort im Mental Rising® Institut in Gols/Burgenland statt. Du erhältst ein persönliches Workbook mit deinen individuellen Erkenntnissen und Zugang zur Online-Akademie.</p>
+    <div class="cu-final-actions">
+      <!-- ===> BUCHUNGS-LINK: "#" durch deinen echten Buchungslink ersetzen -->
+      <a href="#" class="cu-btn cu-btn-light">Jetzt Check-up buchen</a>
+      <a href="#" class="cu-btn cu-btn-outline-light">Kostenloses Erstgespräch</a>
+    </div>
+    <div class="cu-final-trust">
+      <div class="cu-trust-item"><svg class="cu-ic-gold" width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>269 Euro einmalig, keine Vertragsbindung</span></div>
+      <div class="cu-trust-item"><svg class="cu-ic-gold" width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>Diskretion garantiert</span></div>
+      <div class="cu-trust-item"><svg class="cu-ic-gold" width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>Kostenloses Erstgespräch möglich</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="cu-footer">
+  <div class="cu-wrap cu-6xl">
+    <div class="cu-footer-top">
+      <a href="#" aria-label="Mental Rising® Institut">
+        <img class="cu-footer-logo" alt="Mental Rising® Institut - Elfi Achs"
+             src="https://elfi-achs.at/wp-content/uploads/2026/05/Mentalrising-Elfi-Achs-mit-Favicon-weiss.png">
+      </a>
+      <p>Elfi Achs, eingetragene Lebens- und Sozialberaterin, Mental Rising® Institut, Gols/Burgenland.<br>© 2026 Alle Rechte vorbehalten.</p>
+      <nav aria-label="Rechtliche Links">
+        <a href="https://elfi-achs.at/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
+        <a href="https://elfi-achs.at/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.getElementById('mr-checkup');
+  if(!root) return;
+  root.querySelectorAll('.cu-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.cu-faq-item');
+      var ans = item.querySelector('.cu-faq-a');
+      var isOpen = item.classList.contains('open');
+      // andere schließen
+      root.querySelectorAll('.cu-faq-item.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.cu-faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+</script>
+</div>
