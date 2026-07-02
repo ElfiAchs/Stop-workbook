@@ -182,13 +182,18 @@
 #mr-checkup .cu-final-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;}
 
 /* ---- Footer ---- */
-#mr-checkup .cu-footer{padding:2.5rem 0;background:#3D2E20;border-top:1px solid #5C4232;}
-#mr-checkup .cu-footer-top{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:1.5rem;}
+#mr-checkup .cu-footer{padding:3rem 0 2.5rem;background:#3D2E20;}
+#mr-checkup .cu-footer-top{display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center;}
+#mr-checkup .cu-footer-brand{display:flex;flex-direction:column;align-items:center;gap:.75rem;}
 #mr-checkup .cu-footer-logo{height:4rem;width:auto;object-fit:contain;}
-#mr-checkup .cu-footer p{font-size:.75rem;color:#A67F68;text-align:center;line-height:1.7;}
-#mr-checkup .cu-footer nav{display:flex;align-items:center;gap:1.5rem;}
-#mr-checkup .cu-footer nav a{font-size:.75rem;color:#A67F68;transition:color .2s;}
-#mr-checkup .cu-footer nav a:hover{color:#C9966B;}
+#mr-checkup .cu-footer-tag{font-size:.8125rem;color:#C9B8A6;letter-spacing:.02em;}
+#mr-checkup .cu-footer-meta{display:flex;flex-direction:column;align-items:center;gap:.6rem;}
+#mr-checkup .cu-footer-links{display:flex;align-items:center;gap:1.5rem;}
+#mr-checkup .cu-footer-links a{font-size:.8125rem;color:#E8DDCE;transition:color .2s;}
+#mr-checkup .cu-footer-links a:hover{color:#FAF6F0;}
+#mr-checkup .cu-footer-copy{font-size:.75rem;color:#A98F7C;}
+#mr-checkup .cu-footer-divider{margin-top:2rem;padding-top:1.75rem;border-top:1px solid #5C4232;}
+#mr-checkup .cu-footer-disclaimer{max-width:42rem;margin:0 auto;text-align:center;font-size:.75rem;line-height:1.7;color:#A98F7C;}
 
 /* ===========================  RESPONSIVE  =========================== */
 @media (min-width:640px){
@@ -204,7 +209,9 @@
   #mr-checkup .cu-testis{grid-template-columns:repeat(3,1fr);}
   #mr-checkup .cu-about{grid-template-columns:1fr 1fr;}
   #mr-checkup .cu-about-imgwrap{justify-content:flex-start;}
-  #mr-checkup .cu-footer-top{flex-direction:row;}
+  #mr-checkup .cu-footer-top{flex-direction:row;justify-content:space-between;align-items:flex-start;text-align:left;}
+  #mr-checkup .cu-footer-brand{align-items:flex-start;}
+  #mr-checkup .cu-footer-meta{align-items:flex-end;}
 }
 @media (min-width:1024px){
   #mr-checkup .cu-nav{display:flex;}
@@ -542,15 +549,23 @@
 <footer class="cu-footer">
   <div class="cu-wrap cu-6xl">
     <div class="cu-footer-top">
-      <a href="#" aria-label="Mental Rising® Institut">
-        <img class="cu-footer-logo" alt="Mental Rising® Institut - Elfi Achs"
-             src="https://elfi-achs.at/wp-content/uploads/2026/05/Mentalrising-Elfi-Achs-mit-Favicon-weiss.png">
-      </a>
-      <p>Elfi Achs, eingetragene Lebens- und Sozialberaterin, Mental Rising® Institut, Gols/Burgenland.<br>© 2026 Alle Rechte vorbehalten.</p>
-      <nav aria-label="Rechtliche Links">
-        <a href="https://elfi-achs.at/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
-        <a href="https://elfi-achs.at/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
-      </nav>
+      <div class="cu-footer-brand">
+        <a href="#" aria-label="Mental Rising®">
+          <img class="cu-footer-logo" alt="Mental Rising® - Elfi Achs"
+               src="https://elfi-achs.at/wp-content/uploads/2026/05/Mentalrising-Elfi-Achs-mit-Favicon-weiss.png">
+        </a>
+        <p class="cu-footer-tag">Institut für emotionale Selbstführung</p>
+      </div>
+      <div class="cu-footer-meta">
+        <nav class="cu-footer-links" aria-label="Rechtliche Links">
+          <a href="https://elfi-achs.at/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
+          <a href="https://elfi-achs.at/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+        </nav>
+        <p class="cu-footer-copy">© <span class="cu-year">2026</span> Mental Rising · Alle Rechte vorbehalten</p>
+      </div>
+    </div>
+    <div class="cu-footer-divider">
+      <p class="cu-footer-disclaimer">Der Biofeedback Check-up ist keine medizinische Leistung und ersetzt keine ärztliche oder psychologische Diagnose und Behandlung. Die Inhalte dieser Website dienen ausschließlich der Information und stellen keine Heilsversprechen dar.</p>
     </div>
   </div>
 </footer>
@@ -559,6 +574,9 @@
 (function(){
   var root = document.getElementById('mr-checkup');
   if(!root) return;
+  // Jahreszahl im Footer dynamisch setzen
+  var yearEl = root.querySelector('.cu-year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
   root.querySelectorAll('.cu-faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
       var item = btn.closest('.cu-faq-item');
