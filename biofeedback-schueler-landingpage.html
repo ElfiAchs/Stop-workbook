@@ -1,0 +1,539 @@
+<!--
+  ============================================================================
+  BIOFEEDBACK CHECK-UP FÜR SCHÜLER – Landingpage (Praxis Elfi Achs)
+  Mentaltraining mit Biofeedback · Check-up für Kinder & Jugendliche (10-19).
+  Eigenständige HTML-Version zum Einbau in WordPress (Custom-HTML-Block).
+
+  Buchungslink: https://www.etermin.net/elfi-achs
+  Alle Regeln sind unter #mr-schueler gekapselt und stören kein WP-Theme.
+  ============================================================================
+-->
+<div id="mr-schueler">
+<style>
+/* ---- Schriftarten ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+/* ---- Kapselung ---- */
+#mr-schueler *{box-sizing:border-box;margin:0;padding:0;}
+#mr-schueler{font-family:'Inter',sans-serif;color:#3D2E20;background:#FAF6F0;line-height:1.5;-webkit-font-smoothing:antialiased;
+  width:100vw;max-width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;}
+#mr-schueler img{display:block;max-width:100%;height:auto;}
+#mr-schueler a{text-decoration:none;color:inherit;}
+#mr-schueler button{font-family:inherit;cursor:pointer;background:transparent;border:none;}
+#mr-schueler h1,#mr-schueler h2,#mr-schueler h3{margin:0;}
+
+/* ---- Layout-Helfer ---- */
+#mr-schueler .ms-wrap{margin-left:auto;margin-right:auto;padding-left:1.5rem;padding-right:1.5rem;}
+#mr-schueler .ms-6xl{max-width:72rem;}
+#mr-schueler .ms-4xl{max-width:56rem;}
+#mr-schueler .ms-3xl{max-width:48rem;}
+#mr-schueler .ms-2xl{max-width:42rem;}
+#mr-schueler .ms-center{text-align:center;}
+#mr-schueler .ms-mxauto{margin-left:auto;margin-right:auto;}
+#mr-schueler .ms-serif{font-family:'Playfair Display',serif;}
+
+/* ---- Eyebrow / Badges ---- */
+#mr-schueler .ms-eyebrow{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.375rem .75rem;border-radius:4px;background:rgba(201,150,107,.15);color:#5C4232;margin-bottom:1.5rem;}
+#mr-schueler .ms-eyebrow-alt{background:rgba(92,66,50,.10);}
+
+/* ---- Buttons ---- */
+#mr-schueler .ms-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;border-radius:4px;transition:transform .3s,box-shadow .3s,background .3s;text-align:center;}
+#mr-schueler .ms-btn-gold{padding:1rem 2rem;font-size:1rem;background:#C9966B;color:#3D2E20;box-shadow:0 8px 24px rgba(92,66,50,.20);}
+#mr-schueler .ms-btn-gold:hover{background:#E8C9A8;transform:scale(1.05);}
+#mr-schueler .ms-btn-brown{padding:1rem 2rem;font-size:1rem;background:linear-gradient(135deg,#5C4232,#B5825F);color:#FAF6F0;box-shadow:0 8px 24px rgba(92,66,50,.20);}
+#mr-schueler .ms-btn-brown:hover{background:linear-gradient(135deg,#7A5C44,#C9966B);transform:scale(1.02);}
+#mr-schueler .ms-btn-ghost-dark{padding:1rem 2rem;font-size:1rem;background:rgba(250,246,240,.10);border:1px solid rgba(250,246,240,.30);color:#FAF6F0;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+#mr-schueler .ms-btn-ghost-dark:hover{background:rgba(250,246,240,.20);}
+#mr-schueler .ms-btn-outline-light{padding:1rem 2.5rem;font-size:1.05rem;font-weight:500;background:transparent;border:1px solid rgba(250,246,240,.30);color:#FAF6F0;}
+#mr-schueler .ms-btn-outline-light:hover{background:rgba(250,246,240,.10);}
+
+/* ---- Header ---- */
+#mr-schueler .ms-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(61,46,32,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+#mr-schueler .ms-header-inner{max-width:72rem;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+#mr-schueler .ms-logo{height:2.5rem;width:auto;object-fit:contain;}
+#mr-schueler .ms-nav{display:none;align-items:center;gap:2rem;}
+#mr-schueler .ms-nav button{color:rgba(250,246,240,.9);font-size:.875rem;font-weight:500;transition:color .2s;white-space:nowrap;}
+#mr-schueler .ms-nav button:hover{color:#FAF6F0;}
+#mr-schueler .ms-nav .ms-nav-cta{padding:.625rem 1.25rem;border-radius:4px;background:rgba(250,246,240,.15);border:1px solid rgba(250,246,240,.40);color:#FAF6F0;transition:all .2s;}
+#mr-schueler .ms-nav .ms-nav-cta:hover{background:rgba(250,246,240,.25);transform:scale(1.05);}
+#mr-schueler .ms-burger{display:block;padding:.5rem;color:#FAF6F0;}
+
+/* ---- HERO ---- */
+#mr-schueler .ms-hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;}
+#mr-schueler .ms-hero-bg{position:absolute;inset:0;background-image:url('https://elfi-achs.at/wp-content/uploads/2026/07/Biofeedback-Schueler.png');background-size:cover;background-position:center;}
+#mr-schueler .ms-hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(42,26,14,0.80),rgba(61,46,32,0.60) 55%,rgba(61,46,32,0.30));}
+#mr-schueler .ms-hero-inner{position:relative;z-index:10;max-width:72rem;margin:0 auto;padding:6rem 1.5rem;width:100%;}
+#mr-schueler .ms-hero-content{max-width:36rem;}
+#mr-schueler .ms-hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(250,246,240,.10);border:1px solid rgba(250,246,240,.25);border-radius:4px;padding:.5rem 1rem;margin-bottom:2rem;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+#mr-schueler .ms-hero-badge span:last-child{color:rgba(250,246,240,.9);font-size:.875rem;font-weight:500;letter-spacing:.02em;}
+#mr-schueler .ms-dot{width:.375rem;height:.375rem;border-radius:50%;background:#C9966B;flex-shrink:0;}
+#mr-schueler .ms-hero h1{font-family:'Playfair Display',serif;font-weight:700;color:#FAF6F0;line-height:1.12;margin-bottom:1.5rem;font-size:clamp(2.2rem,5vw,3.25rem);}
+#mr-schueler .ms-hero h1 .ms-grad{background:linear-gradient(135deg,#E8C9A8,#C9966B);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+#mr-schueler .ms-hero-lead{font-size:clamp(1.05rem,1.6vw,1.25rem);color:rgba(250,246,240,.80);line-height:1.6;margin-bottom:2.5rem;}
+#mr-schueler .ms-hero-actions{display:flex;flex-direction:column;gap:1rem;}
+#mr-schueler .ms-hero-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:2.5rem;}
+#mr-schueler .ms-hero-meta div{display:flex;align-items:center;gap:.5rem;color:rgba(250,246,240,.70);font-size:.875rem;}
+#mr-schueler .ms-hero-meta .ms-euro{color:#C9966B;font-weight:600;font-size:1rem;line-height:1;}
+
+/* ---- Abschnitte allgemein ---- */
+#mr-schueler section{position:relative;}
+#mr-schueler .ms-sec{padding:5rem 0;overflow:hidden;}
+#mr-schueler .ms-bg-cream{background:#FAF6F0;}
+#mr-schueler .ms-bg-sand{background:#F2EBE0;}
+#mr-schueler .ms-h2{font-family:'Playfair Display',serif;font-weight:700;color:#3D2E20;line-height:1.2;font-size:clamp(1.6rem,3.4vw,2.25rem);}
+#mr-schueler .ms-lead{font-size:1.125rem;color:#7A5C44;line-height:1.7;}
+#mr-schueler .ms-glow{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;}
+
+/* ---- Problem-Abschnitt ---- */
+#mr-schueler .ms-two{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;}
+#mr-schueler .ms-figure{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 20px 50px rgba(61,46,32,.18);}
+#mr-schueler .ms-figure img{width:100%;height:420px;object-fit:cover;}
+#mr-schueler .ms-figure-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(61,46,32,.20),transparent);}
+#mr-schueler .ms-pain{display:flex;flex-direction:column;gap:1.5rem;}
+#mr-schueler .ms-pain-item{display:flex;gap:1rem;}
+#mr-schueler .ms-pain-ic{flex-shrink:0;width:2.5rem;height:2.5rem;border-radius:4px;background:rgba(201,150,107,.15);color:#B5825F;display:flex;align-items:center;justify-content:center;}
+#mr-schueler .ms-pain-item p{color:#5C4232;line-height:1.6;padding-top:.35rem;}
+#mr-schueler .ms-pain-quote{margin-top:2.5rem;padding-top:2rem;border-top:1px solid #E0D4C4;}
+#mr-schueler .ms-pain-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.125rem;color:#5C4232;line-height:1.6;font-weight:500;}
+
+/* ---- Vorteile: Karten ---- */
+#mr-schueler .ms-cards{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+#mr-schueler .ms-card{background:#FAF6F0;border:1px solid rgba(224,212,196,.6);border-radius:4px;padding:1.75rem;box-shadow:0 6px 18px rgba(92,66,50,.06);transition:box-shadow .3s,border-color .3s;}
+#mr-schueler .ms-card:hover{box-shadow:0 16px 40px rgba(92,66,50,.12);border-color:rgba(201,150,107,.30);}
+#mr-schueler .ms-card-ic{width:3rem;height:3rem;border-radius:4px;background:rgba(201,150,107,.15);color:#B5825F;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;}
+#mr-schueler .ms-card h3{font-family:'Playfair Display',serif;font-size:1.125rem;font-weight:700;color:#3D2E20;margin-bottom:.75rem;}
+#mr-schueler .ms-card p{font-size:.875rem;color:#7A5C44;line-height:1.6;}
+#mr-schueler .ms-card-dark{background:linear-gradient(135deg,#5C4232,#7A5C44);border:none;}
+#mr-schueler .ms-card-dark .ms-card-ic{background:rgba(250,246,240,.15);color:#E8DDCE;}
+#mr-schueler .ms-card-dark .ms-card-num{font-family:'Playfair Display',serif;font-size:1.875rem;font-weight:700;color:#E8C9A8;margin-bottom:.25rem;}
+#mr-schueler .ms-card-dark p{color:rgba(232,221,206,.85);}
+
+/* ---- Ablauf: Schritte ---- */
+#mr-schueler .ms-steps{display:grid;grid-template-columns:1fr;gap:2.5rem;position:relative;}
+#mr-schueler .ms-step{display:flex;flex-direction:column;align-items:center;text-align:center;}
+#mr-schueler .ms-step-ic{width:4rem;height:4rem;border-radius:50%;background:linear-gradient(135deg,#5C4232,#B5825F);color:#FAF6F0;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(92,66,50,.22);}
+#mr-schueler .ms-step h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#3D2E20;margin-bottom:.75rem;}
+#mr-schueler .ms-step p{color:#7A5C44;line-height:1.7;}
+#mr-schueler .ms-banner{margin-top:5rem;position:relative;border-radius:4px;overflow:hidden;box-shadow:0 20px 50px rgba(61,46,32,.20);}
+#mr-schueler .ms-banner img{width:100%;height:18rem;object-fit:cover;}
+#mr-schueler .ms-banner-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(61,46,32,.72),rgba(61,46,32,.10));display:flex;align-items:center;}
+#mr-schueler .ms-banner-txt{padding:2rem;max-width:34rem;}
+#mr-schueler .ms-banner-txt p:first-child{font-family:'Playfair Display',serif;font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:500;color:#FAF6F0;line-height:1.4;}
+#mr-schueler .ms-banner-txt p:last-child{color:#E8C9A8;font-size:.875rem;margin-top:.75rem;}
+
+/* ---- Preis ---- */
+#mr-schueler .ms-pricewrap{max-width:32rem;margin:0 auto;position:relative;}
+#mr-schueler .ms-price-flag{position:absolute;top:-.9rem;left:2rem;z-index:2;background:linear-gradient(135deg,#5C4232,#B5825F);color:#FAF6F0;font-size:.75rem;font-weight:600;letter-spacing:.04em;padding:.375rem 1rem;border-radius:4px;box-shadow:0 6px 16px rgba(92,66,50,.25);}
+#mr-schueler .ms-pricecard{background:#FAF6F0;border:2px solid rgba(201,150,107,.40);border-radius:4px;padding:2.5rem 2rem 2rem;box-shadow:0 20px 50px rgba(92,66,50,.15);}
+#mr-schueler .ms-price-amount{display:flex;align-items:flex-end;gap:.5rem;margin-bottom:.5rem;}
+#mr-schueler .ms-price-amount .ms-num{font-family:'Playfair Display',serif;font-size:3.75rem;font-weight:700;color:#5C4232;line-height:1;}
+#mr-schueler .ms-price-amount .ms-cur{font-size:1.5rem;font-weight:600;color:#5C4232;}
+#mr-schueler .ms-price-amount .ms-once{font-size:.875rem;color:#7A5C44;}
+#mr-schueler .ms-pricecard h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#3D2E20;margin-bottom:.5rem;}
+#mr-schueler .ms-price-sub{font-size:.875rem;color:#7A5C44;line-height:1.6;margin-bottom:2rem;}
+#mr-schueler .ms-price-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem;}
+#mr-schueler .ms-price-list li{display:flex;align-items:flex-start;gap:.75rem;}
+#mr-schueler .ms-price-check{flex-shrink:0;width:1.25rem;height:1.25rem;border-radius:50%;background:rgba(201,150,107,.20);display:flex;align-items:center;justify-content:center;margin-top:2px;}
+#mr-schueler .ms-price-list span{font-size:.875rem;color:#5C4232;line-height:1.4;}
+#mr-schueler .ms-price-cta{display:block;width:100%;padding:1rem;font-weight:600;border-radius:4px;background:linear-gradient(135deg,#5C4232,#B5825F);color:#FAF6F0;transition:background .3s,transform .3s;}
+#mr-schueler .ms-price-cta:hover{background:linear-gradient(135deg,#7A5C44,#C9966B);transform:scale(1.02);}
+
+/* ---- FAQ ---- */
+#mr-schueler .ms-faq-list{display:flex;flex-direction:column;gap:.75rem;}
+#mr-schueler .ms-faq-item{border:1px solid #E0D4C4;border-radius:4px;overflow:hidden;transition:border-color .2s;background:#FAF6F0;}
+#mr-schueler .ms-faq-item:hover{border-color:rgba(201,150,107,.30);}
+#mr-schueler .ms-faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1.5rem;text-align:left;transition:background .2s;}
+#mr-schueler .ms-faq-q:hover{background:#F2EBE0;}
+#mr-schueler .ms-faq-q>span:first-child{font-weight:500;font-size:1rem;color:#3D2E20;line-height:1.4;}
+#mr-schueler .ms-faq-ic{flex-shrink:0;width:1.75rem;height:1.75rem;border-radius:50%;background:#E0D4C4;color:#5C4232;display:flex;align-items:center;justify-content:center;transition:transform .25s;}
+#mr-schueler .ms-faq-item.open .ms-faq-ic{transform:rotate(45deg);}
+#mr-schueler .ms-faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+#mr-schueler .ms-faq-a-inner{padding:0 1.5rem 1.25rem;color:#5C4232;line-height:1.7;font-size:.9375rem;}
+
+/* ---- Über Elfi ---- */
+#mr-schueler .ms-about{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;}
+#mr-schueler .ms-about-imgwrap{display:flex;justify-content:center;}
+#mr-schueler .ms-about-frame{position:relative;width:18rem;}
+#mr-schueler .ms-about-frame::before{content:"";position:absolute;inset:0;transform:translate(.75rem,.75rem);background:#E8DDCE;border-radius:4px;}
+#mr-schueler .ms-about-img{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 20px 50px rgba(92,66,50,.18);border:1px solid #E0D4C4;}
+#mr-schueler .ms-about-img img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center;}
+#mr-schueler .ms-about-text p{font-size:1.125rem;line-height:1.7;margin-bottom:1.5rem;}
+#mr-schueler .ms-about-text p:first-child{color:#5C4232;}
+#mr-schueler .ms-about-text p{color:#7A5C44;}
+#mr-schueler .ms-about-tags{display:flex;flex-wrap:wrap;gap:1rem;margin-top:.5rem;}
+#mr-schueler .ms-about-tag{display:flex;align-items:center;gap:.625rem;background:rgba(92,66,50,.08);border:1px solid rgba(181,130,95,.20);border-radius:4px;padding:.625rem 1rem;}
+#mr-schueler .ms-about-tag span{color:#5C4232;font-size:.875rem;font-weight:500;}
+
+/* ---- Termin (dunkel) ---- */
+#mr-schueler .ms-termin{padding:5rem 0;background:linear-gradient(135deg,#3D2E20 0%,#5C4232 50%,#7A5C44 100%);}
+#mr-schueler .ms-termin .ms-eyebrow{background:rgba(250,246,240,.10);border:1px solid rgba(250,246,240,.20);color:#E8C9A8;}
+#mr-schueler .ms-termin h2{font-family:'Playfair Display',serif;font-weight:700;color:#FAF6F0;line-height:1.15;font-size:clamp(1.75rem,4vw,3rem);margin-bottom:1.5rem;}
+#mr-schueler .ms-termin-lead{font-size:clamp(1.05rem,1.6vw,1.25rem);color:#E8DDCE;line-height:1.7;margin-bottom:2.5rem;max-width:42rem;margin-left:auto;margin-right:auto;}
+#mr-schueler .ms-termin-note{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:3rem;}
+#mr-schueler .ms-termin-note div{display:flex;align-items:center;gap:.5rem;color:#E8DDCE;font-size:.875rem;}
+#mr-schueler .ms-termin-actions{display:flex;flex-direction:column;gap:1rem;justify-content:center;}
+#mr-schueler .ms-termin-fine{color:rgba(232,221,206,.60);font-size:.875rem;margin-top:1.5rem;}
+
+/* ---- Footer ---- */
+#mr-schueler .ms-footer{padding:3rem 0;background:#3D2E20;}
+#mr-schueler .ms-footer-top{display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center;}
+#mr-schueler .ms-footer-brand{display:flex;flex-direction:column;align-items:center;gap:.75rem;}
+#mr-schueler .ms-footer-logo{height:2.25rem;width:auto;object-fit:contain;opacity:.9;}
+#mr-schueler .ms-footer-tag{font-size:.8125rem;color:#B5A090;letter-spacing:.02em;max-width:20rem;line-height:1.5;}
+#mr-schueler .ms-footer-meta{display:flex;flex-direction:column;align-items:center;gap:.75rem;}
+#mr-schueler .ms-footer-links{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center;}
+#mr-schueler .ms-footer-links a{font-size:.875rem;color:#B5A090;transition:color .2s;}
+#mr-schueler .ms-footer-links a:hover{color:#E8C9A8;}
+#mr-schueler .ms-footer-copy{font-size:.75rem;color:#7A6050;}
+#mr-schueler .ms-footer-divider{margin-top:2rem;padding-top:1.5rem;border-top:1px solid #5C4232;}
+#mr-schueler .ms-footer-disclaimer{max-width:48rem;margin:0 auto;text-align:center;font-size:.75rem;line-height:1.7;color:#7A6050;}
+
+/* ===========================  RESPONSIVE  =========================== */
+@media (min-width:640px){
+  #mr-schueler .ms-hero-actions{flex-direction:row;align-items:center;}
+  #mr-schueler .ms-termin-actions{flex-direction:row;}
+  #mr-schueler .ms-cards{grid-template-columns:repeat(2,1fr);}
+}
+@media (min-width:768px){
+  #mr-schueler .ms-sec{padding:8rem 0;}
+  #mr-schueler .ms-two{grid-template-columns:1fr 1fr;gap:4rem;}
+  #mr-schueler .ms-banner img{height:22rem;}
+  #mr-schueler .ms-footer-top{flex-direction:row;justify-content:space-between;align-items:flex-start;text-align:left;}
+  #mr-schueler .ms-footer-brand{align-items:flex-start;}
+  #mr-schueler .ms-footer-meta{align-items:flex-end;}
+}
+@media (min-width:1024px){
+  #mr-schueler .ms-nav{display:flex;}
+  #mr-schueler .ms-burger{display:none;}
+  #mr-schueler .ms-cards{grid-template-columns:repeat(3,1fr);}
+  #mr-schueler .ms-steps{grid-template-columns:repeat(3,1fr);gap:3rem;}
+  #mr-schueler .ms-step{align-items:flex-start;text-align:left;}
+  #mr-schueler .ms-about{grid-template-columns:1fr 1fr;}
+  #mr-schueler .ms-about-imgwrap{justify-content:flex-start;}
+  #mr-schueler .ms-about-frame{width:20rem;}
+}
+</style>
+
+<!-- ============================ HEADER ============================ -->
+<header class="ms-header">
+  <div class="ms-header-inner">
+    <a href="#" aria-label="Praxis Elfi Achs">
+      <img class="ms-logo" alt="Praxis Elfi Achs"
+           src="https://wuwglvodpsroizmpfbhq.supabase.co/storage/v1/object/public/brand-kit-assets/c22bdfc7-d33d-4dc9-8632-1ace7a71929f/c3bac251-2907-442a-aed9-184332d2f52e/logo_url.png?v=1778847212040">
+    </a>
+    <nav class="ms-nav">
+      <button onclick="document.querySelector('#mr-schueler #ablauf').scrollIntoView({behavior:'smooth'})">Ablauf</button>
+      <button onclick="document.querySelector('#mr-schueler #vorteile').scrollIntoView({behavior:'smooth'})">Vorteile</button>
+      <button onclick="document.querySelector('#mr-schueler #preis').scrollIntoView({behavior:'smooth'})">Preis</button>
+      <button onclick="document.querySelector('#mr-schueler #faq').scrollIntoView({behavior:'smooth'})">FAQ</button>
+      <a href="https://www.etermin.net/elfi-achs" target="_blank" rel="noopener noreferrer" class="ms-nav-cta">Termin buchen</a>
+    </nav>
+    <button class="ms-burger" aria-label="Menü" onclick="document.querySelector('#mr-schueler #termin').scrollIntoView({behavior:'smooth'})">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="16" x2="21" y2="16"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="ms-hero">
+  <div class="ms-hero-bg"></div>
+  <div class="ms-hero-ov"></div>
+  <div class="ms-hero-inner">
+    <div class="ms-hero-content">
+      <div class="ms-hero-badge"><span class="ms-dot"></span><span>Biofeedback-Expertin seit 2009</span></div>
+      <h1>Dein Kind lernt, aber in der <span class="ms-grad">Prüfung ist alles weg</span></h1>
+      <p class="ms-hero-lead">Mit Mentaltraining und Biofeedback machen wir sichtbar, was beim Lernen und unter Druck wirklich passiert – damit klar wird, wo dein Kind wirklich Unterstützung braucht.</p>
+      <div class="ms-hero-actions">
+        <a href="https://www.etermin.net/elfi-achs" target="_blank" rel="noopener noreferrer" class="ms-btn ms-btn-gold">Jetzt Termin buchen</a>
+        <a href="#ablauf" class="ms-btn ms-btn-ghost-dark" onclick="event.preventDefault();document.querySelector('#mr-schueler #ablauf').scrollIntoView({behavior:'smooth'})">Wie funktioniert das?</a>
+      </div>
+      <div class="ms-hero-meta">
+        <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9966B" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>60 Minuten</span></div>
+        <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9966B" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Kein Richtig oder Falsch</span></div>
+        <div><span class="ms-euro">€</span><span>197 €, einmalig</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROBLEM ============================ -->
+<section class="ms-sec ms-bg-cream">
+  <div class="ms-glow" style="top:0;right:0;width:20rem;height:20rem;opacity:.30;background:radial-gradient(circle,#E8C9A8 0%,transparent 70%);"></div>
+  <div class="ms-wrap ms-6xl">
+    <div class="ms-two">
+      <div class="ms-figure">
+        <img src="https://elfi-achs.at/wp-content/uploads/2026/07/Biofeefback-Detailaufnahme-scaled.jpg" alt="Biofeedback-Detailaufnahme in der Praxis">
+        <div class="ms-figure-ov"></div>
+      </div>
+      <div>
+        <span class="ms-eyebrow">Kommt dir das bekannt vor?</span>
+        <h2 class="ms-h2" style="margin-bottom:1.5rem;">Dein Kind übt fleißig - und trotzdem klappt es nicht</h2>
+        <p class="ms-lead" style="margin-bottom:2.5rem;">Du sitzt abends neben deinem Kind, ihr übt gemeinsam, es versteht den Stoff. Am nächsten Tag in der Prüfung ist alles weg. Und du fragst dich: Liegt es an der Konzentration? An der Angst? Oder traut es sich einfach nichts mehr zu?</p>
+        <div class="ms-pain">
+          <div class="ms-pain-item">
+            <div class="ms-pain-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <p>Ihr habt schon Nachhilfe probiert, mehr geübt, gut zugeredet - und trotzdem kommt dein Kind nicht weiter.</p>
+          </div>
+          <div class="ms-pain-item">
+            <div class="ms-pain-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+            <p>Vor jeder Prüfung derselbe Druck, danach die Enttäuschung. Das Lernen belastet inzwischen die ganze Familie.</p>
+          </div>
+          <div class="ms-pain-item">
+            <div class="ms-pain-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <p>Du siehst, dass dein Kind sich nichts mehr zutraut, und weißt nicht, wie du helfen sollst, ohne noch mehr Druck zu machen.</p>
+          </div>
+        </div>
+        <div class="ms-pain-quote">
+          <p>„Was wäre, wenn du nicht mehr raten müsstest, sondern sehen könntest, was bei deinem Kind unter Belastung wirklich passiert?"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VORTEILE ============================ -->
+<section id="vorteile" class="ms-sec ms-bg-sand">
+  <div class="ms-glow" style="top:50%;left:0;width:18rem;height:18rem;opacity:.10;background:radial-gradient(circle,#C9966B 0%,transparent 70%);transform:translate(-50%,-50%);"></div>
+  <div class="ms-glow" style="bottom:0;right:25%;width:16rem;height:16rem;opacity:.10;background:radial-gradient(circle,#B5825F 0%,transparent 70%);"></div>
+  <div class="ms-wrap ms-6xl" style="position:relative;">
+    <div class="ms-center ms-mxauto" style="max-width:42rem;margin-bottom:4rem;">
+      <span class="ms-eyebrow ms-eyebrow-alt">Was du bekommst</span>
+      <h2 class="ms-h2" style="margin-bottom:1.25rem;">In 60 Minuten zu klarer Orientierung</h2>
+      <p class="ms-lead">Biofeedback ist eine wissenschaftlich fundierte Messmethode, die auch in der Medizin eingesetzt wird. Damit lassen sich Funktionen im Körper, im Nervensystem und im Gehirn sichtbar machen. Dein Kind sitzt vor einem Bildschirm und sieht die eigenen Werte in Echtzeit.</p>
+    </div>
+    <div class="ms-cards">
+      <div class="ms-card">
+        <div class="ms-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Sichtbar statt geschätzt</h3>
+        <p>Du siehst am Biofeedback-Gerät, wie Konzentration, Anspannung, Stresslevel u.v.m. bei deinem Kind wirken - direkt am Bildschirm, in Echtzeit.</p>
+      </div>
+      <div class="ms-card">
+        <div class="ms-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg></div>
+        <h3>Individuelle Trainingsempfehlung</h3>
+        <p>Du bekommst eine konkrete Empfehlung, wo dein Kind Unterstützung brauchen kann und wo das Mentaltraining mit Biofeedback ansetzen kann.</p>
+      </div>
+      <div class="ms-card">
+        <div class="ms-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        <h3>Ursache statt Symptom</h3>
+        <p>Statt nur mehr zu üben, arbeitet ihr dort, wo es wirklich hakt - an Konzentration, Stressverarbeitung oder der Lernfähigkeit selbst.</p>
+      </div>
+      <div class="ms-card">
+        <div class="ms-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9,12 11,14 15,10"/></svg></div>
+        <h3>Kein Leistungsdruck</h3>
+        <p>Dein Kind wird nicht benotet und muss nichts können. Ein kurzer Teil der Messung fordert dein Kind bewusst etwas heraus – damit sichtbar wird, wie es unter Druck reagiert. Genau dieses Reaktionsmuster ist der Schlüssel.</p>
+      </div>
+      <div class="ms-card">
+        <div class="ms-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Klarheit für dich</h3>
+        <p>Du musst nicht länger selbst Lerncoach, Motivator und Krisenmanager in einem sein - du hast einen Fachblick an deiner Seite.</p>
+      </div>
+      <div class="ms-card ms-card-dark">
+        <div class="ms-card-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8DDCE" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="ms-card-num">2009</div>
+        <p>Biofeedback-Expertin seit 2009 - mit Messtechnik, die sichtbar macht, was sonst verborgen bleibt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABLAUF ============================ -->
+<section id="ablauf" class="ms-sec ms-bg-cream">
+  <div class="ms-wrap ms-6xl">
+    <div class="ms-center ms-mxauto" style="max-width:42rem;margin-bottom:4rem;">
+      <span class="ms-eyebrow">So funktioniert es</span>
+      <h2 class="ms-h2" style="margin-bottom:1.25rem;">Drei Schritte zu Klarheit</h2>
+      <p class="ms-lead">Der Check-up ist unkompliziert und klar strukturiert - damit du und dein Kind genau wisst, was euch erwartet.</p>
+    </div>
+    <div class="ms-steps">
+      <div class="ms-step">
+        <div class="ms-step-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Termin buchen</h3>
+        <p>Du buchst den Check-up online oder per Anfrage. Der Termin findet vor Ort in der Praxis statt und dauert 60 Minuten.</p>
+      </div>
+      <div class="ms-step">
+        <div class="ms-step-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg></div>
+        <h3>Mentaltraining mit Biofeedback</h3>
+        <p>Sensoren erfassen Konzentration, Anspannung und Stresslevel in Echtzeit. Ein kurzer Teil der Messung fordert dein Kind bewusst etwas heraus – damit sichtbar wird, wie es unter Druck reagiert.</p>
+      </div>
+      <div class="ms-step">
+        <div class="ms-step-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3>Individuelle Empfehlung</h3>
+        <p>Du bekommst im Anschluss eine klare Auswertung: wo dein Kind Unterstützung brauchen kann, und eine konkrete Empfehlung für das Mentaltraining mit Biofeedback – abgestimmt auf dein Kind.</p>
+      </div>
+    </div>
+    <div class="ms-banner">
+      <img src="https://elfi-achs.at/wp-content/uploads/2026/05/Elfi-Biofeedback_erklaeren-Klientin-2_X8Q9672-scaled.jpg" alt="Elfi Achs zeigt Biofeedback-Messwerte am Bildschirm in der Praxis">
+      <div class="ms-banner-ov">
+        <div class="ms-banner-txt">
+          <p>„Viele Kinder finden es spannend, ihre eigenen Werte am Bildschirm zu sehen – und zu verstehen, wie ihr Körper unter Druck wirklich reagiert."</p>
+          <p>Elfi Achs - Biofeedback-Expertin seit 2009</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PREIS ============================ -->
+<section id="preis" class="ms-sec ms-bg-sand">
+  <div class="ms-glow" style="top:25%;right:0;width:20rem;height:20rem;opacity:.10;background:radial-gradient(circle,#C9966B 0%,transparent 70%);"></div>
+  <div class="ms-wrap ms-6xl" style="position:relative;">
+    <div class="ms-center ms-mxauto" style="max-width:42rem;margin-bottom:4rem;">
+      <span class="ms-eyebrow ms-eyebrow-alt">Investition</span>
+      <h2 class="ms-h2" style="margin-bottom:1.25rem;">Transparent und ohne Überraschungen</h2>
+      <p class="ms-lead">Der Check-up ist eine einmalige Investition. Das Training danach wird separat gebucht - je nachdem, was die Empfehlung zeigt.</p>
+    </div>
+    <div class="ms-pricewrap">
+      <div class="ms-price-flag">Empfohlen - Einstieg</div>
+      <div class="ms-pricecard">
+        <div class="ms-price-amount">
+          <span class="ms-num">197</span>
+          <div><span class="ms-cur">€</span><p class="ms-once">einmalig</p></div>
+        </div>
+        <h3>Biofeedback Check-up</h3>
+        <p class="ms-price-sub">Für Kinder und Jugendliche (10-19 Jahre), die trotz Lernen und Nachhilfe in Schule oder Prüfungen nicht weiterkommen.</p>
+        <ul class="ms-price-list">
+          <li><span class="ms-price-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5C4232" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></span><span>60 Minuten, vor Ort in der Praxis</span></li>
+          <li><span class="ms-price-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5C4232" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></span><span>Biofeedback-Messung mit Echtzeitdaten</span></li>
+          <li><span class="ms-price-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5C4232" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></span><span>Individuelle Trainingsempfehlung</span></li>
+          <li><span class="ms-price-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5C4232" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></span><span>Auswertung zu Konzentration und Stress</span></li>
+          <li><span class="ms-price-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5C4232" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></span><span>Ruhige, druckfreie Atmosphäre</span></li>
+          <li><span class="ms-price-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5C4232" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></span><span>Einwilligung der Erziehungsberechtigten</span></li>
+        </ul>
+        <a href="https://www.etermin.net/elfi-achs" target="_blank" rel="noopener noreferrer" class="ms-price-cta">Jetzt Termin buchen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" class="ms-sec ms-bg-cream">
+  <div class="ms-wrap ms-3xl">
+    <div class="ms-center" style="margin-bottom:3.5rem;">
+      <span class="ms-eyebrow">Häufige Fragen</span>
+      <h2 class="ms-h2" style="margin-bottom:1rem;">Deine Fragen, ehrlich beantwortet</h2>
+      <p class="ms-lead">Keine Floskeln, keine Versprechen - nur klare Antworten.</p>
+    </div>
+    <div class="ms-faq-list">
+      <div class="ms-faq-item">
+        <button class="ms-faq-q" type="button"><span>Für welche Kinder ist der Check-up geeignet?</span><span class="ms-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="ms-faq-a"><div class="ms-faq-a-inner">Für Kinder und Jugendliche zwischen 10 und 19 Jahren, die trotz Lernen und Nachhilfe in Schule oder Prüfungen nicht weiterkommen - etwa bei Prüfungsangst, Konzentrationsproblemen oder wenn sich dein Kind nichts mehr zutraut. Voraussetzung ist die Einwilligung der Erziehungsberechtigten.</div></div>
+      </div>
+      <div class="ms-faq-item">
+        <button class="ms-faq-q" type="button"><span>Was, wenn mein Kind sich nicht darauf einlässt?</span><span class="ms-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="ms-faq-a"><div class="ms-faq-a-inner">Das ist völlig in Ordnung. Es gibt kein Richtig oder Falsch und keinen Leistungsdruck. Viele Kinder finden es sogar spannend, ihre eigenen Werte am Bildschirm zu sehen. Ich gehe im Tempo deines Kindes vor - es muss nichts können und wird nicht bewertet.</div></div>
+      </div>
+      <div class="ms-faq-item">
+        <button class="ms-faq-q" type="button"><span>Warum zahlt die Kasse das nicht?</span><span class="ms-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="ms-faq-a"><div class="ms-faq-a-inner">Der Check-up ist keine medizinische Behandlung, sondern ein Mentaltraining-Angebot mit Biofeedback. Deshalb ist er eine private, einmalige Investition und wird nicht über die Krankenkasse abgerechnet. Dafür bekommst du volle Transparenz: einen festen Preis ohne versteckte Kosten.</div></div>
+      </div>
+      <div class="ms-faq-item">
+        <button class="ms-faq-q" type="button"><span>Was kostet das Training danach?</span><span class="ms-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="ms-faq-a"><div class="ms-faq-a-inner">Das Training wird separat gebucht und ist nicht Teil des Check-ups. Ob und in welchem Umfang ein Training sinnvoll ist, zeigt die individuelle Auswertung. Die Kosten dafür besprechen wir offen im Anschluss - ganz ohne Verpflichtung.</div></div>
+      </div>
+      <div class="ms-faq-item">
+        <button class="ms-faq-q" type="button"><span>Ersetzt das die Nachhilfe?</span><span class="ms-faq-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="ms-faq-a"><div class="ms-faq-a-inner">Nein. Nachhilfe vermittelt Wissen - das Mentaltraining mit Biofeedback setzt dort an, wo Wissen unter Druck nicht abrufbar ist: bei Konzentration, Stressverarbeitung und Selbstvertrauen. Beides kann sich sinnvoll ergänzen. Der Check-up zeigt, wo dein Kind wirklich ansetzen sollte.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ÜBER ELFI ============================ -->
+<section class="ms-sec ms-bg-cream">
+  <div class="ms-glow" style="top:0;left:0;width:20rem;height:20rem;opacity:.20;background:radial-gradient(circle,#E8C9A8 0%,transparent 70%);transform:translate(-33%,-33%);"></div>
+  <div class="ms-wrap ms-6xl" style="position:relative;">
+    <div class="ms-center ms-mxauto" style="max-width:42rem;margin-bottom:4rem;">
+      <span class="ms-eyebrow">Wer dein Kind begleitet</span>
+      <h2 class="ms-h2">Elfi Achs – Biofeedback-Expertin seit 2009</h2>
+    </div>
+    <div class="ms-about">
+      <div class="ms-about-imgwrap">
+        <div class="ms-about-frame">
+          <div class="ms-about-img">
+            <img src="https://elfi-achs.at/wp-content/uploads/2026/05/Elfi-sitzt-auf-Schreibtisch_X8Q9767-scaled.jpg" alt="Elfi Achs, Biofeedback-Expertin, in ihrer Praxis">
+          </div>
+        </div>
+      </div>
+      <div class="ms-about-text">
+        <p>Ich bin Elfi Achs, Biofeedback-Expertin seit 2009. Im Mental Rising® Institut in Gols arbeite ich mit Kindern und Jugendlichen, die mehr können, als in der Schule ankommt.</p>
+        <p>Mit Mentaltraining und Biofeedback mache ich sichtbar, was beim Lernen und unter Druck wirklich passiert, und zeige dir, wo der nächste Schritt liegt.</p>
+        <p>Ich arbeite ohne Heilsversprechen und übe keinen Druck auf Kinder aus.</p>
+        <div class="ms-about-tags">
+          <div class="ms-about-tag"><span class="ms-dot"></span><span>Biofeedback-Expertin seit 2009</span></div>
+          <div class="ms-about-tag"><span class="ms-dot"></span><span>Mental Rising® Institut, Gols</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TERMIN (dunkel) ============================ -->
+<section id="termin" class="ms-termin">
+  <div class="ms-glow" style="top:0;left:25%;width:24rem;height:24rem;opacity:.10;background:radial-gradient(circle,#C9966B 0%,transparent 70%);transform:translateY(-50%);"></div>
+  <div class="ms-glow" style="bottom:0;right:25%;width:18rem;height:18rem;opacity:.15;background:radial-gradient(circle,#B5825F 0%,transparent 70%);"></div>
+  <div class="ms-wrap ms-4xl ms-center" style="position:relative;">
+    <span class="ms-eyebrow">Jetzt starten</span>
+    <h2>Termin für den Check-up buchen</h2>
+    <p class="ms-termin-lead">Der Check-up dauert 60 Minuten und findet vor Ort statt. Du bekommst im Anschluss eine individuelle Trainingsempfehlung für dein Kind.</p>
+    <div class="ms-termin-note">
+      <div><span class="ms-dot"></span><span>197 Euro, einmalig</span></div>
+    </div>
+    <div class="ms-termin-actions">
+      <a href="https://www.etermin.net/elfi-achs" target="_blank" rel="noopener noreferrer" class="ms-btn ms-btn-gold">Kostenloses Erstgespräch buchen</a>
+      <a href="https://www.etermin.net/elfi-achs" target="_blank" rel="noopener noreferrer" class="ms-btn ms-btn-outline-light">Termin buchen – 197 €</a>
+    </div>
+    <p class="ms-termin-fine">Für Kinder und Jugendliche zwischen 10 und 19 Jahren.</p>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="ms-footer">
+  <div class="ms-wrap ms-6xl">
+    <div class="ms-footer-top">
+      <div class="ms-footer-brand">
+        <a href="#" aria-label="Praxis Elfi Achs">
+          <img class="ms-footer-logo" alt="Praxis Elfi Achs"
+               src="https://wuwglvodpsroizmpfbhq.supabase.co/storage/v1/object/public/brand-kit-assets/c22bdfc7-d33d-4dc9-8632-1ace7a71929f/c3bac251-2907-442a-aed9-184332d2f52e/logo_url.png?v=1778847212040">
+        </a>
+        <p class="ms-footer-tag">Institut für emotionale Selbstführung</p>
+      </div>
+      <div class="ms-footer-meta">
+        <nav class="ms-footer-links" aria-label="Rechtliche Links">
+          <a href="https://elfi-achs.at/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
+          <a href="https://elfi-achs.at/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+        </nav>
+        <p class="ms-footer-copy">© <span class="ms-year">2026</span> Mental Rising · Alle Rechte vorbehalten</p>
+      </div>
+    </div>
+    <div class="ms-footer-divider">
+      <p class="ms-footer-disclaimer">Der Biofeedback Check-up ist keine medizinische Leistung und ersetzt keine ärztliche oder psychologische Diagnose und Behandlung. Die Inhalte dieser Website dienen ausschließlich der Information und stellen keine Heilsversprechen dar.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.getElementById('mr-schueler');
+  if(!root) return;
+  // Jahreszahl im Footer dynamisch setzen
+  var yearEl = root.querySelector('.ms-year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+  // FAQ-Akkordeon
+  root.querySelectorAll('.ms-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.ms-faq-item');
+      var ans = item.querySelector('.ms-faq-a');
+      var isOpen = item.classList.contains('open');
+      root.querySelectorAll('.ms-faq-item.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.ms-faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+</script>
+</div>
