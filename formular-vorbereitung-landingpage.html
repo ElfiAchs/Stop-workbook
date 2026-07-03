@@ -1,23 +1,32 @@
 <!--
   ============================================================================
-  VORBEREITUNGSFORMULAR – Seite mit Gravity-Forms-Formular
-  Biofeedback Check-up · Praxis Elfi Achs
-  Eigenständige HTML-Version zum Einbau in WordPress.
+  ANMELDUNG / VORBEREITUNGSFORMULAR – Biofeedback Check-up · Praxis Elfi Achs
+  Aufbau für ELEMENTOR PRO in DREI Widgets.
 
-  WICHTIG – SHORTCODE:
-  Der Gravity-Forms-Shortcode  [gravityform id="41" title="false" description="false"]
-  steht bereits an der richtigen Stelle. Er wird aber NUR ausgeführt, wenn der
-  Container, in den du diesen Code einfügst, Shortcodes verarbeitet:
-    • Gutenberg „Custom HTML"-Block  -> führt Shortcodes NICHT aus
-    • Elementor „HTML"-Widget        -> führt Shortcodes NICHT aus
-    • Gutenberg „Shortcode"-Block / Elementor „Shortcode"-Widget / WPCode
-      (mit Shortcode-Ausführung) / Code-Snippet -> führt Shortcodes AUS
-  Falls statt des Formulars der Text [gravityform ...] sichtbar bleibt:
-  siehe Hinweis am Ende der Datei bzw. in der Chat-Nachricht.
+  WARUM DREI WIDGETS?
+  Das Elementor „HTML"-Widget fuehrt Shortcodes NICHT aus. Der Gravity-Forms-
+  Shortcode  [gravityform id="41" ...]  laeuft nur in einem separaten
+  „Shortcode"-Widget. Ein <div> kann nicht ueber zwei Widgets offen bleiben,
+  darum wird die Seite in drei gestapelte Widgets aufgeteilt:
 
-  Alle Regeln sind unter #mr-formular gekapselt und stören kein WP-Theme.
+    WIDGET 1  (Elementor „HTML")      -> Block A weiter unten
+    WIDGET 2  (Elementor „Shortcode") -> Block B (nur der Shortcode)
+    WIDGET 3  (Elementor „HTML")      -> Block C weiter unten
+
+  WICHTIG fuer WIDGET 2 (Shortcode-Widget):
+    Unter  Erweitert -> CSS-Klassen  den Wert  mrf-form  eintragen.
+    Dadurch greifen die Formular-Stile aus Block A und das Formular sieht
+    aus wie eine Karte, die zum Kopfteil passt.
+
+  Alle Stile sind ueber #mr-formular bzw. die Klassen .mrf-* gekapselt und
+  stoeren kein WordPress-Theme.
   ============================================================================
 -->
+
+
+<!-- ======================================================================= -->
+<!-- ===  BLOCK A  ->  in ein Elementor „HTML"-WIDGET (Widget 1) einfuegen === -->
+<!-- ======================================================================= -->
 <div id="mr-formular">
 <style>
 /* ===== Schriftarten ===== */
@@ -46,12 +55,15 @@
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   -webkit-text-size-adjust:100%;
-  /* Voll-Breite: cremefarbener Hintergrund über die ganze Fensterbreite */
+  /* Voll-Breite: cremefarbener Hintergrund ueber die ganze Fensterbreite */
   width:100vw;max-width:100vw;position:relative;left:50%;right:50%;
   margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;
+  padding:64px 24px 32px;
 }
+/* Zweiter Wrapper (Block C, Footer) – gleiche Tokens, damit die Footer-Stile greifen */
+#mr-formular.mrf-tail{padding:0 24px 96px;background:var(--cream-50);}
 
-/* ===== Reset (nur innerhalb des Wrappers) ===== */
+/* ===== Reset (nur innerhalb der Wrapper) ===== */
 #mr-formular *{box-sizing:border-box;margin:0;padding:0;}
 
 /* Globalen Website-/Theme-Footer auf dieser Seite ausblenden
@@ -59,12 +71,11 @@
 body footer:not(.mf-footer),#colophon,.site-footer,.site-info,
 [data-elementor-type="footer"],.elementor-location-footer{display:none !important;}
 
-/* ===== Layout ===== */
-#mr-formular .page{min-height:100vh;padding:64px 24px 96px;display:flex;justify-content:center;align-items:flex-start;}
-#mr-formular .container{width:100%;max-width:680px;}
+/* ===== Zentrierter Inhalts-Container ===== */
+#mr-formular .container{width:100%;max-width:680px;margin:0 auto;}
 
 /* ===== Hero ===== */
-#mr-formular .hero{text-align:center;margin-bottom:56px;}
+#mr-formular .hero{text-align:center;margin-bottom:40px;}
 #mr-formular .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-500);margin-bottom:24px;}
 #mr-formular .eyebrow::before{content:'';width:24px;height:1px;background:var(--brown-400);}
 #mr-formular .eyebrow::after{content:'';width:24px;height:1px;background:var(--brown-400);}
@@ -72,42 +83,42 @@ body footer:not(.mf-footer),#colophon,.site-footer,.site-info,
 #mr-formular h1{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,5vw,44px);line-height:1.15;color:var(--brown-700);margin-bottom:20px;letter-spacing:-0.01em;}
 #mr-formular .hero p{color:var(--brown-900);max-width:520px;margin:0 auto;font-size:17px;}
 
-/* ===== Formular-Karte ===== */
-#mr-formular .form-card{background:rgba(232,221,206,0.35);border:1px solid rgba(140,105,75,0.22);border-radius:12px;padding:48px 40px;margin-bottom:40px;}
-#mr-formular .form-card-header{text-align:center;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--sand-300);}
-#mr-formular .form-card-header h2{font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--brown-700);margin-bottom:8px;letter-spacing:-0.005em;}
-#mr-formular .form-card-header p{font-size:15px;color:var(--brown-500);}
+/* ===== Formular-Kopf-Karte (Block A) ===== */
+#mr-formular .form-head{max-width:680px;margin:0 auto;background:rgba(232,221,206,0.35);border:1px solid rgba(140,105,75,0.22);border-radius:12px;padding:32px 40px;text-align:center;}
+#mr-formular .form-head h2{font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--brown-700);margin-bottom:8px;letter-spacing:-0.005em;}
+#mr-formular .form-head p{font-size:15px;color:var(--brown-500);}
 
-/* ===== Platzhalter (nur sichtbar, solange der Shortcode NICHT ausgeführt wird) ===== */
-#mr-formular .form-slot{min-height:200px;background:rgba(255,255,255,0.5);border:1px dashed var(--brown-400);border-radius:8px;padding:32px;text-align:center;color:var(--brown-500);font-size:14px;font-style:italic;}
+/* ===== Formular-Karte (Block B – das Shortcode-Widget mit Klasse .mrf-form) ===== */
+.mrf-form{max-width:680px;margin:16px auto 0;background:rgba(232,221,206,0.35);border:1px solid rgba(140,105,75,0.22);border-radius:12px;padding:40px;
+  --cream-50:#FAF6F0;--sand-300:#D6C5AB;--brown-500:#8B7355;--brown-700:#5C4232;--brown-900:#3D2E20;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:#3D2E20;}
 
-/* ===== Trust-Signale ===== */
-#mr-formular .trust{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;padding-top:8px;}
+/* ===== Gravity-Forms Style-Overrides (greifen im Shortcode-Widget) ===== */
+.mrf-form .gform_wrapper{font-family:var(--font-body,'Inter',sans-serif) !important;}
+.mrf-form .gform_wrapper .gfield_label{font-family:inherit !important;font-weight:500 !important;color:#3D2E20 !important;font-size:14px !important;letter-spacing:.01em !important;margin-bottom:6px !important;}
+.mrf-form .gform_wrapper input[type="text"],
+.mrf-form .gform_wrapper input[type="email"],
+.mrf-form .gform_wrapper input[type="tel"],
+.mrf-form .gform_wrapper input[type="number"],
+.mrf-form .gform_wrapper input[type="url"],
+.mrf-form .gform_wrapper input[type="date"],
+.mrf-form .gform_wrapper textarea,
+.mrf-form .gform_wrapper select{font-family:inherit !important;font-size:16px !important;color:#3D2E20 !important;background:#FAF6F0 !important;border:1px solid #D6C5AB !important;border-radius:6px !important;padding:12px 14px !important;transition:border-color .2s ease,box-shadow .2s ease !important;}
+.mrf-form .gform_wrapper input:focus,
+.mrf-form .gform_wrapper textarea:focus,
+.mrf-form .gform_wrapper select:focus{outline:none !important;border-color:#5C4232 !important;box-shadow:0 0 0 3px rgba(92,66,50,0.08) !important;}
+.mrf-form .gform_wrapper .gform_footer input[type="submit"],
+.mrf-form .gform_wrapper .gform_button{font-family:inherit !important;font-weight:600 !important;font-size:15px !important;letter-spacing:.01em !important;background:#5C4232 !important;color:#FAF6F0 !important;border:none !important;border-radius:6px !important;padding:14px 32px !important;cursor:pointer !important;transition:background .2s ease !important;}
+.mrf-form .gform_wrapper .gform_footer input[type="submit"]:hover,
+.mrf-form .gform_wrapper .gform_button:hover{background:#3D2E20 !important;}
+
+/* ===== Trust-Signale (Block C) ===== */
+#mr-formular .trust{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;max-width:680px;margin:32px auto 0;padding-top:8px;}
 #mr-formular .trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--brown-500);font-weight:500;}
 #mr-formular .trust-icon{width:16px;height:16px;color:var(--brown-500);flex-shrink:0;}
 
-/* ===== Footnote ===== */
-#mr-formular .footnote{text-align:center;font-size:13px;color:var(--brown-400);margin-top:40px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.5;}
-
-/* ===== Gravity-Forms Style-Overrides (greifen, sobald das Formular gerendert ist) ===== */
-#mr-formular .gform_wrapper{font-family:var(--font-body) !important;}
-#mr-formular .gform_wrapper .gfield_label{font-family:var(--font-body) !important;font-weight:500 !important;color:var(--brown-900) !important;font-size:14px !important;letter-spacing:.01em !important;margin-bottom:6px !important;}
-#mr-formular .gform_wrapper input[type="text"],
-#mr-formular .gform_wrapper input[type="email"],
-#mr-formular .gform_wrapper input[type="tel"],
-#mr-formular .gform_wrapper input[type="number"],
-#mr-formular .gform_wrapper textarea,
-#mr-formular .gform_wrapper select{font-family:var(--font-body) !important;font-size:16px !important;color:var(--brown-900) !important;background:var(--cream-50) !important;border:1px solid var(--sand-300) !important;border-radius:6px !important;padding:12px 14px !important;transition:border-color .2s ease,box-shadow .2s ease !important;}
-#mr-formular .gform_wrapper input:focus,
-#mr-formular .gform_wrapper textarea:focus,
-#mr-formular .gform_wrapper select:focus{outline:none !important;border-color:var(--brown-700) !important;box-shadow:0 0 0 3px rgba(92,66,50,0.08) !important;}
-#mr-formular .gform_wrapper .gform_footer input[type="submit"],
-#mr-formular .gform_wrapper .gform_button{font-family:var(--font-body) !important;font-weight:600 !important;font-size:15px !important;letter-spacing:.01em !important;background:var(--brown-700) !important;color:var(--cream-50) !important;border:none !important;border-radius:6px !important;padding:14px 32px !important;cursor:pointer !important;transition:background .2s ease !important;}
-#mr-formular .gform_wrapper .gform_footer input[type="submit"]:hover,
-#mr-formular .gform_wrapper .gform_button:hover{background:var(--brown-900) !important;}
-
 /* ===== Footer (Standard, wie auf den anderen Seiten) ===== */
-#mr-formular .mf-footer{padding:3rem 0;background:var(--brown-900);}
+#mr-formular .mf-footer{margin-top:56px;padding:3rem 0;background:var(--brown-900);width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
 #mr-formular .mf-footer-inner{max-width:72rem;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem;}
 #mr-formular .mf-footer-top{display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center;}
 #mr-formular .mf-footer-brand{display:flex;flex-direction:column;align-items:center;gap:.75rem;}
@@ -128,95 +139,95 @@ body footer:not(.mf-footer),#colophon,.site-footer,.site-info,
 
 /* ===== Responsive ===== */
 @media (max-width:640px){
-  #mr-formular .page{padding:40px 20px 64px;}
-  #mr-formular .form-card{padding:32px 20px;}
-  #mr-formular .form-card-header{margin-bottom:24px;padding-bottom:24px;}
+  #mr-formular{padding:40px 20px 24px;}
+  #mr-formular .form-head{padding:24px 20px;}
+  .mrf-form{padding:28px 20px;}
   #mr-formular .trust{gap:16px;}
   #mr-formular .trust-item{font-size:12px;}
 }
 
 /* ===== Reduced Motion ===== */
 @media (prefers-reduced-motion:reduce){
-  #mr-formular *{animation:none !important;transition:none !important;}
+  #mr-formular *,.mrf-form *{animation:none !important;transition:none !important;}
 }
 </style>
 
-<main class="page">
-  <div class="container">
+<div class="container">
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="apricot-mark">1</div>
+    <div class="eyebrow">Letzter Schritt</div>
+    <h1>Ich bereite mich gerne auf dich vor</h1>
+    <p>Damit ich unsere gemeinsame Zeit wirklich auf dich ausrichten kann, brauche ich vorab ein paar Informationen von dir. So messe ich gezielt und wir verlieren keine Zeit mit Grundfragen.</p>
+  </section>
 
-    <!-- ===== Hero ===== -->
-    <section class="hero">
-      <div class="apricot-mark">1</div>
-      <div class="eyebrow">Letzter Schritt</div>
-      <h1>Ich bereite mich gerne auf dich vor</h1>
-      <p>Damit ich unsere gemeinsame Zeit wirklich auf dich ausrichten kann, brauche ich vorab ein paar Informationen von dir. So messe ich gezielt und wir verlieren keine Zeit mit Grundfragen.</p>
-    </section>
+  <!-- ===== Formular-Kopf (Karte oben) ===== -->
+  <section class="form-head">
+    <h2>Vorbereitungsformular</h2>
+    <p>Nimm dir Zeit fuer deine Antworten – sie helfen mir, dich zu verstehen.</p>
+  </section>
+</div>
+</div>
+<!-- ===  ENDE BLOCK A  =================================================== -->
 
-    <!-- ===== Formular-Karte ===== -->
-    <section class="form-card">
-      <div class="form-card-header">
-        <h2>Vorbereitungsformular</h2>
-        <p>Nimm dir Zeit für deine Antworten – sie helfen mir, dich zu verstehen.</p>
-      </div>
 
-      <!-- ============================================================= -->
-      <!-- ===> GRAVITY-FORMS-FORMULAR                                    -->
-      <!-- Der Shortcode wird nur ausgeführt, wenn der umgebende Block    -->
-      <!-- Shortcodes verarbeitet (siehe Kopf dieser Datei). Andernfalls  -->
-      <!-- das Formular per separatem „Shortcode"-Widget/-Block einfügen. -->
-      <!-- ============================================================= -->
-      [gravityform id="41" title="false" description="false"]
+<!-- ======================================================================= -->
+<!-- ===  BLOCK B  ->  in ein Elementor „SHORTCODE"-WIDGET (Widget 2)      === -->
+<!-- ===  Beim Widget unter  Erweitert -> CSS-Klassen:  mrf-form  eintragen === -->
+<!-- ======================================================================= -->
+[gravityform id="41" title="false" description="false"]
+<!-- ===  ENDE BLOCK B  =================================================== -->
 
-    </section>
 
-    <!-- ===== Trust-Signale ===== -->
-    <div class="trust">
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        <span>Dauert 3–5 Minuten</span>
-      </div>
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-        <span>Vertraulich</span>
-      </div>
-      <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        <span>Verschwiegenheitspflicht</span>
-      </div>
+<!-- ======================================================================= -->
+<!-- ===  BLOCK C  ->  in ein Elementor „HTML"-WIDGET (Widget 3) einfuegen === -->
+<!-- ======================================================================= -->
+<div id="mr-formular" class="mrf-tail">
+  <!-- ===== Trust-Signale ===== -->
+  <div class="trust">
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <span>Dauert 3–5 Minuten</span>
     </div>
-
-  </div>
-</main>
-
-<!-- ============================ FOOTER ============================ -->
-<footer class="mf-footer">
-  <div class="mf-footer-inner">
-    <div class="mf-footer-top">
-      <div class="mf-footer-brand">
-        <img class="mf-footer-logo" alt="Elfi Achs Logo"
-             src="https://wuwglvodpsroizmpfbhq.supabase.co/storage/v1/object/public/brand-kit-assets/c22bdfc7-d33d-4dc9-8632-1ace7a71929f/c3bac251-2907-442a-aed9-184332d2f52e/logo_url.png?v=1778847212040">
-        <p class="mf-footer-tag">Institut für emotionale Selbstführung</p>
-      </div>
-      <div class="mf-footer-meta">
-        <nav class="mf-footer-links" aria-label="Rechtliche Links">
-          <a href="https://elfi-achs.at/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
-          <a href="https://elfi-achs.at/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
-        </nav>
-        <p class="mf-footer-copy">© <span class="mf-year">2026</span> Mental Rising · Alle Rechte vorbehalten</p>
-      </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <span>Vertraulich</span>
     </div>
-    <div class="mf-footer-divider">
-      <p class="mf-footer-disclaimer">Der Biofeedback Check-up ist keine medizinische Leistung und ersetzt keine ärztliche oder psychologische Diagnose und Behandlung. Die Inhalte dieser Website dienen ausschließlich der Information und stellen keine Heilsversprechen dar.</p>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <span>Verschwiegenheitspflicht</span>
     </div>
   </div>
-</footer>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="mf-footer">
+    <div class="mf-footer-inner">
+      <div class="mf-footer-top">
+        <div class="mf-footer-brand">
+          <img class="mf-footer-logo" alt="Elfi Achs Logo"
+               src="https://wuwglvodpsroizmpfbhq.supabase.co/storage/v1/object/public/brand-kit-assets/c22bdfc7-d33d-4dc9-8632-1ace7a71929f/c3bac251-2907-442a-aed9-184332d2f52e/logo_url.png?v=1778847212040">
+          <p class="mf-footer-tag">Institut für emotionale Selbstführung</p>
+        </div>
+        <div class="mf-footer-meta">
+          <nav class="mf-footer-links" aria-label="Rechtliche Links">
+            <a href="https://elfi-achs.at/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
+            <a href="https://elfi-achs.at/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+          </nav>
+          <p class="mf-footer-copy">© <span class="mf-year">2026</span> Mental Rising · Alle Rechte vorbehalten</p>
+        </div>
+      </div>
+      <div class="mf-footer-divider">
+        <p class="mf-footer-disclaimer">Der Biofeedback Check-up ist keine medizinische Leistung und ersetzt keine ärztliche oder psychologische Diagnose und Behandlung. Die Inhalte dieser Website dienen ausschließlich der Information und stellen keine Heilsversprechen dar.</p>
+      </div>
+    </div>
+  </footer>
+</div>
 
 <script>
 (function(){
-  var root = document.getElementById('mr-formular');
-  if(!root) return;
-  var yearEl = root.querySelector('.mf-year');
-  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+  var els = document.getElementsByClassName('mf-year');
+  var y = new Date().getFullYear();
+  for(var i=0;i<els.length;i++){ els[i].textContent = y; }
 })();
 </script>
-</div>
+<!-- ===  ENDE BLOCK C  =================================================== -->
