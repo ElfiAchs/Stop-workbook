@@ -29,6 +29,15 @@
 #mr-danke h1,#mr-danke h2,#mr-danke h3{margin:0;}
 #mr-danke svg{display:inline-block;vertical-align:middle;}
 
+/* ---- Globalen Website-/Theme-Footer NUR auf dieser Seite ausblenden ----
+   (Ergänzung zur Canvas-Einstellung. Blendet jeden <footer> aus, der NICHT
+   mein eingebauter Footer ist. Falls der Theme-Footer kein <footer>-Element
+   ist, unten die passenden Selektoren ergänzen.) */
+body footer:not(.dk-footer){display:none !important;}
+/* Häufige Theme-/Builder-Footer, die keine <footer>-Tags sind: */
+#colophon,.site-footer,.site-info,
+[data-elementor-type="footer"],.elementor-location-footer{display:none !important;}
+
 /* ---- Layout-Helfer ---- */
 #mr-danke .dk-wrap{margin-left:auto;margin-right:auto;padding-left:1.5rem;padding-right:1.5rem;}
 #mr-danke .dk-7xl{max-width:80rem;}
