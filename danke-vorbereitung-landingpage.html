@@ -111,6 +111,11 @@ body footer:not(.dk-footer){display:none !important;}
 #mr-danke .dk-form-box-head{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.5rem;}
 #mr-danke .dk-form-box-head svg{width:1.5rem;height:1.5rem;color:#E8C9A8;}
 #mr-danke .dk-form-box-head p{color:#fff;font-weight:600;font-size:1.125rem;}
+/* ---- CTA-Button zur Formularseite ---- */
+#mr-danke .dk-form-cta{display:inline-flex;align-items:center;gap:.75rem;background:#FAF6F0;color:#5C4232;font-weight:600;font-size:1.0625rem;padding:1.1rem 2.25rem;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s,background .3s,box-shadow .3s;}
+#mr-danke .dk-form-cta:hover{background:#fff;transform:scale(1.04);box-shadow:0 14px 34px rgba(0,0,0,.30);}
+#mr-danke .dk-form-cta svg{width:1.2rem;height:1.2rem;flex-shrink:0;}
+#mr-danke .dk-form-intro{color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:1.75rem;}
 /* ---- Formular-Platzhalter (ersetzen!) ---- */
 #mr-danke .dk-form-embed{width:100%;min-height:120px;background:rgba(255,255,255,.05);border:2px dashed rgba(255,255,255,.30);border-radius:.5rem;display:flex;align-items:center;justify-content:center;}
 #mr-danke .dk-form-embed .dk-ph{text-align:center;padding:2rem 1rem;}
@@ -278,20 +283,17 @@ body footer:not(.dk-footer){display:none !important;}
       </div>
 
       <!-- ============================================================= -->
-      <!-- ===> FORMULAR HIER EINBINDEN                                   -->
-      <!-- Ersetze den folgenden Platzhalter-Block (dk-form-embed) durch  -->
-      <!-- deinen Einbettcode, z. B. Typeform / JotForm / Google Forms:   -->
-      <!--   <iframe src="DEINE-FORMULAR-URL" width="100%" height="600"    -->
-      <!--           style="border:0;border-radius:8px;"></iframe>         -->
+      <!-- ===> LINK ZUR FORMULARSEITE                                    -->
+      <!-- Der Button fuehrt auf die eigenstaendige Formularseite         -->
+      <!-- (Gravity Form 41). URL bei Bedarf hier anpassen.               -->
       <!-- ============================================================= -->
-      <div class="dk-form-embed" data-formular-einbindung="true">
-        <div class="dk-ph">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-          <p>Hier wird dein Formular eingebunden</p>
-          <small>(z.B. Typeform, JotForm, Google Forms oder eigenes Formular)</small>
-        </div>
-      </div>
-      <!-- ===> ENDE Formular-Platzhalter -->
+      <p class="dk-form-intro">Das Vorbereitungsformular öffnet sich auf einer eigenen Seite. Es dauert nur 3–5 Minuten – nimm dir jetzt kurz Zeit dafür.</p>
+      <a href="https://coaching.elfi-achs.com/anmeldung-zum-biofeedback-check-up" class="dk-form-cta">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Zum Vorbereitungsformular
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+      <!-- ===> ENDE Link zur Formularseite -->
 
     </div>
     <div class="dk-form-trust">
