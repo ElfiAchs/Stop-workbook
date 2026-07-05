@@ -39,9 +39,12 @@
   --font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
   font-family:var(--font-body);color:var(--brown900);background:var(--cream);
   line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-  /* Kein 100vw-Trick: die Vollbreite regelt GREYD ueber die Sektion/den Container.
-     Der Wrapper fuellt einfach 100% seines Containers. */
-  width:100%;max-width:100%;overflow-x:hidden;
+  /* Vollbreite: bricht zuverlaessig aus dem GREYD-Container aus und fuellt die
+     ganze Fensterbreite – zentriert, unabhaengig vom Container-Padding.
+     (Falls GREYD die Sektion schon auf echte Vollbreite stellt, stoert das nicht.) */
+  width:auto;max-width:none;
+  margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+  overflow-x:hidden;
 }
 #mr-home img{display:block;max-width:100%;height:auto;}
 #mr-home a{text-decoration:none;color:inherit;}
