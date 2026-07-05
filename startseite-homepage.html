@@ -50,6 +50,11 @@
 #mr-home a{text-decoration:none;color:inherit;}
 #mr-home .mh-serif{font-family:var(--font-serif);}
 
+/* Umgebenden Gutenberg-/WordPress-Wrapper (Custom-HTML-Block) auf volle Breite
+   zwingen – damit KEIN Gruppieren/„Volle Breite" noetig ist. Greift nur, wenn
+   #mr-home direkt in einem .wp-block-html liegt; stoert sonst nicht. */
+.wp-block-html:has(> #mr-home){max-width:none !important;width:auto !important;margin-left:0 !important;margin-right:0 !important;padding-left:0 !important;padding-right:0 !important;}
+
 /* ---- Layout-Helfer ---- */
 #mr-home .mh-wrap{margin-left:auto;margin-right:auto;padding-left:1.5rem;padding-right:1.5rem;}
 #mr-home .mh-2xl{max-width:42rem;}
