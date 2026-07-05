@@ -477,6 +477,9 @@
       n.style.setProperty('margin-right','0','important');
       n.style.setProperty('padding-left','0','important');
       n.style.setProperty('padding-right','0','important');
+      // oberen Abstand (zwischen Theme-Header und Inhalt) entfernen
+      n.style.setProperty('padding-top','0','important');
+      n.style.setProperty('margin-top','0','important');
       if(cs.overflowX === 'hidden' || cs.overflowX === 'clip'){
         n.style.setProperty('overflow-x','visible','important');
       }
@@ -485,6 +488,7 @@
     // Wrapper selbst: keine negativen Rand-Berechnungen mehr noetig
     root.style.setProperty('margin-left','0','important');
     root.style.setProperty('margin-right','0','important');
+    root.style.setProperty('margin-top','0','important');
   }
   fullBleed();
   window.addEventListener('resize', fullBleed);
