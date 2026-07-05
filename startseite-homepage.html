@@ -66,9 +66,13 @@
 #mr-home .mh-hero h1{font-family:var(--font-serif);font-weight:400;color:#fff;line-height:1.12;margin-bottom:2rem;max-width:56rem;font-size:clamp(2.25rem,6vw,4.5rem);}
 #mr-home .mh-hero h1 span{color:var(--gold);}
 #mr-home .mh-hero-lead{color:rgba(255,255,255,.72);font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.6;max-width:38rem;margin-bottom:2.5rem;}
+#mr-home .mh-hero-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;}
 #mr-home .mh-hero-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--gold);color:#fff;font-weight:600;font-size:1rem;padding:.95rem 1.9rem;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:background .3s,transform .3s;}
 #mr-home .mh-hero-cta:hover{background:var(--brown400);transform:translateY(-2px);}
 #mr-home .mh-hero-cta svg{width:1.05rem;height:1.05rem;}
+#mr-home .mh-hero-ghost{display:inline-flex;align-items:center;gap:.6rem;background:transparent;color:#fff;font-weight:600;font-size:1rem;padding:.95rem 1.75rem;border-radius:4px;border:1px solid rgba(255,255,255,.45);transition:background .3s,border-color .3s;}
+#mr-home .mh-hero-ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.75);}
+#mr-home .mh-hero-ghost svg{width:1.05rem;height:1.05rem;}
 #mr-home .mh-hero-fade{position:absolute;bottom:0;left:0;right:0;height:8rem;background:linear-gradient(to top,var(--cream),transparent);pointer-events:none;}
 
 /* ---- Problem-Intro ---- */
@@ -201,10 +205,16 @@
     <p class="mh-hero-eyebrow">Mentaltraining mit Biofeedback und Hypnose - körperzentriert, seit 2009.</p>
     <h1>Ich hab schon so viel probiert <span>- und komm trotzdem nicht weiter.</span></h1>
     <p class="mh-hero-lead">Das liegt nicht an deinem Willen. Auch wenn du es verstehst — gesteuert wird deine Reaktion von einem unbewussten Anteil. Biofeedback macht sichtbar, wo du ansetzen kannst.</p>
-    <a href="#mr-video" class="mh-hero-cta" data-scroll>
-      Mehr erfahren
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-    </a>
+    <div class="mh-hero-actions">
+      <a href="https://www.etermin.net/elfi-achs" class="mh-hero-cta" target="_blank" rel="noopener">
+        Termin vereinbaren
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      </a>
+      <a href="#mr-video" class="mh-hero-ghost" data-scroll>
+        Mehr erfahren
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </a>
+    </div>
   </div>
   <div class="mh-hero-fade"></div>
 </section>
