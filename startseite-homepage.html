@@ -462,7 +462,34 @@
 (function(){
   var root = document.getElementById('mr-home');
   if(!root) return;
-  // Sanftes Scrollen für den Hero-Button „Mehr erfahren"
+
+  // --- Volle Breite erzwingen (theme-unabhaengig) ---
+  // Zieht alle umgebenden Container (WP/GREYD) bis zum <body> auf volle Breite,
+  // entfernt seitliche Abstaende und hebt clipping (overflow) auf, damit die
+  // Seite randlos bis zum Fensterrand laeuft. Wirkt nur auf dieser Seite.
+  function fullBleed(){
+    var n = root.parentElement;
+    while(n && n !== document.body && n.nodeType === 1){
+      var cs = window.getComputedStyle(n);
+      n.style.setProperty('max-width','none','important');
+      n.style.setProperty('width','100%','important');
+      n.style.setProperty('margin-left','0','important');
+      n.style.setProperty('margin-right','0','important');
+      n.style.setProperty('padding-left','0','important');
+      n.style.setProperty('padding-right','0','important');
+      if(cs.overflowX === 'hidden' || cs.overflowX === 'clip'){
+        n.style.setProperty('overflow-x','visible','important');
+      }
+      n = n.parentElement;
+    }
+    // Wrapper selbst: keine negativen Rand-Berechnungen mehr noetig
+    root.style.setProperty('margin-left','0','important');
+    root.style.setProperty('margin-right','0','important');
+  }
+  fullBleed();
+  window.addEventListener('resize', fullBleed);
+
+  // --- Sanftes Scrollen fuer den Hero-Button „Mehr erfahren" ---
   root.querySelectorAll('a[data-scroll]').forEach(function(a){
     a.addEventListener('click', function(e){
       var id = a.getAttribute('href');
