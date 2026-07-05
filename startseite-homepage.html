@@ -1,0 +1,456 @@
+<!--
+  ============================================================================
+  STARTSEITE – neue Homepage (Staging) · Elfi Achs / Mental Rising
+  Körperzentriertes Mentaltraining mit Biofeedback & Hypnose
+
+  WICHTIG – ANDERS ALS DIE BISHERIGEN SEITEN:
+  Header und Footer kommen hier DIREKT VOM THEME. Deshalb ist in diesem Code
+  KEIN eigener Header und KEIN eigener Footer enthalten und AUCH KEIN
+  Footer-Ausblende-CSS. Alles ist unter #mr-home gekapselt.
+
+  ===> VIDEO: aktuell Platzhalter (#mr-video). Später Vimeo- oder
+       Cloudflare-Einbettung an der markierten Stelle einsetzen.
+  ===> HERO-BILD: v0-Blob-URL (kann ablaufen). Am besten durch ein dauerhaft
+       gehostetes Bild (z. B. auf elfi-achs.at) ersetzen. Suche: HERO-BILD.
+  ===> BILD-PLATZHALTER: „Praxisfoto Sensor/Bildschirm" bei Bedarf ersetzen.
+
+  Verlinkungen:
+    Hero „Mehr erfahren"            -> #mr-video (Anker)
+    Blockaden-Kompass starten       -> https://elfi.4business.at/blockaden-kompass/
+    Freitagsgedanken                -> https://elfi.4business.at/freitagsgedanken/
+    Mehr zu Eltern & Kindern        -> https://elfi.4business.at/mentaltraining-fuer-familien/
+    Praxis-Karte „Zur Check-up"     -> https://elfi.4business.at/biofeedback-check-up/
+    Akademie-Karte „Zu den Kursen"  -> https://elfi.4business.at/online-akademie/
+    (Termin vereinbaren -> https://www.etermin.net/elfi-achs : gehört in den
+     Theme-Header; bei Bedarf als CTA im Inhalt ergänzbar.)
+  ============================================================================
+-->
+<div id="mr-home">
+<style>
+/* ---- Schriftarten ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+/* ---- Kapselung + Voll-Breite ---- */
+#mr-home *{box-sizing:border-box;margin:0;padding:0;}
+#mr-home{
+  --cream:#FAF6F0;--sand:#EDE5DA;--sand2:#D6C9B8;
+  --brown900:#3D2E20;--brown700:#5C4232;--brown400:#B5825F;--gold:#C9966B;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family:var(--font-body);color:var(--brown900);background:var(--cream);
+  line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  width:100vw;max-width:100vw;position:relative;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;overflow-x:hidden;
+}
+#mr-home img{display:block;max-width:100%;height:auto;}
+#mr-home a{text-decoration:none;color:inherit;}
+#mr-home .mh-serif{font-family:var(--font-serif);}
+
+/* ---- Layout-Helfer ---- */
+#mr-home .mh-wrap{margin-left:auto;margin-right:auto;padding-left:1.5rem;padding-right:1.5rem;}
+#mr-home .mh-2xl{max-width:42rem;}
+#mr-home .mh-3xl{max-width:48rem;}
+#mr-home .mh-5xl{max-width:64rem;}
+#mr-home .mh-6xl{max-width:72rem;}
+#mr-home .mh-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+#mr-home .mh-sec{padding:6rem 0;}
+@media(min-width:768px){#mr-home .mh-sec{padding:9rem 0;}}
+
+/* ---- HERO ---- */
+#mr-home .mh-hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--brown900);}
+#mr-home .mh-hero-bg{position:absolute;inset:0;}
+#mr-home .mh-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;}
+#mr-home .mh-hero-ov{position:absolute;inset:0;background:linear-gradient(to top,var(--brown900),rgba(61,46,32,.60) 45%,rgba(61,46,32,.25));}
+#mr-home .mh-hero-inner{position:relative;z-index:10;width:100%;max-width:64rem;margin:0 auto;padding:10rem 1.5rem 5rem;}
+#mr-home .mh-hero-eyebrow{color:rgba(201,150,107,.80);font-size:.75rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:2rem;}
+#mr-home .mh-hero h1{font-family:var(--font-serif);font-weight:400;color:#fff;line-height:1.12;margin-bottom:2rem;max-width:56rem;font-size:clamp(2.25rem,6vw,4.5rem);}
+#mr-home .mh-hero h1 span{color:var(--gold);}
+#mr-home .mh-hero-lead{color:rgba(255,255,255,.72);font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.6;max-width:38rem;margin-bottom:2.5rem;}
+#mr-home .mh-hero-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--gold);color:#fff;font-weight:600;font-size:1rem;padding:.95rem 1.9rem;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:background .3s,transform .3s;}
+#mr-home .mh-hero-cta:hover{background:var(--brown400);transform:translateY(-2px);}
+#mr-home .mh-hero-cta svg{width:1.05rem;height:1.05rem;}
+#mr-home .mh-hero-fade{position:absolute;bottom:0;left:0;right:0;height:8rem;background:linear-gradient(to top,var(--cream),transparent);pointer-events:none;}
+
+/* ---- Problem-Intro ---- */
+#mr-home .mh-quote-l{font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,1.875rem);color:var(--brown700);line-height:1.35;border-left:2px solid var(--gold);padding-left:1.5rem;margin-bottom:4rem;}
+#mr-home .mh-blist{display:flex;flex-direction:column;gap:2.5rem;}
+#mr-home .mh-brow{display:flex;gap:1.5rem;align-items:flex-start;}
+#mr-home .mh-dot{margin-top:.6rem;width:.375rem;height:.375rem;border-radius:50%;background:var(--gold);flex-shrink:0;}
+#mr-home .mh-brow p{color:var(--brown900);font-size:1.125rem;line-height:1.65;}
+#mr-home .mh-brow em{font-style:normal;color:var(--brown700);}
+#mr-home .mh-close{margin-top:4rem;color:var(--brown700);font-size:1.125rem;line-height:1.65;border-top:1px solid rgba(201,150,107,.20);padding-top:2.5rem;}
+
+/* ---- Video ---- */
+#mr-home .mh-video-h{font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,2.25rem);color:var(--brown900);margin-bottom:1rem;}
+#mr-home .mh-video-sub{color:var(--brown700);font-size:1.125rem;line-height:1.6;max-width:34rem;margin-bottom:3rem;}
+#mr-home .mh-video-box{position:relative;width:100%;padding-bottom:56.25%;border-radius:6px;overflow:hidden;background:var(--sand2);border:1px solid rgba(201,150,107,.20);box-shadow:0 8px 24px rgba(92,66,50,.10);}
+#mr-home .mh-video-box iframe,#mr-home .mh-video-box video{position:absolute;inset:0;width:100%;height:100%;border:0;}
+#mr-home .mh-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;color:rgba(92,66,50,.5);}
+#mr-home .mh-video-ph .mh-play{width:4rem;height:4rem;border-radius:50%;border:2px solid rgba(181,130,95,.4);display:flex;align-items:center;justify-content:center;}
+#mr-home .mh-video-ph .mh-play svg{width:1.5rem;height:1.5rem;margin-left:.25rem;color:rgba(181,130,95,.6);}
+#mr-home .mh-video-ph p{font-size:.875rem;font-weight:500;letter-spacing:.02em;}
+
+/* ---- Sichtbar machen (2-Spalten) ---- */
+#mr-home .mh-cols{display:flex;flex-direction:column;gap:4rem;align-items:flex-start;}
+#mr-home .mh-col-main{flex:1;}
+#mr-home .mh-h2{font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,2.25rem);color:var(--brown900);line-height:1.3;}
+#mr-home .mh-col-main h2{margin:1.5rem 0 2rem;}
+#mr-home .mh-col-main p{color:var(--brown900);font-size:1.125rem;line-height:1.65;margin-bottom:1.5rem;}
+#mr-home .mh-measures{display:flex;flex-direction:column;gap:1rem;margin-top:1rem;}
+#mr-home .mh-measure{display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--sand);border-radius:4px;}
+#mr-home .mh-measure h4{color:var(--brown900);font-weight:600;font-size:.875rem;margin-bottom:.15rem;}
+#mr-home .mh-measure p{color:var(--brown700);font-size:.875rem;line-height:1.6;margin:0;}
+#mr-home .mh-col-side{width:100%;flex-shrink:0;}
+#mr-home .mh-imgph{aspect-ratio:3/4;border-radius:4px;background:var(--sand2);border:1px solid rgba(201,150,107,.15);box-shadow:0 2px 8px rgba(92,66,50,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:rgba(92,66,50,.4);}
+#mr-home .mh-imgph svg{width:2.5rem;height:2.5rem;}
+#mr-home .mh-imgph p{font-size:.75rem;text-align:center;padding:0 1.5rem;line-height:1.6;}
+@media(min-width:1024px){
+  #mr-home .mh-cols{flex-direction:row;gap:6rem;}
+  #mr-home .mh-col-side{width:18rem;}
+}
+
+/* ---- Dunkler Abschnitt (Nervensystem / Testimonials) ---- */
+#mr-home .mh-dark{background:var(--brown900);}
+#mr-home .mh-dark .mh-eyebrow{color:rgba(201,150,107,.70);}
+#mr-home .mh-dark-lead{font-family:var(--font-serif);font-size:clamp(1.4rem,3vw,1.875rem);color:#fff;line-height:1.4;margin:2rem 0 2.5rem;}
+#mr-home .mh-dark-body{display:flex;flex-direction:column;gap:2rem;color:rgba(255,255,255,.75);font-size:1.125rem;line-height:1.65;}
+#mr-home .mh-dark-body .mh-hl{font-family:var(--font-serif);font-style:italic;font-size:1.25rem;color:var(--gold);}
+
+/* ---- Timeline ---- */
+#mr-home .mh-tl{position:relative;display:flex;flex-direction:column;}
+#mr-home .mh-tl-line{position:absolute;left:1.25rem;top:2rem;bottom:2rem;width:1px;background:rgba(201,150,107,.20);display:none;}
+@media(min-width:768px){#mr-home .mh-tl-line{display:block;}}
+#mr-home .mh-tl-step{position:relative;display:flex;gap:2rem;padding-bottom:3.5rem;}
+#mr-home .mh-tl-step:last-child{padding-bottom:0;}
+#mr-home .mh-tl-num{flex-shrink:0;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--brown700);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+#mr-home .mh-tl-step h3{font-family:var(--font-serif);font-size:1.25rem;color:var(--brown900);margin-bottom:.75rem;}
+#mr-home .mh-tl-step p{color:var(--brown900);font-size:1.125rem;line-height:1.65;}
+@media(min-width:768px){#mr-home .mh-tl-step{gap:3rem;}}
+
+/* ---- Fließtext-Abschnitt ---- */
+#mr-home .mh-prose{display:flex;flex-direction:column;gap:1.75rem;color:var(--brown900);font-size:1.125rem;line-height:1.65;}
+#mr-home .mh-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--brown700);font-weight:500;font-size:1rem;border-bottom:1px solid rgba(201,150,107,.40);padding-bottom:.1rem;transition:border-color .2s;}
+#mr-home .mh-link:hover{border-color:var(--brown700);}
+#mr-home .mh-link svg{width:1rem;height:1rem;}
+
+/* ---- Drei Wege (Karten) ---- */
+#mr-home .mh-ways{display:grid;grid-template-columns:1fr;gap:1.5rem;max-width:48rem;}
+#mr-home .mh-way{background:var(--cream);border:1px solid rgba(201,150,107,.15);border-radius:4px;padding:2rem;display:flex;flex-direction:column;box-shadow:0 2px 6px rgba(92,66,50,.05);transition:box-shadow .3s,border-color .3s;}
+#mr-home .mh-way:hover{box-shadow:0 10px 28px rgba(92,66,50,.10);border-color:rgba(201,150,107,.30);}
+#mr-home .mh-way h3{font-family:var(--font-serif);font-size:1.25rem;color:var(--brown900);margin-bottom:1rem;}
+#mr-home .mh-way-p{color:var(--brown900);font-size:1rem;line-height:1.6;margin-bottom:.75rem;flex:1;}
+#mr-home .mh-way-note{color:rgba(92,66,50,.55);font-size:.875rem;line-height:1.6;margin-bottom:2rem;}
+@media(min-width:768px){#mr-home .mh-ways{grid-template-columns:repeat(2,1fr);}}
+
+/* ---- Testimonials ---- */
+#mr-home .mh-tgrid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:4rem;}
+#mr-home .mh-tcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:4px;padding:2rem;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(0,0,0,.15);transition:background .3s,box-shadow .3s;}
+#mr-home .mh-tcard:hover{background:rgba(255,255,255,.08);box-shadow:0 12px 30px rgba(0,0,0,.22);}
+#mr-home .mh-tmark{font-family:var(--font-serif);font-size:3.75rem;color:rgba(201,150,107,.25);line-height:.7;margin-bottom:1rem;user-select:none;}
+#mr-home .mh-tcard blockquote{color:rgba(255,255,255,.80);font-size:.875rem;line-height:1.65;font-style:italic;flex:1;margin-bottom:1.5rem;}
+#mr-home .mh-tcard .mh-tby{border-top:1px solid rgba(255,255,255,.10);padding-top:1.25rem;}
+#mr-home .mh-tcard .mh-tname{font-family:var(--font-serif);color:#fff;font-weight:600;font-size:1rem;}
+#mr-home .mh-tcard .mh-trole{color:rgba(255,255,255,.50);font-size:.75rem;margin-top:.15rem;}
+#mr-home .mh-trust{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2rem;}
+#mr-home .mh-trust div{display:flex;align-items:center;gap:.625rem;color:rgba(255,255,255,.60);font-size:.875rem;}
+#mr-home .mh-trust span{width:.375rem;height:.375rem;border-radius:50%;background:var(--gold);flex-shrink:0;}
+#mr-home .mh-tcenter{text-align:center;margin-bottom:4rem;}
+#mr-home .mh-tcenter h2{font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,2.25rem);color:#fff;margin-top:1rem;}
+@media(min-width:768px){#mr-home .mh-tgrid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){#mr-home .mh-tgrid{grid-template-columns:repeat(4,1fr);}}
+
+/* ---- Pforte (Kompass + Freitagsgedanken) ---- */
+#mr-home .mh-pforte{background:var(--brown700);}
+#mr-home .mh-pforte .mh-eyebrow{color:rgba(201,150,107,.70);margin-bottom:2.5rem;}
+#mr-home .mh-pforte-grid{display:grid;grid-template-columns:1fr;gap:3rem;}
+#mr-home .mh-pforte h2{font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,2.25rem);color:#fff;line-height:1.3;margin-bottom:1.5rem;}
+#mr-home .mh-pforte-lead{color:rgba(255,255,255,.65);font-size:1.125rem;line-height:1.65;margin-bottom:2.5rem;}
+#mr-home .mh-checks{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.5rem;}
+#mr-home .mh-checks span{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.50);font-size:.875rem;}
+#mr-home .mh-checks span::before{content:'';width:.25rem;height:.25rem;border-radius:50%;background:rgba(201,150,107,.70);flex-shrink:0;}
+#mr-home .mh-btn-light{display:inline-block;background:#fff;color:var(--brown700);font-weight:600;font-size:1rem;padding:.9rem 2rem;border-radius:4px;box-shadow:0 6px 18px rgba(0,0,0,.18);transition:background .3s,transform .3s;}
+#mr-home .mh-btn-light:hover{background:var(--cream);transform:translateY(-2px);}
+#mr-home .mh-fg{border-top:1px solid rgba(255,255,255,.10);padding-top:3rem;}
+#mr-home .mh-fg h3{font-family:var(--font-serif);font-size:1.5rem;color:#fff;line-height:1.3;margin-bottom:1rem;}
+#mr-home .mh-fg p{color:rgba(255,255,255,.65);font-size:1rem;line-height:1.65;margin-bottom:1.25rem;}
+#mr-home .mh-fg .mh-fg-note{color:rgba(255,255,255,.40);font-size:.875rem;margin-bottom:2rem;}
+#mr-home .mh-btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;font-weight:600;font-size:.9375rem;padding:.85rem 1.75rem;border-radius:4px;transition:background .2s;}
+#mr-home .mh-btn-gold:hover{background:var(--brown400);}
+#mr-home .mh-btn-gold svg{width:1rem;height:1rem;}
+@media(min-width:768px){
+  #mr-home .mh-pforte-grid{grid-template-columns:1fr 1fr;gap:5rem;}
+  #mr-home .mh-fg{border-top:0;padding-top:0;border-left:1px solid rgba(255,255,255,.10);padding-left:3rem;}
+}
+
+/* ---- Schluss-Zitat ---- */
+#mr-home .mh-final p{font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,1.875rem);color:var(--brown700);line-height:1.4;text-align:center;}
+
+/* ---- Reduced Motion ---- */
+@media(prefers-reduced-motion:reduce){#mr-home *{transition:none !important;}}
+</style>
+
+<!-- ============================ HERO ============================ -->
+<section class="mh-hero">
+  <div class="mh-hero-bg">
+    <!-- HERO-BILD (ggf. durch dauerhaft gehostetes Bild ersetzen) -->
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/api-attachments/M5bvYwPy7ehJuN90qvz7i-m9Rbwn9It3bAaLS7QXPQbRzY3ZBq6O.jpg"
+         alt="Elfi Achs zeigt einer Klientin die Biofeedback-Messkurven am Monitor">
+    <div class="mh-hero-ov"></div>
+  </div>
+  <div class="mh-hero-inner">
+    <p class="mh-hero-eyebrow">Mentaltraining mit Biofeedback und Hypnose - körperzentriert, seit 2009.</p>
+    <h1>Ich hab schon so viel probiert <span>- und komm trotzdem nicht weiter.</span></h1>
+    <p class="mh-hero-lead">Das liegt nicht an deinem Willen. Auch wenn du es verstehst — gesteuert wird deine Reaktion von einem unbewussten Anteil. Biofeedback macht sichtbar, wo du ansetzen kannst.</p>
+    <a href="#mr-video" class="mh-hero-cta" data-scroll>
+      Mehr erfahren
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </a>
+  </div>
+  <div class="mh-hero-fade"></div>
+</section>
+
+<!-- ============================ PROBLEM-INTRO ============================ -->
+<section class="mh-sec" style="background:var(--cream);">
+  <div class="mh-wrap mh-3xl">
+    <p class="mh-quote-l">Was, wenn das Problem nicht dein Wille ist - sondern eine unbewusste Ebene, die dein Handeln steuert, lange bevor du es merkst?</p>
+    <div class="mh-blist">
+      <div class="mh-brow"><span class="mh-dot"></span><p>Unter Druck reagierst du anders, als du willst - vielleicht gereizt, vielleicht angespannt. Hinterher weißt du es oft besser, aber in dem Moment, wo der Stress da ist, läuft alles in dir automatisch ab.</p></div>
+      <div class="mh-brow"><span class="mh-dot"></span><p>Mehrmals am Tag der Satz: <em>„Ich bin schon wieder so blöd."</em> Du weißt, dass er nicht stimmt - aber er ist schneller als dein Verstand.</p></div>
+      <div class="mh-brow"><span class="mh-dot"></span><p>Du hast schon viel probiert - Coaching, Meditation, Bücher, Seminare. Es hat ein bisschen geholfen - aber du merkst, dass das eigentliche Muster immer noch da ist.</p></div>
+    </div>
+    <p class="mh-close">Das Muster sitzt nicht im bewussten Denken. Es sitzt tiefer - in einem alten Bereich von Gehirn und Nervensystem, für den Wiederholung etwas völlig Normales ist.</p>
+  </div>
+</section>
+
+<!-- ============================ VIDEO (Anker) ============================ -->
+<section id="mr-video" class="mh-sec" style="background:var(--sand);">
+  <div class="mh-wrap mh-3xl">
+    <h2 class="mh-video-h">Schön, dass du hier bist.</h2>
+    <p class="mh-video-sub">Ich zeige dir, wie ich arbeite - und warum das anders ist als das meiste, was du schon probiert hast.</p>
+    <!-- ============================================================= -->
+    <!-- ===> VIDEO HIER EINBINDEN (Vimeo oder Cloudflare)             -->
+    <!-- Ersetze den Platzhalter-Inhalt (.mh-video-ph) durch dein      -->
+    <!-- <iframe ...> bzw. Cloudflare-Stream-Embed. Beispiel Vimeo:     -->
+    <!-- <iframe src="https://player.vimeo.com/video/ID" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe> -->
+    <!-- ============================================================= -->
+    <div class="mh-video-box">
+      <div class="mh-video-ph">
+        <div class="mh-play"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+        <p>Willkommensvideo folgt</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SICHTBAR MACHEN ============================ -->
+<section class="mh-sec" style="background:var(--cream);">
+  <div class="mh-wrap mh-5xl">
+    <div class="mh-cols">
+      <div class="mh-col-main">
+        <p class="mh-eyebrow">Sichtbar machen</p>
+        <h2 class="mh-h2">Du siehst am Bildschirm, wo der Hebel sitzt - nicht als Theorie, sondern als Kurve.</h2>
+        <p>Biofeedback ist eine wissenschaftlich fundierte Messmethode, die auch in der Medizin eingesetzt wird. Sensoren messen in Echtzeit, wie dein Nervensystem reagiert — auf eine Frage, eine Erinnerung, eine Vorstellung.</p>
+        <p>Gemessen werden unter anderem Anspannung und Konzentration, die Aktivität in den Bereichen, die für Stressreaktionen zuständig sind, Hautleitwert und Hauttemperatur. Was dabei sichtbar wird, ist keine Interpretation — es ist dein Nervensystem, das spricht.</p>
+        <div class="mh-measures">
+          <div class="mh-measure"><span class="mh-dot"></span><div><h4>Aktivität im Frontalhirn</h4><p>Über ein Stirnband wird an der Stirn gemessen, wie aktiv der vordere Bereich des Gehirns ist — dort, wo Konzentration und bewusste Steuerung sitzen.</p></div></div>
+          <div class="mh-measure"><span class="mh-dot"></span><div><h4>Aktivität der Amygdala</h4><p>Über dem Ohr wird die Aktivität in dem Bereich gemessen, der auf Stress und Bedrohung reagiert — dort, wo automatische Reaktionen entstehen.</p></div></div>
+          <div class="mh-measure"><span class="mh-dot"></span><div><h4>Hautleitwert und Temperatur im Zusammenspiel</h4><p>An den Fingern gemessen. Einzeln sind es klassische Biofeedback-Größen - zusammen zeigen sie etwas Wichtigeres: ob deine Stressreaktion gesund reguliert. Genau das entscheidet, welche Art von Beruhigung dir wirklich hilft. Denn nicht jeder Mensch braucht dieselbe.</p></div></div>
+          <div class="mh-measure"><span class="mh-dot"></span><div><h4>Muskelspannung an der Stirn</h4><p>Am Stirnmuskel gemessen: wie viel Anspannung der Körper hält, oft ohne dass du es bemerkst.</p></div></div>
+        </div>
+      </div>
+      <div class="mh-col-side">
+        <div class="mh-imgph">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <p>Praxisfoto<br>Sensor / Bildschirm</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ NERVENSYSTEM (dunkel) ============================ -->
+<section class="mh-sec mh-dark">
+  <div class="mh-wrap mh-3xl">
+    <p class="mh-eyebrow">Wie Gehirn und Nervensystem zusammenarbeiten</p>
+    <p class="mh-dark-lead">Wenn du ein Muster immer wieder erlebst, vermutest du einen Mangel an Willen. Dabei ist es umgekehrt: Das Nervensystem hat gelernt — und wiederholt, was es kennt.</p>
+    <div class="mh-dark-body">
+      <p>Alte Reaktionen entstehen nicht im bewussten Denken. Die Muster sind in alten Hirnbereichen gespeichert, und Gehirn und Körper rufen sie ab, weil dieses Muster damals das Überleben gesichert hat.</p>
+      <p>Verstehen verändert das nicht. Analysieren auch nicht — außer, dass du erkennst, dass es so ist. Denn die Ebene, auf der das Muster sitzt, reagiert nicht auf Einsicht.</p>
+      <p class="mh-hl">Wiederholung ist eine Einladung, nicht ein Rückfall.</p>
+      <p>Solange das alte Muster aktiv bleibt, ist es stärker als jede Absicht. Nicht, weil du zu schwach bist - sondern weil es aus einem Bereich kommt, der für dein Überleben da ist.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WAS ICH MACHE ============================ -->
+<section class="mh-sec" style="background:var(--cream);">
+  <div class="mh-wrap mh-3xl">
+    <p class="mh-eyebrow">Was ich mache</p>
+    <h2 class="mh-h2" style="margin:1.5rem 0 4rem;">Erkennen - Umwandeln - Neu anordnen.</h2>
+    <div class="mh-tl">
+      <div class="mh-tl-line"></div>
+      <div class="mh-tl-step">
+        <div class="mh-tl-num">01</div>
+        <div><h3>Erkennen</h3><p>Mit Biofeedback wird sichtbar, wie Gehirn und Nervensystem reagieren - auf Situationen, auf Gedanken, auf Erinnerungen. Nicht als Deutung, sondern als Messung. Du siehst, was läuft, bevor der Verstand es einordnet. Das ist der Ausgangspunkt.</p></div>
+      </div>
+      <div class="mh-tl-step">
+        <div class="mh-tl-num">02</div>
+        <div><h3>Umwandeln</h3><p>Bevor sich etwas verändern kann, müssen Gehirn und Nervensystem zur Ruhe kommen. Über körperzentrierte Werkzeuge - Neurostimulation und Frequenzarbeit - entsteht eine Grundstimmung von Sicherheit. Auf diesem Boden öffnen Mentaltraining, Hypnose und Innere-Kind-Arbeit die Ebene, auf der das alte Muster sitzt. Hier wird es nicht bloß verstanden, sondern erreichbar - dort, wo es entstanden ist.</p></div>
+      </div>
+      <div class="mh-tl-step">
+        <div class="mh-tl-num">03</div>
+        <div><h3>Neu anordnen</h3><p>Jetzt wird das Erkannte neu zusammengesetzt. Du verbindest dich mit dem Anteil in dir, aus dem das alte Muster stammt - und ordnest Schritt für Schritt neu. So wird aus einem Satz wie „ich bin nicht genug" nicht einfach sein Gegenteil, sondern etwas Tragfähiges: Aus dem alten Muster wächst ein neuer Wert, der dich künftig trägt. Verankert wird das über dieselben körperzentrierten Werkzeuge - damit es nicht nur eine Einsicht bleibt, sondern unter Druck standhält.</p></div>
+      </div>
+    </div>
+    <p class="mh-close">Du lernst dabei Werkzeuge, die du selbst anwendest. Keine Abhängigkeit. Echte Selbstführung, die bleibt.</p>
+  </div>
+</section>
+
+<!-- ============================ MENTAL RISING GESCHICHTE ============================ -->
+<section class="mh-sec" style="background:var(--sand);">
+  <div class="mh-wrap mh-3xl">
+    <p class="mh-eyebrow">Mental Rising - die Geschichte</p>
+    <h2 class="mh-h2" style="margin:1.5rem 0 2.5rem;">Warum es eine eigene Schule geworden ist.</h2>
+    <div class="mh-prose">
+      <p>Ich konnte nie einem starren System folgen, wenn ich spürte, dass für den Menschen vor mir gerade etwas anderes besser wirkt. Genau das hat mich früh dazu gebracht, nicht einer einzelnen Schule zu folgen, sondern die Vielfalt zu suchen - die Arbeit mit dem inneren Kind in der Linie von John Bradshaw über Dr. Edda Buresch, die Hypnose beim Institut Eggetsberger und NGH-zertifiziert bei Treusch.</p>
+      <p>Dann kam die Messtechnik dazu, die Psychonetik des Instituts Eggetsberger. Zum ersten Mal konnte ich sehen, was greift und was nicht - manchmal sofort, manchmal erst viel später. Das hat mein Denken verändert.</p>
+      <p>Heute, wenn ich nicht sicher bin, was jemand braucht, sage ich: Messen wir, was los ist. Dann schauen wir, was dein System gerade verarbeiten kann. Für mich ist das Haute Couture im Training - nichts von der Stange, sondern auf dich zugeschnitten.</p>
+      <p>Mental Rising ist daraus gewachsen. Keine zusammengestellte Toolbox, sondern eine eigene Schule: seit 2009 in der Praxis, verbunden zu einem Weg - sehen, was ist. Erreichen, wo es sitzt. Neu ordnen, was tragen soll.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STARKE ELTERN ============================ -->
+<section class="mh-sec" style="background:var(--cream);border-top:1px solid rgba(201,150,107,.10);">
+  <div class="mh-wrap mh-3xl">
+    <p class="mh-eyebrow">Emotionale Selbstführung beginnt früh</p>
+    <h2 class="mh-h2" style="margin:1.5rem 0 2rem;">Starke Eltern, starke Kinder.</h2>
+    <div class="mh-prose" style="margin-bottom:2.5rem;">
+      <p>Was Kinder und Jugendliche im Umgang mit sich selbst lernen - oder nicht lernen - hängt nicht zuletzt davon ab, was Erwachsene ihnen vorleben. Nicht als Vorsatz, sondern im Alltag, unter Druck, in müden Momenten.</p>
+      <p>Als Mutter von vier Söhnen weiß ich, wie das ist. Ich habe erlebt, was es bedeutet, wenn man das eigene Nervensystem kennt - und was es bedeutet, wenn man es nicht kennt. Dieser Erfahrungsraum ist in meine Arbeit eingeflossen.</p>
+      <p>Ich arbeite auch mit Kindern, Jugendlichen und Eltern. Nicht als Erziehungsberatung - sondern als körperzentriertes Mentaltraining, das dort ansetzt, wo Muster in Gehirn und Nervensystem entstehen.</p>
+    </div>
+    <a href="https://elfi.4business.at/mentaltraining-fuer-familien/" class="mh-link">
+      Mehr zur Arbeit mit Eltern und Kindern
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============================ DREI WEGE ============================ -->
+<section class="mh-sec" style="background:var(--sand);">
+  <div class="mh-wrap mh-5xl">
+    <p class="mh-eyebrow">Wo du anfangen kannst</p>
+    <h2 class="mh-h2" style="margin:1.5rem 0 4rem;">Drei Wege - je nachdem, wo du stehst.</h2>
+    <div class="mh-ways">
+      <div class="mh-way">
+        <h3>In der Praxis, Gols</h3>
+        <p class="mh-way-p">1:1-Arbeit mit Biofeedback und Hypnose. Körperzentriertes Mentaltraining in Einzelstunden und Blöcken, in dem Rhythmus, der zu dir passt.</p>
+        <p class="mh-way-note">Dort, wo gemessen wird - persönlich und auf dich zugeschnitten.</p>
+        <a href="https://elfi.4business.at/biofeedback-check-up/" class="mh-link">
+          Zur Check-up-Seite
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="mh-way">
+        <h3>Die Akademie</h3>
+        <p class="mh-way-p">Online lernen, im eigenen Tempo. Selbstlernkurse zu körperzentriertem Mentaltraining - von der eigenen Reaktion bis zu Werkzeugen für den Alltag.</p>
+        <p class="mh-way-note">Zugänglich, ohne Terminbindung.</p>
+        <a href="https://elfi.4business.at/online-akademie/" class="mh-link">
+          Zu den Kursen
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIALS ============================ -->
+<section id="testimonials" class="mh-sec mh-dark">
+  <div class="mh-wrap mh-6xl">
+    <div class="mh-tcenter">
+      <p class="mh-eyebrow">Stimmen aus der Praxis</p>
+      <h2>Was Menschen erlebt haben</h2>
+    </div>
+    <div class="mh-tgrid">
+      <div class="mh-tcard">
+        <div class="mh-tmark" aria-hidden="true">&ldquo;</div>
+        <blockquote>Mein Grundgefühl, „nicht gut genug zu sein" konnte ich endlich auflösen und das Bullshit-FM in meinem Kopf abdrehen. Daraus resultieren heute tolle Projekte, die ich endlich so auf die Straße bringe, wie ich es mir immer gewünscht habe. Authentisch – einfach so wie ich bin.</blockquote>
+        <div class="mh-tby"><p class="mh-tname">Anji Hinke</p><p class="mh-trole">Sängerin und Vocalcoach</p></div>
+      </div>
+      <div class="mh-tcard">
+        <div class="mh-tmark" aria-hidden="true">&ldquo;</div>
+        <blockquote>In einem beeindruckenden ersten halben Jahr habe ich an enormer Stabilität so gewonnen, dass ich durch Elfis behutsame wie fokussierte Führung zu meinem absoluten Ground Zero kam, der mich in allen Dimensionen heftig erschütterte. Elfi war und ist immer da – auch wenn es mal eine ungewöhnliche Zeit ist, um rasch zu stabilisieren oder optimieren.</blockquote>
+        <div class="mh-tby"><p class="mh-tname">Thomas Herzlinger</p><p class="mh-trole">Experte für Kundenservice</p></div>
+      </div>
+      <div class="mh-tcard">
+        <div class="mh-tmark" aria-hidden="true">&ldquo;</div>
+        <blockquote>Themen, die mich auf körperlicher und psychischer Ebene über Jahrzehnte belastet haben, konnte ich selbst nicht auflösen... Durch meine Arbeit mit Elfi bin ich einen Quantensprung vorangekommen.</blockquote>
+        <div class="mh-tby"><p class="mh-tname">Faye Sztrakati</p><p class="mh-trole">Zertifizierte Yogalehrerin</p></div>
+      </div>
+      <div class="mh-tcard">
+        <div class="mh-tmark" aria-hidden="true">&ldquo;</div>
+        <blockquote>Ich war am Boden zerstört nach einer Trennung. Außerdem kämpfte ich teilweise gegen Nervosität auf der Bühne. Durch Elfi habe ich (wieder) gelernt, viel bewusster durchs Leben zu gehen. Sowohl in meinem Wirken als Musiker im Studio und auf der Bühne als auch als Vater und Ehemann.</blockquote>
+        <div class="mh-tby"><p class="mh-tname">Christoph Sztrakati</p><p class="mh-trole">Musiker</p></div>
+      </div>
+    </div>
+    <div class="mh-trust">
+      <div><span></span>Seit 2009 in der Praxis entwickelt</div>
+      <div><span></span>Wissenschaftlich fundierte Biofeedback-Messtechnik</div>
+      <div><span></span>NGH-zertifizierte Hypnose-Ausbildung</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PFORTE (Kompass + Freitagsgedanken) ============================ -->
+<section id="pforte" class="mh-sec mh-pforte">
+  <div class="mh-wrap mh-5xl">
+    <p class="mh-eyebrow">Fang einfach an - mit einem ersten, kostenlosen Schritt.</p>
+    <div class="mh-pforte-grid">
+      <div>
+        <h2>Finde heraus, wo dein Hebel sitzt.</h2>
+        <p class="mh-pforte-lead">Der Blockaden-Kompass ist eine kostenlose Standortbestimmung. Du beantwortest ein paar Fragen, bekommst eine Einordnung und siehst, welcher nächste Schritt für dich passt. Kein Verkauf, nur Substanz.</p>
+        <div class="mh-checks">
+          <span>100% kostenfrei</span>
+          <span>Keine E-Mail-Adresse nötig</span>
+          <span>Sofort verfügbar</span>
+        </div>
+        <a href="https://elfi.4business.at/blockaden-kompass/" class="mh-btn-light">Blockaden-Kompass starten</a>
+      </div>
+      <div class="mh-fg">
+        <h3>Freitagsgedanken.</h3>
+        <p>Eine fortlaufende Audio-Reihe. Jede Woche ein Gedanke — in meiner Stimme, aus meiner Praxis. Kein Magazin, kein Kurs. Nur ein Moment Klarheit.</p>
+        <p class="mh-fg-note">Wer sich anmeldet, bekommt beides: die Freitagsgedanken und gelegentliche Inhalte aus der Praxis. Eine Anmeldung genügt.</p>
+        <a href="https://elfi.4business.at/freitagsgedanken/" class="mh-btn-gold">
+          Zu den Freitagsgedanken
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SCHLUSS-ZITAT ============================ -->
+<section class="mh-sec mh-final" style="background:var(--cream);">
+  <div class="mh-wrap mh-2xl">
+    <p>Veränderung beginnt nicht mit mehr Anstrengung. Du musst nur verstehen, an welchem Punkt du gerade stehst. Denn von dort ist es nur ein Hebel bis zum entscheidenden Schritt.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root = document.getElementById('mr-home');
+  if(!root) return;
+  // Sanftes Scrollen für den Hero-Button „Mehr erfahren"
+  root.querySelectorAll('a[data-scroll]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id && id.charAt(0) === '#'){
+        var target = document.querySelector(id);
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+    });
+  });
+})();
+</script>
+</div>
