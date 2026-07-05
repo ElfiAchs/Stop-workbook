@@ -483,6 +483,17 @@
       if(cs.overflowX === 'hidden' || cs.overflowX === 'clip'){
         n.style.setProperty('overflow-x','visible','important');
       }
+      // Flex-/Grid-Abstand (gap) und vorheriges Geschwister (z. B. Header) neutralisieren
+      var parent = n.parentElement;
+      if(parent){
+        var pcs = window.getComputedStyle(parent);
+        if(pcs.display.indexOf('flex') >= 0 || pcs.display.indexOf('grid') >= 0){
+          parent.style.setProperty('gap','0','important');
+          parent.style.setProperty('row-gap','0','important');
+        }
+      }
+      var prev = n.previousElementSibling;
+      if(prev){ prev.style.setProperty('margin-bottom','0','important'); }
       n = n.parentElement;
     }
     // Wrapper selbst: keine negativen Rand-Berechnungen mehr noetig
