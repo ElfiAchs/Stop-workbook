@@ -1,0 +1,667 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Mulish:wght@300;400;500;600;700&display=swap');
+
+.mr-wrap *{box-sizing:border-box;margin:0;padding:0}
+.mr-wrap{
+  width:100vw;position:relative;left:50%;right:50%;
+  margin-left:-50vw;margin-right:-50vw;
+  font-family:'Mulish',sans-serif;color:#3A2A1E;
+  background:#FAF6F1;overflow-x:hidden;
+}
+
+/* -- HEADER -- */
+#mrHeader{
+  position:fixed;top:0;left:0;width:100%;z-index:9999;
+  transition:background 0.35s,box-shadow 0.35s;
+  background:transparent;
+}
+#mrHeader.mr-scrolled{
+  background:rgba(250,246,241,0.97);
+  box-shadow:0 1px 0 rgba(92,66,50,0.12);
+  backdrop-filter:blur(8px);
+}
+.mr-header-inner{
+  max-width:1100px;margin:0 auto;
+  padding:1.1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mr-logo img{height:38px;width:auto;display:block}
+.mr-nav{
+  display:flex;align-items:center;gap:1.75rem;
+}
+.mr-nav a{
+  font-size:0.82rem;font-weight:600;letter-spacing:0.04em;
+  color:#FAF6F1;text-decoration:none;transition:opacity 0.2s;
+  white-space:nowrap;
+}
+#mrHeader.mr-scrolled .mr-nav a{color:#3A2A1E}
+.mr-nav a:hover{opacity:0.7}
+.mr-nav-cta{
+  background:#5C4232;color:#FAF6F1 !important;
+  padding:0.55rem 1.25rem;border-radius:3px;
+  font-size:0.82rem !important;font-weight:700 !important;
+  transition:background 0.2s !important;
+}
+.mr-nav-cta:hover{background:#4A3428 !important;opacity:1 !important}
+@media(max-width:700px){
+  .mr-nav a:not(.mr-nav-cta){display:none}
+}
+
+/* -- HERO -- */
+.mr-hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;align-items:center;
+  background:url('https://elfi-achs.at/wp-content/uploads/2026/08/Feierabend-Check_Titelbild-ohnePerson.jpg') center/cover no-repeat;
+  background-color:#2E1F16;
+}
+.mr-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom right,rgba(30,16,8,0.78),rgba(58,42,30,0.65));
+}
+.mr-hero-content{
+  position:relative;z-index:1;
+  max-width:680px;
+  padding:10rem 1.5rem 5rem;
+  margin:0 auto;
+  text-align:center;
+}
+.mr-brand-label{
+  display:inline-block;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(250,246,241,0.65);margin-bottom:1.5rem;
+}
+.mr-hero-content h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,6vw,3.8rem);font-weight:300;line-height:1.2;
+  color:#FAF6F1;margin-bottom:1.25rem;
+}
+.mr-hero-content h1 em{font-style:italic;color:#D4A882}
+.mr-hero-sub{
+  font-size:1.05rem;color:rgba(250,246,241,0.82);line-height:1.8;
+  max-width:520px;margin:0 auto 2.25rem;
+}
+.mr-btn{
+  display:inline-block;
+  background:#5C4232;color:#FAF6F1;
+  padding:1rem 2.25rem;border-radius:3px;
+  font-size:0.9rem;font-weight:700;letter-spacing:0.04em;
+  text-decoration:none;transition:background 0.2s,transform 0.15s;
+  border:none;cursor:pointer;
+}
+.mr-btn:hover{background:#4A3428;transform:translateY(-1px)}
+.mr-btn-outline{
+  background:transparent;
+  border:1.5px solid rgba(250,246,241,0.55);
+  color:#FAF6F1;
+  padding:0.9rem 2rem;
+}
+.mr-btn-outline:hover{background:rgba(250,246,241,0.08);border-color:rgba(250,246,241,0.8)}
+.mr-hero-note{
+  margin-top:1rem;
+  font-size:0.78rem;color:rgba(250,246,241,0.5);
+}
+
+/* -- SECTION SHARED -- */
+.mr-section{padding:5rem 1.5rem}
+.mr-section-inner{max-width:760px;margin:0 auto}
+.mr-section-inner-wide{max-width:1060px;margin:0 auto}
+.mr-eyebrow{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:#5C4232;margin-bottom:1rem;display:block;
+}
+.mr-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.9rem,4vw,2.8rem);font-weight:300;line-height:1.3;
+  color:#3A2A1E;margin-bottom:1.25rem;
+}
+.mr-h2 em{font-style:italic;color:#5C4232}
+.mr-lead{font-size:1rem;color:#6B5040;line-height:1.8}
+
+/* -- PROBLEM SECTION -- */
+.mr-problem{background:#FAF6F1}
+.mr-problem-text p{
+  font-size:1rem;color:#5A3E2F;line-height:1.9;margin-bottom:1.1rem;
+}
+.mr-problem-text p:last-child{margin-bottom:0}
+.mr-problem-text strong{color:#3A2A1E;font-weight:700}
+.mr-problem-quote{
+  border-left:3px solid #5C4232;
+  padding:1.25rem 1.5rem;
+  margin:2rem 0;
+  background:rgba(92,66,50,0.05);
+  border-radius:0 4px 4px 0;
+}
+.mr-problem-quote p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.25rem,2.5vw,1.6rem);font-weight:300;font-style:italic;
+  color:#3A2A1E;line-height:1.5;margin:0;
+}
+
+/* -- VORTEILE -- */
+.mr-vorteile{background:#F3EDE5}
+.mr-vorteile-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.25rem;
+  margin-top:2.5rem;
+}
+.mr-vorteil-card{
+  background:#FAF6F1;border-radius:4px;
+  border:1px solid rgba(92,66,50,0.12);
+  padding:1.75rem 1.5rem;
+}
+.mr-vorteil-icon{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(92,66,50,0.1);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+.mr-vorteil-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:400;color:#3A2A1E;
+  margin-bottom:0.5rem;
+}
+.mr-vorteil-card p{font-size:0.875rem;color:#6B5040;line-height:1.7}
+
+/* -- GUIDE DETAIL -- */
+.mr-guide{background:#FAF6F1}
+.mr-guide-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+}
+@media(max-width:680px){
+  .mr-guide-inner{grid-template-columns:1fr;gap:2.5rem}
+  .mr-guide-img{order:-1}
+}
+.mr-guide-img img{
+  width:100%;max-width:340px;
+  border-radius:4px;
+  box-shadow:0 20px 60px rgba(58,42,30,0.18);
+  display:block;margin:0 auto;
+}
+.mr-checklist{list-style:none;margin-top:1.75rem}
+.mr-checklist li{
+  display:flex;gap:0.85rem;align-items:flex-start;
+  font-size:0.9rem;color:#5A3E2F;line-height:1.65;
+  padding:0.6rem 0;
+  border-bottom:1px solid rgba(92,66,50,0.1);
+}
+.mr-checklist li:last-child{border-bottom:none}
+.mr-checklist-icon{
+  flex-shrink:0;margin-top:2px;
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(92,66,50,0.12);
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* -- FORM SECTION -- */
+.mr-form-section{
+  background:linear-gradient(135deg,#3A2A1E 0%,#5C4232 100%);
+  padding:5rem 1.5rem;
+  text-align:center;
+}
+.mr-form-section .mr-h2{color:#FAF6F1}
+.mr-form-section .mr-h2 em{color:#D4A882}
+.mr-form-section .mr-eyebrow{color:#D4A882}
+.mr-form-section .mr-lead{color:rgba(250,246,241,0.75);margin-bottom:2.5rem}
+.mr-form-card{
+  background:rgba(250,246,241,0.07);
+  border:1px solid rgba(250,246,241,0.15);
+  border-radius:6px;
+  padding:2.5rem 2rem;
+  max-width:520px;margin:0 auto;
+}
+.mr-form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+@media(max-width:480px){.mr-form-row{grid-template-columns:1fr}}
+.mr-field{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+.mr-field label{font-size:0.78rem;font-weight:600;color:rgba(250,246,241,0.7);letter-spacing:0.04em}
+.mr-field input{
+  background:rgba(250,246,241,0.08);
+  border:1px solid rgba(250,246,241,0.2);
+  border-radius:3px;
+  padding:0.75rem 1rem;
+  font-size:0.9rem;font-family:'Mulish',sans-serif;
+  color:#FAF6F1;
+  transition:border-color 0.2s;
+  outline:none;
+}
+.mr-field input::placeholder{color:rgba(250,246,241,0.35)}
+.mr-field input:focus{border-color:rgba(250,246,241,0.6)}
+.mr-form-submit{
+  width:100%;padding:1rem;
+  background:#FAF6F1;color:#3A2A1E;
+  border:none;border-radius:3px;
+  font-family:'Mulish',sans-serif;
+  font-size:0.95rem;font-weight:700;
+  cursor:pointer;transition:background 0.2s,transform 0.15s;
+}
+.mr-form-submit:hover{background:#F3EDE5;transform:translateY(-1px)}
+.mr-form-privacy{
+  margin-top:1rem;
+  font-size:0.72rem;color:rgba(250,246,241,0.4);
+  line-height:1.6;
+}
+.mr-form-privacy a{color:rgba(250,246,241,0.55);text-decoration:underline}
+
+/* -- FAQ -- */
+.mr-faq{background:#FAF6F1}
+.mr-faq-list{margin-top:2.5rem}
+.mr-faq-item{
+  border-bottom:1px solid rgba(92,66,50,0.15);
+}
+.mr-faq-item summary{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.25rem 0;
+  cursor:pointer;
+  list-style:none;
+  font-weight:600;font-size:0.95rem;color:#3A2A1E;
+  transition:color 0.2s;
+}
+.mr-faq-item summary::-webkit-details-marker{display:none}
+.mr-faq-item summary:hover{color:#5C4232}
+.mr-faq-icon{
+  flex-shrink:0;
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(92,66,50,0.1);
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s,transform 0.3s;
+}
+.mr-faq-item[open] .mr-faq-icon{background:#5C4232;transform:rotate(45deg)}
+.mr-faq-item[open] .mr-faq-icon svg path{stroke:#FAF6F1}
+.mr-faq-body{
+  padding:0 0 1.25rem;
+  font-size:0.9rem;color:#5A3E2F;line-height:1.8;
+}
+.mr-faq-body p{margin-bottom:0.75rem}
+.mr-faq-body p:last-child{margin-bottom:0}
+
+/* -- FOOTER -- */
+.mr-footer{
+  background:#2E1F16;
+  padding:2.5rem 1.5rem;
+}
+.mr-footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:1.25rem;
+  text-align:center;
+}
+@media(min-width:640px){
+  .mr-footer-inner{flex-direction:row;justify-content:space-between;text-align:left}
+}
+.mr-footer-logo img{height:32px;width:auto;opacity:0.75;display:block}
+.mr-footer-tagline{
+  font-size:0.78rem;color:rgba(250,246,241,0.35);margin-top:0.35rem;
+}
+.mr-footer-copy{font-size:0.75rem;color:rgba(250,246,241,0.3)}
+.mr-footer-links{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:0.75rem;color:rgba(250,246,241,0.35);
+}
+.mr-footer-links a{color:inherit;text-decoration:none;transition:color 0.2s}
+.mr-footer-links a:hover{color:rgba(250,246,241,0.7)}
+.mr-footer-links span{opacity:0.4}
+
+@media(max-width:640px){
+  .mr-section{padding:3.5rem 1.25rem}
+  .mr-hero-content{padding:8rem 1.25rem 4rem}
+}
+</style>
+
+<div class="mr-wrap">
+
+  <!-- HEADER -->
+  <header id="mrHeader">
+    <div class="mr-header-inner">
+      <a href="/" class="mr-logo">
+        <img id="mrLogo"
+          src="https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png"
+          alt="Mental Rising">
+      </a>
+      <nav class="mr-nav">
+        <a href="#problem">Das Problem</a>
+        <a href="#guide">Der Guide</a>
+        <a href="#faq">FAQ</a>
+        <a href="#guide-form" class="mr-nav-cta">Guide herunterladen</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="mr-hero">
+    <div class="mr-hero-overlay"></div>
+    <div class="mr-hero-content">
+      <span class="mr-brand-label">Mental Rising® &middot; Elfi Achs</span>
+      <h1>Was im Kopf kreist,<br><em>braucht einen Platz.</em></h1>
+      <p class="mr-hero-sub">Ein kurzer Feierabend-Guide für Menschen, die nicht einfach abschalten können, weil innerlich noch etwas offen ist.</p>
+      <a href="#guide-form" class="mr-btn">Guide kostenlos herunterladen</a>
+      <p class="mr-hero-note">Kostenlos &middot; Sofort verfügbar &middot; Kein Spam</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section class="mr-problem mr-section" id="problem">
+    <div class="mr-section-inner">
+      <span class="mr-eyebrow">Kennst du das?</span>
+      <h2 class="mr-h2">Der Feierabend ist da &ndash;<br><em>aber der Kopf hört nicht auf.</em></h2>
+
+      <div class="mr-problem-text">
+        <p>Du sitzt auf dem Sofa, der Arbeitstag ist offiziell vorbei &ndash; aber innerlich läuft er noch. Das Gespräch von heute Mittag, die E-Mail, die du noch nicht beantwortet hast, die Liste mit dem, was morgen dringend werden wird.</p>
+
+        <div class="mr-problem-quote">
+          <p>„Ich bin müde, aber ich kann nicht abschalten. Ich denke, grübele, plane &ndash; und schlafe dann unruhig ein."</p>
+        </div>
+
+        <p>Das ist kein Zeichen von Schwäche. Es ist ein Zeichen, dass dein Nervensystem noch nicht gelernt hat, den Übergang zu gestalten. <strong>Zwischen Leistung und Ruhe braucht es einen Raum.</strong></p>
+        <p>Dieser Guide zeigt dir, wie du diesen Raum schaffst &ndash; ruhig, konkret, in wenigen Minuten täglich.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VORTEILE -->
+  <section class="mr-vorteile mr-section">
+    <div class="mr-section-inner-wide">
+      <div style="text-align:center;max-width:600px;margin:0 auto 0.5rem">
+        <span class="mr-eyebrow">Was du bekommst</span>
+        <h2 class="mr-h2">Ein Guide, der <em>wirklich hilft</em></h2>
+      </div>
+      <div class="mr-vorteile-grid">
+
+        <div class="mr-vorteil-card">
+          <div class="mr-vorteil-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 3C10 3 4 6 4 11.5C4 14.5376 6.68629 17 10 17C13.3137 17 16 14.5376 16 11.5C16 6 10 3 10 3Z" stroke="#5C4232" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M10 17V13M10 13C10 13 8 11 8 9.5M10 13C10 13 12 11 12 9.5" stroke="#5C4232" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Konkrete Feierabend-Rituale</h3>
+          <p>Keine abstrakten Ratschläge &ndash; sondern erprobte Mini-Routinen, die du sofort einbauen kannst.</p>
+        </div>
+
+        <div class="mr-vorteil-card">
+          <div class="mr-vorteil-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="#5C4232" stroke-width="1.4"/>
+              <path d="M10 7V10L12 12" stroke="#5C4232" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Nur wenige Minuten täglich</h3>
+          <p>Der Guide ist kompakt gestaltet &ndash; für Menschen mit vollem Alltag, nicht für Menschen mit viel Zeit.</p>
+        </div>
+
+        <div class="mr-vorteil-card">
+          <div class="mr-vorteil-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10H16M10 4V16" stroke="#5C4232" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Nervensystem verstehen</h3>
+          <p>Du lernst, warum dein Kopf kreist &ndash; und was physiologisch dahintersteckt. Wissen, das bleibt.</p>
+        </div>
+
+        <div class="mr-vorteil-card">
+          <div class="mr-vorteil-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 10.2L8 13.2L15 6" stroke="#5C4232" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="10" r="7" stroke="#5C4232" stroke-width="1.4"/>
+            </svg>
+          </div>
+          <h3>Sofort anwendbar</h3>
+          <p>Heute Abend. Kein Kurs, keine App, keine Vorbereitung. Einfach lesen und anfangen.</p>
+        </div>
+
+        <div class="mr-vorteil-card">
+          <div class="mr-vorteil-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 4C7.79086 4 6 5.79086 6 8C6 10.2091 7.79086 12 10 12C12.2091 12 14 10.2091 14 8C14 5.79086 12.2091 4 10 4Z" stroke="#5C4232" stroke-width="1.4"/>
+              <path d="M4 17C4 14.7909 6.68629 13 10 13C13.3137 13 16 14.7909 16 17" stroke="#5C4232" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Aus echter Erfahrung</h3>
+          <p>Entwickelt von Elfi Achs &ndash; Institut für emotionale Selbstführung &ndash; aus Jahrzehnten Begleitungsarbeit.</p>
+        </div>
+
+        <div class="mr-vorteil-card">
+          <div class="mr-vorteil-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 5H16V15H4V5Z" stroke="#5C4232" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M4 8H16" stroke="#5C4232" stroke-width="1.4"/>
+              <path d="M8 8V15" stroke="#5C4232" stroke-width="1.4"/>
+            </svg>
+          </div>
+          <h3>100 % kostenlos</h3>
+          <p>Kein Abo, kein Upsell. Du trägst dich ein, bekommst den Guide &ndash; fertig.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE DETAIL -->
+  <section class="mr-guide mr-section" id="guide">
+    <div class="mr-section-inner-wide">
+      <div class="mr-guide-inner">
+        <div class="mr-guide-text">
+          <span class="mr-eyebrow">Was drin steckt</span>
+          <h2 class="mr-h2">Dein <em>Feierabend-Guide</em> im Überblick</h2>
+          <p class="mr-lead">Ein kleines Heft mit großer Wirkung &ndash; wenn du anfängst, es zu benutzen.</p>
+          <ul class="mr-checklist">
+            <li>
+              <span class="mr-checklist-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 6.2L4.8 8.5L9.5 3.5" stroke="#5C4232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Warum du nicht abschalten kannst &ndash; die neurobiologische Erklärung
+            </li>
+            <li>
+              <span class="mr-checklist-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 6.2L4.8 8.5L9.5 3.5" stroke="#5C4232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              3 Feierabend-Rituale, die das Nervensystem wirklich beruhigen
+            </li>
+            <li>
+              <span class="mr-checklist-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 6.2L4.8 8.5L9.5 3.5" stroke="#5C4232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Die „Offene Schleife" &ndash; was Gedanken am Kreisen hält und wie du sie schließt
+            </li>
+            <li>
+              <span class="mr-checklist-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 6.2L4.8 8.5L9.5 3.5" stroke="#5C4232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Eine einfache Abend-Reflexion für Klarheit ohne Aufwand
+            </li>
+            <li>
+              <span class="mr-checklist-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 6.2L4.8 8.5L9.5 3.5" stroke="#5C4232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Körper-Ankerpunkte für den Übergang zwischen Arbeit und Abend
+            </li>
+            <li>
+              <span class="mr-checklist-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 6.2L4.8 8.5L9.5 3.5" stroke="#5C4232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Dein 7-Tage-Einstiegsplan zum Ausprobieren
+            </li>
+          </ul>
+        </div>
+        <div class="mr-guide-img">
+          <img src="https://elfi-achs.at/wp-content/uploads/2026/08/Cover-Feierabend-Guide.png" alt="Feierabend-Guide Cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="mr-form-section" id="guide-form">
+    <span class="mr-eyebrow">Jetzt herunterladen</span>
+    <h2 class="mr-h2">Guide <em>kostenlos</em> erhalten</h2>
+    <p class="mr-lead">Trag dich ein &ndash; du bekommst den Guide sofort per E-Mail.</p>
+    <div class="mr-form-card">
+      <form onsubmit="return false;">
+        <div class="mr-form-row">
+          <div class="mr-field">
+            <label for="mrVorname">Vorname</label>
+            <input type="text" id="mrVorname" name="vorname" placeholder="Maria" autocomplete="given-name">
+          </div>
+          <div class="mr-field">
+            <label for="mrNachname">Nachname</label>
+            <input type="text" id="mrNachname" name="nachname" placeholder="Muster" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="mr-field">
+          <label for="mrEmail">E-Mail-Adresse</label>
+          <input type="email" id="mrEmail" name="email" placeholder="maria@beispiel.at" autocomplete="email">
+        </div>
+        <button type="submit" class="mr-form-submit">Guide kostenlos herunterladen &rarr;</button>
+        <p class="mr-form-privacy">Mit dem Absenden stimmst du zu, gelegentlich E-Mails von Mental Rising zu erhalten. Kein Spam. Abmeldung jederzeit möglich. Weitere Infos in der <a href="https://elfi-achs.at/datenschutz/" target="_blank">Datenschutzerklärung</a>.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mr-faq mr-section" id="faq">
+    <div class="mr-section-inner">
+      <span class="mr-eyebrow">Häufige Fragen</span>
+      <h2 class="mr-h2">Was du noch<br><em>wissen möchtest</em></h2>
+
+      <div class="mr-faq-list">
+
+        <details class="mr-faq-item">
+          <summary>
+            Ist der Guide wirklich kostenlos?
+            <span class="mr-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2V12M2 7H12" stroke="#5C4232" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="mr-faq-body">
+            <p>Ja, vollständig und ohne Hintergedanken. Du gibst deine E-Mail-Adresse an und bekommst den Guide direkt zugesandt. Es gibt keinen Upsell dahinter, den du annehmen musst, um den Inhalt zu erhalten.</p>
+            <p>Du landest in meinem Newsletter &ndash; den du jederzeit wieder abbestellen kannst, mit einem Klick, ohne Erklärung.</p>
+          </div>
+        </details>
+
+        <details class="mr-faq-item">
+          <summary>
+            Für wen ist dieser Guide geeignet?
+            <span class="mr-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2V12M2 7H12" stroke="#5C4232" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="mr-faq-body">
+            <p>Für alle, die nach einem langen Tag nicht wirklich abschalten können &ndash; die noch am Abend im Kopf durch den Tag gehen, Dinge durchplanen oder sich Sorgen machen.</p>
+            <p>Kein Vorwissen nötig. Kein Meditationshintergrund. Nur die Bereitschaft, ein paar Minuten am Abend bewusst zu gestalten.</p>
+          </div>
+        </details>
+
+        <details class="mr-faq-item">
+          <summary>
+            Wie lange dauert es, den Guide anzuwenden?
+            <span class="mr-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2V12M2 7H12" stroke="#5C4232" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="mr-faq-body">
+            <p>Die Rituale im Guide brauchen 5 bis 15 Minuten &ndash; je nachdem, wie viel Zeit du dir nimmst. Der Einstiegsplan ist auf 7 Tage ausgelegt, mit kleinen täglichen Schritten.</p>
+            <p>Ich habe ihn bewusst kurz gehalten, weil ich weiß: Wer abends erschöpft ist, braucht keine langen Programme. Er braucht einen klaren ersten Schritt.</p>
+          </div>
+        </details>
+
+        <details class="mr-faq-item">
+          <summary>
+            Was ist Mental Rising® &ndash; und wer ist Elfi Achs?
+            <span class="mr-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2V12M2 7H12" stroke="#5C4232" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="mr-faq-body">
+            <p>Mental Rising® ist das Institut für emotionale Selbstführung von Elfi Achs. Elfi begleitet seit Jahrzehnten Menschen, die innerlich feststecken &ndash; in der Arbeit, in Beziehungen, in sich selbst.</p>
+            <p>Ihr Ansatz verbindet Neurobiologie, Körperarbeit und tiefes Zuhören. Kein Motivationscoaching. Keine schnellen Lösungen. Sondern echte Veränderung, die trägt.</p>
+          </div>
+        </details>
+
+        <details class="mr-faq-item">
+          <summary>
+            Was passiert nach dem Download?
+            <span class="mr-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2V12M2 7H12" stroke="#5C4232" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="mr-faq-body">
+            <p>Du bekommst eine E-Mail mit dem Link zum Guide. Du kannst ihn sofort öffnen, lesen und heute Abend noch anfangen.</p>
+            <p>Gelegentlich bekommst du weitere Impulse von mir &ndash; kurze Texte, Denkanstöße, manchmal ein Hinweis auf neue Angebote. Nie täglich, nie aufdringlich. Und abmelden geht immer, sofort, per Klick.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mr-footer">
+    <div class="mr-footer-inner">
+      <div>
+        <a href="/">
+          <img src="https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_Brown900.png" alt="Mental Rising" class="mr-footer-logo">
+        </a>
+        <p class="mr-footer-tagline">Institut für emotionale Selbstführung</p>
+      </div>
+      <p class="mr-footer-copy">&copy; 2026 Mental Rising® &middot; Elfi Achs &middot; Alle Rechte vorbehalten</p>
+      <nav class="mr-footer-links">
+        <a href="https://elfi-achs.at/impressum/" target="_blank">Impressum</a>
+        <span>|</span>
+        <a href="https://elfi-achs.at/datenschutz/" target="_blank">Datenschutz</a>
+        <span>|</span>
+        <a href="https://elfi-achs.at/agb/" target="_blank">AGB</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var header = document.getElementById('mrHeader');
+  var logo   = document.getElementById('mrLogo');
+  var logoLight = 'https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png';
+  var logoDark  = 'https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_Brown900.png';
+
+  document.body.appendChild(header);
+
+  var el = document.querySelector('.mr-wrap');
+  while(el && el !== document.body){
+    el.style.cssText += ';background:transparent!important;padding-top:0!important;margin-top:0!important';
+    el = el.parentElement;
+  }
+
+  function onScroll(){
+    var scrolled = window.scrollY > 60;
+    header.classList.toggle('mr-scrolled', scrolled);
+    logo.src = scrolled ? logoDark : logoLight;
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
