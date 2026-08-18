@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Feierabend-Guide – Elfi Achs | Mental Rising®</title>
+<meta name="description" content="Ein kurzer PDF-Guide für Menschen, die abends äußerlich fertig sind, innerlich aber nicht abschalten können. Kostenlos von Elfi Achs, Mental Rising®."/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Mulish:wght@400;500;600;700&display=swap');
+
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Mulish',sans-serif;font-size:16px;line-height:1.6;color:#3A2A1E;background:#FAF6F1;-webkit-font-smoothing:antialiased}
+
+/* ===== VARIABLES ===== */
+:root{
+  --brown-900:#3A2A1E;
+  --brown-700:#5C4232;
+  --brown-500:#7A5A46;
+  --accent:#C4956A;
+  --cream:#FAF6F1;
+  --muted:#F0E8DF;
+  --border:#E0D4C8;
+  --text:#3A2A1E;
+  --text-muted:#7A5A46;
+  --white:#FFFFFF;
+}
+
+/* ===== FULL-WIDTH BREAKOUT ===== */
+.fd-wrap{
+  width:100vw;
+  position:relative;
+  left:50%;
+  margin-left:-50vw;
+  overflow-x:hidden;
+}
+
+/* ===== HEADER ===== */
+#fdHeader{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:1000;
+  transition:background 0.3s ease, box-shadow 0.3s ease;
+  background:transparent;
+}
+#fdHeader.fd-scrolled{
+  background:#FAF6F1;
+  box-shadow:0 2px 16px rgba(58,42,30,0.10);
+}
+.fd-nav{
+  max-width:1152px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1.25rem 1.5rem;
+}
+.fd-logo img{
+  height:36px;
+  width:auto;
+  display:block;
+}
+.fd-nav-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  background:var(--brown-700);
+  color:var(--cream);
+  border:none;
+  border-radius:3px;
+  padding:0.6rem 1.25rem;
+  font-family:'Mulish',sans-serif;
+  font-size:0.875rem;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background 0.2s;
+}
+.fd-nav-btn:hover{background:var(--brown-900)}
+@media(max-width:640px){.fd-nav-btn{display:none}}
+
+/* ===== HERO ===== */
+.fd-hero{
+  position:relative;
+  min-height:760px;
+  display:flex;
+  align-items:center;
+  padding:7rem 1.5rem 4rem;
+  overflow:hidden;
+}
+.fd-hero-bg{
+  position:absolute;
+  inset:0;
+  background-image:url('https://elfi-achs.at/wp-content/uploads/2026/08/Feierabend-Check_Titelbild-ohnePerson.jpg');
+  background-size:cover;
+  background-position:center;
+}
+.fd-hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right, rgba(58,42,30,0.95) 0%, rgba(58,42,30,0.80) 50%, rgba(58,42,30,0.35) 100%);
+}
+@media(min-width:768px){
+  .fd-hero-overlay{background:linear-gradient(to right, rgba(58,42,30,0.95) 0%, rgba(58,42,30,0.78) 45%, rgba(58,42,30,0.22) 100%)}
+}
+.fd-hero-inner{
+  position:relative;
+  max-width:1152px;
+  margin:0 auto;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3rem;
+  align-items:center;
+}
+@media(min-width:768px){
+  .fd-hero-inner{grid-template-columns:1fr 1fr}
+}
+.fd-hero-badge{
+  display:inline-flex;
+  align-items:center;
+  border-radius:9999px;
+  border:1px solid rgba(250,246,241,0.25);
+  background:rgba(250,246,241,0.10);
+  padding:0.4rem 1rem;
+  font-size:0.875rem;
+  font-weight:500;
+  color:var(--cream);
+  backdrop-filter:blur(4px);
+}
+.fd-hero h1{
+  margin-top:1.5rem;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3.25rem);
+  font-weight:700;
+  color:var(--cream);
+  line-height:1.2;
+}
+.fd-hero-sub{
+  margin-top:1.25rem;
+  font-size:1.125rem;
+  line-height:1.7;
+  color:rgba(250,246,241,0.85);
+  max-width:480px;
+}
+.fd-hero-btns{
+  margin-top:2rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+}
+@media(min-width:480px){.fd-hero-btns{flex-direction:row}}
+.fd-btn-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  background:var(--accent);
+  color:var(--brown-900);
+  border:none;
+  border-radius:3px;
+  padding:0.85rem 2rem;
+  font-family:'Mulish',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,0,0,0.18);
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.fd-btn-primary:hover{transform:scale(1.03);box-shadow:0 6px 24px rgba(0,0,0,0.22)}
+.fd-btn-ghost{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.4rem;
+  background:transparent;
+  color:var(--cream);
+  border:1px solid rgba(250,246,241,0.40);
+  border-radius:3px;
+  padding:0.85rem 2rem;
+  font-family:'Mulish',sans-serif;
+  font-size:1rem;
+  font-weight:600;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background 0.2s;
+}
+.fd-btn-ghost:hover{background:rgba(250,246,241,0.10)}
+.fd-hero-note{
+  margin-top:1.5rem;
+  font-size:0.875rem;
+  color:rgba(250,246,241,0.70);
+}
+.fd-hero-image{
+  display:none;
+  justify-self:center;
+}
+@media(min-width:768px){.fd-hero-image{display:block}}
+.fd-hero-image img{
+  width:100%;
+  max-width:420px;
+  height:auto;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,0.35));
+}
+
+/* ===== SECTIONS COMMON ===== */
+.fd-section{
+  padding:5rem 1.5rem;
+}
+@media(min-width:768px){.fd-section{padding:8rem 1.5rem}}
+.fd-section-muted{background:var(--muted)}
+.fd-section-brown{background:linear-gradient(135deg,var(--brown-700) 0%,var(--brown-900) 100%)}
+.fd-section-inner{
+  max-width:1152px;
+  margin:0 auto;
+}
+.fd-section-inner-sm{
+  max-width:760px;
+  margin:0 auto;
+}
+.fd-section-inner-md{
+  max-width:900px;
+  margin:0 auto;
+}
+.fd-eyebrow{
+  font-size:0.75rem;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.fd-eyebrow-light{color:rgba(196,149,106,0.9)}
+.fd-h2{
+  margin-top:0.75rem;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.75rem,3.5vw,2.5rem);
+  font-weight:700;
+  color:var(--brown-900);
+  line-height:1.25;
+}
+.fd-h2-light{color:var(--cream)}
+.fd-lead{
+  margin-top:1rem;
+  font-size:1.125rem;
+  line-height:1.75;
+  color:var(--text-muted);
+  max-width:640px;
+}
+.fd-lead-light{color:rgba(250,246,241,0.85)}
+.fd-divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* ===== PROBLEM SECTION ===== */
+.fd-problem-items{
+  margin-top:3.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:2.5rem;
+}
+.fd-problem-item{
+  display:flex;
+  gap:1.5rem;
+}
+.fd-problem-num{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  font-weight:700;
+  color:var(--accent);
+  line-height:1;
+  flex-shrink:0;
+  width:2rem;
+}
+.fd-problem-item h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.125rem;
+  font-weight:700;
+  color:var(--brown-900);
+}
+.fd-problem-item p{
+  margin-top:0.25rem;
+  line-height:1.7;
+  color:var(--text-muted);
+}
+.fd-callout{
+  margin-top:3.5rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+  font-size:1.125rem;
+  line-height:1.75;
+  color:var(--brown-900);
+}
+
+/* ===== BENEFITS GRID ===== */
+.fd-benefits-grid{
+  margin-top:3.5rem;
+  display:grid;
+  gap:2.5rem 2.5rem;
+  grid-template-columns:1fr;
+}
+@media(min-width:600px){.fd-benefits-grid{grid-template-columns:1fr 1fr}}
+.fd-benefit{
+  border-top:1px solid var(--border);
+  padding-top:1.5rem;
+}
+.fd-benefit-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--accent);
+}
+.fd-benefit h3{
+  margin-top:0.75rem;
+  font-family:'Playfair Display',serif;
+  font-size:1.125rem;
+  font-weight:700;
+  color:var(--brown-900);
+}
+.fd-benefit p{
+  margin-top:0.5rem;
+  line-height:1.7;
+  color:var(--text-muted);
+}
+
+/* ===== CHECKLIST SECTION ===== */
+.fd-checklist{
+  margin-top:3.5rem;
+  max-width:640px;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+.fd-checklist li{
+  display:flex;
+  gap:0.75rem;
+  list-style:none;
+  line-height:1.6;
+  color:var(--brown-900);
+}
+.fd-check-icon{
+  flex-shrink:0;
+  margin-top:0.2rem;
+  width:20px;
+  height:20px;
+  color:var(--accent);
+}
+.fd-trust-grid{
+  margin-top:4rem;
+  padding-top:2.5rem;
+  border-top:1px solid var(--border);
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2rem;
+}
+@media(min-width:600px){.fd-trust-grid{grid-template-columns:repeat(3,1fr)}}
+.fd-trust-item h4{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--brown-900);
+}
+.fd-trust-item p{
+  margin-top:0.25rem;
+  font-size:0.9rem;
+  line-height:1.65;
+  color:var(--text-muted);
+}
+
+/* ===== DOWNLOAD SECTION ===== */
+.fd-download-card{
+  margin-top:2.5rem;
+  background:var(--white);
+  border-radius:12px;
+  padding:2rem;
+  box-shadow:0 16px 48px rgba(0,0,0,0.20);
+  max-width:480px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.fd-download-card-header{
+  border-bottom:1px solid var(--border);
+  padding-bottom:1.5rem;
+  margin-bottom:1.5rem;
+}
+.fd-download-card-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;
+  font-weight:700;
+  color:var(--brown-900);
+}
+.fd-download-card-sub{
+  font-size:0.875rem;
+  color:var(--text-muted);
+  margin-top:0.2rem;
+}
+.fd-download-card-list{
+  margin-top:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+.fd-download-card-list li{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  font-size:0.9rem;
+  color:var(--brown-900);
+  list-style:none;
+}
+.fd-btn-download{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  width:100%;
+  background:linear-gradient(135deg,var(--brown-700) 0%,var(--brown-900) 100%);
+  color:var(--cream);
+  border:none;
+  border-radius:3px;
+  padding:1rem 2rem;
+  font-family:'Mulish',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,0,0,0.18);
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.fd-btn-download:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(0,0,0,0.25)}
+.fd-download-fallback{
+  margin-top:1rem;
+  font-size:0.85rem;
+  color:rgba(250,246,241,0.60);
+  text-align:center;
+}
+.fd-download-fallback a{color:rgba(250,246,241,0.80);text-decoration:underline}
+
+/* ===== QUOTE SECTION ===== */
+.fd-quote-section{
+  padding:5rem 1.5rem;
+  text-align:center;
+}
+.fd-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.25rem,2.5vw,1.75rem);
+  font-style:italic;
+  line-height:1.6;
+  color:var(--brown-900);
+}
+.fd-quote-author{
+  margin-top:1rem;
+  font-size:0.8rem;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+/* ===== FAQ ===== */
+.fd-faq-section{background:var(--muted);padding:5rem 1.5rem}
+@media(min-width:768px){.fd-faq-section{padding:8rem 1.5rem}}
+.fd-accordion{
+  margin-top:3rem;
+  border:1px solid var(--border);
+  border-radius:4px;
+  background:var(--white);
+  overflow:hidden;
+}
+.fd-accordion-item{border-bottom:1px solid var(--border)}
+.fd-accordion-item:last-child{border-bottom:none}
+.fd-accordion-trigger{
+  width:100%;
+  background:none;
+  border:none;
+  padding:1.25rem 1.5rem;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  cursor:pointer;
+  font-family:'Playfair Display',serif;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--brown-900);
+  transition:background 0.15s;
+}
+.fd-accordion-trigger:hover{background:var(--muted)}
+.fd-accordion-trigger svg{
+  flex-shrink:0;
+  width:18px;
+  height:18px;
+  color:var(--text-muted);
+  transition:transform 0.25s;
+}
+.fd-accordion-item.open .fd-accordion-trigger svg{transform:rotate(180deg)}
+.fd-accordion-body{
+  display:none;
+  padding:0 1.5rem 1.25rem;
+  line-height:1.75;
+  color:var(--text-muted);
+}
+.fd-accordion-item.open .fd-accordion-body{display:block}
+
+/* ===== FOOTER ===== */
+.fd-footer{
+  background:var(--brown-900);
+  color:var(--cream);
+}
+.fd-footer-inner{
+  max-width:1152px;
+  margin:0 auto;
+  padding:3.5rem 1.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+}
+@media(min-width:640px){
+  .fd-footer-inner{flex-direction:row;align-items:flex-start;justify-content:space-between}
+}
+.fd-footer-logo img{
+  height:40px;
+  width:auto;
+  display:block;
+  opacity:0.75;
+}
+.fd-footer-tagline{
+  margin-top:1rem;
+  font-size:0.875rem;
+  line-height:1.6;
+  color:rgba(250,246,241,0.65);
+  max-width:320px;
+}
+.fd-footer-nav{
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+}
+.fd-footer-nav a{
+  font-size:0.875rem;
+  color:rgba(250,246,241,0.75);
+  text-decoration:none;
+  transition:color 0.15s;
+}
+.fd-footer-nav a:hover{color:var(--cream)}
+.fd-footer-copy{
+  border-top:1px solid rgba(250,246,241,0.10);
+  padding:1.25rem 1.5rem;
+  text-align:center;
+  font-size:0.75rem;
+  color:rgba(250,246,241,0.50);
+}
+
+/* ===== SVG ICONS ===== */
+.fd-icon{display:inline-block;vertical-align:middle;width:1em;height:1em}
+</style>
+</head>
+<body>
+
+<div class="fd-wrap">
+
+  <!-- HEADER -->
+  <header id="fdHeader">
+    <nav class="fd-nav">
+      <div class="fd-logo">
+        <a href="https://elfi-achs.at">
+          <img id="fdLogo"
+               src="https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png"
+               alt="Elfi Achs, Mental Rising®"/>
+        </a>
+      </div>
+      <a class="fd-nav-btn" href="https://elfi-achs.at/wp-content/uploads/2026/08/Feierabend-Guide_FINAL.pdf" target="_blank" rel="noopener" download>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        Guide herunterladen
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="fd-hero">
+    <div class="fd-hero-bg"></div>
+    <div class="fd-hero-overlay"></div>
+    <div class="fd-hero-inner">
+      <div>
+        <span class="fd-hero-badge">Kostenloser PDF-Guide · 5 Minuten</span>
+        <h1>Was im Kopf kreist,<br/>braucht einen Platz.</h1>
+        <p class="fd-hero-sub">Ein kurzer Guide für Menschen, die abends äußerlich fertig sind, innerlich aber nicht abschalten können.</p>
+        <div class="fd-hero-btns">
+          <a class="fd-btn-primary"
+             href="https://elfi-achs.at/wp-content/uploads/2026/08/Feierabend-Guide_FINAL.pdf"
+             target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            Jetzt kostenlos herunterladen
+          </a>
+          <a class="fd-btn-ghost" href="#inhalt">
+            Inhalt ansehen
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </a>
+        </div>
+        <p class="fd-hero-note">100&nbsp;% kostenlos &middot; Kein Abo &middot; Sofort-Download</p>
+      </div>
+      <div class="fd-hero-image">
+        <img src="https://elfi-achs.at/wp-content/uploads/2026/08/mock-up-ipad_Feierabend-Guide.png"
+             alt="Der Feierabend-Guide von Mental Rising, dargestellt auf einem Tablet"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="fd-section fd-section-muted">
+    <div class="fd-section-inner-sm">
+      <p class="fd-eyebrow">Kommt dir das bekannt vor?</p>
+      <h2 class="fd-h2">Das, was dich abends nicht loslässt, ist kein Willensproblem.</h2>
+      <p class="fd-lead">Der Tag ist offiziell vorbei. Aber innerlich läuft er weiter&nbsp;– Gespräche, To-dos, Fragen, die keinen Platz gefunden haben.</p>
+      <div class="fd-problem-items">
+        <div class="fd-problem-item">
+          <span class="fd-problem-num">1</span>
+          <div>
+            <h3>Gespräche laufen im Kopf weiter</h3>
+            <p>Was du hättest sagen sollen, was morgen noch offen ist, was nicht vergessen werden darf.</p>
+          </div>
+        </div>
+        <div class="fd-problem-item">
+          <span class="fd-problem-num">2</span>
+          <div>
+            <h3>Der Körper ist müde, das System nicht</h3>
+            <p>Kein Film, kein Scrollen, kein Podcast hilft wirklich, wenn der Kopf noch im Tag steckt.</p>
+          </div>
+        </div>
+        <div class="fd-problem-item">
+          <span class="fd-problem-num">3</span>
+          <div>
+            <h3>Ablenkung funktioniert nicht</h3>
+            <p>Die Gedanken kreisen weiter&nbsp;– nicht weil du zu wenig Disziplin hast, sondern weil etwas innerlich noch nicht zu Ende ist.</p>
+          </div>
+        </div>
+      </div>
+      <p class="fd-callout">Was du brauchst, ist keine Willenskraft. Du brauchst eine kurze Struktur, die dem Offenen einen Platz gibt, damit dein Kopf nicht weiterarbeiten muss.</p>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="fd-section">
+    <div class="fd-section-inner">
+      <p class="fd-eyebrow">Was du bekommst</p>
+      <h2 class="fd-h2">Der Feierabend-Guide zeigt dir in wenigen Minuten den Weg.</h2>
+      <p class="fd-lead">Eine klare, kurze Struktur für den Abend&nbsp;– entstanden aus jahrelanger Praxis mit Menschen, die abends nicht abschalten können.</p>
+      <div class="fd-benefits-grid">
+        <div class="fd-benefit">
+          <span class="fd-benefit-num">01</span>
+          <h3>Offene Schleifen sichtbar machen</h3>
+          <p>Du schreibst auf, was im Kopf hängt&nbsp;– ungefiltert, ohne Bewertung. So dass es einen Platz bekommt und nicht mehr weiterarbeiten muss.</p>
+        </div>
+        <div class="fd-benefit">
+          <span class="fd-benefit-num">02</span>
+          <h3>Aufgaben von Befürchtungen trennen</h3>
+          <p>Du lernst zu unterscheiden, was eine konkrete Aufgabe ist und was eine „Was-wäre-wenn"-Geschichte. Beides ist real, aber beides braucht eine andere Antwort.</p>
+        </div>
+        <div class="fd-benefit">
+          <span class="fd-benefit-num">03</span>
+          <h3>Dringlichkeit realistischer einordnen</h3>
+          <p>Nicht alles, was sich dringend anfühlt, ist es auch. Du erkennst, was wirklich heute noch etwas braucht und was bis morgen früh warten kann.</p>
+        </div>
+        <div class="fd-benefit">
+          <span class="fd-benefit-num">04</span>
+          <h3>Äußere Struktur für volle Köpfe</h3>
+          <p>Ein optionaler Sortier-Prompt für ein KI-Tool übernimmt die Rolle der äußeren Struktur&nbsp;– für Momente, in denen nichts mehr richtig an seinen Platz fällt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section id="inhalt" class="fd-section fd-section-muted">
+    <div class="fd-section-inner">
+      <p class="fd-eyebrow">Was dich erwartet</p>
+      <h2 class="fd-h2">16 Seiten, die du wirklich brauchst.</h2>
+      <p class="fd-lead">Strukturiert und ruhig aufbereitet&nbsp;– damit du in wenigen Minuten weißt, woran du bist.</p>
+      <ul class="fd-checklist">
+        <li>
+          <svg class="fd-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Der Feierabend-Check: 3 Fragen, 5 Minuten, am besten schriftlich</span>
+        </li>
+        <li>
+          <svg class="fd-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Der Sortier-Prompt: ein klar formulierter Sortier-Prompt für ChatGPT oder Claude als äußere Struktur</span>
+        </li>
+        <li>
+          <svg class="fd-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>4 Folgeprompts für typische Abendsituationen (wenn alles gleichzeitig dringend wirkt, wenn eine Sorge zu groß wird, wenn ein Gespräch nicht loslässt, wenn du schon bei morgen bist)</span>
+        </li>
+        <li>
+          <svg class="fd-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Ein klarer Abschlusssatz für den Abend: „Was offen ist, hat jetzt einen Platz. Für heute ist genug."</span>
+        </li>
+        <li>
+          <svg class="fd-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Ein ehrlicher Hinweis, wann Sortieren allein nicht mehr reicht&nbsp;– und was dann der nächste Schritt ist</span>
+        </li>
+      </ul>
+      <div class="fd-trust-grid">
+        <div class="fd-trust-item">
+          <h4>Praxis seit 2009</h4>
+          <p>Entstanden aus jahrelanger Arbeit mit Menschen, die abends nicht abschalten können.</p>
+        </div>
+        <div class="fd-trust-item">
+          <h4>Mental Rising® Methode</h4>
+          <p>ERKENNEN&nbsp;– UMWANDELN&nbsp;– NEU ANORDNEN. Gehirngerecht statt Ratgeber.</p>
+        </div>
+        <div class="fd-trust-item">
+          <h4>100&nbsp;% kostenlos</h4>
+          <p>Kein Abo, keine versteckten Kosten, sofort verfügbar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download" class="fd-section fd-section-brown">
+    <div class="fd-section-inner" style="text-align:center">
+      <h2 class="fd-h2 fd-h2-light">Lade jetzt deinen Feierabend-Guide herunter.</h2>
+      <p class="fd-lead fd-lead-light" style="margin-left:auto;margin-right:auto">Der Guide ist 16 Seiten, kostenlos und sofort verfügbar. Kein Abo, kein Haken. Du lädst ihn herunter und nutzt ihn heute Abend.</p>
+
+      <div class="fd-download-card">
+        <div class="fd-download-card-header">
+          <p class="fd-download-card-title">Feierabend-Guide</p>
+          <p class="fd-download-card-sub">PDF-Guide &middot; 16 Seiten</p>
+          <ul class="fd-download-card-list">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);flex-shrink:0"><path d="M20 6 9 17l-5-5"/></svg>
+              100&nbsp;% kostenlos
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);flex-shrink:0"><path d="M20 6 9 17l-5-5"/></svg>
+              Kein Abo, keine Verpflichtung
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);flex-shrink:0"><path d="M20 6 9 17l-5-5"/></svg>
+              Sofort-Download &middot; PDF &middot; 16 Seiten
+            </li>
+          </ul>
+        </div>
+        <a class="fd-btn-download"
+           href="https://elfi-achs.at/wp-content/uploads/2026/08/Feierabend-Guide_FINAL.pdf"
+           target="_blank" rel="noopener" download>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          Jetzt herunterladen
+        </a>
+      </div>
+      <p class="fd-download-fallback">Download startet nicht? <a href="https://elfi-achs.at/wp-content/uploads/2026/08/Feierabend-Guide_FINAL.pdf" target="_blank" rel="noopener">Hier klicken</a></p>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="fd-quote-section">
+    <div class="fd-section-inner-sm">
+      <p class="fd-quote">„Was offen ist, hat jetzt einen Platz. Für heute ist genug."</p>
+      <p class="fd-quote-author">Elfi Achs &middot; Mental Rising®</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="fd-faq-section">
+    <div class="fd-section-inner-sm">
+      <p class="fd-eyebrow">Häufige Fragen</p>
+      <h2 class="fd-h2">Noch offene Fragen?</h2>
+      <div class="fd-accordion">
+        <div class="fd-accordion-item">
+          <button class="fd-accordion-trigger" aria-expanded="false">
+            Ist der Guide wirklich kostenlos?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="fd-accordion-body">
+            Ja, vollständig. Es folgt kein Upsell, keine versteckte Gebühr, kein Pflicht-Abo. Du klickst, der Guide lädt sich herunter – das war's.
+          </div>
+        </div>
+        <div class="fd-accordion-item">
+          <button class="fd-accordion-trigger" aria-expanded="false">
+            Muss ich ein KI-Tool verwenden, um den Guide zu nutzen?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="fd-accordion-body">
+            Nein. Der Feierabend-Check mit den drei Fragen funktioniert vollständig ohne KI&nbsp;– Stift und Papier reichen. Der Sortier-Prompt ist ein optionales zweites Werkzeug, kein Pflichtschritt.
+          </div>
+        </div>
+        <div class="fd-accordion-item">
+          <button class="fd-accordion-trigger" aria-expanded="false">
+            Für wen ist dieser Guide geeignet?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="fd-accordion-body">
+            Für Menschen, die abends innerlich nicht abschalten können&nbsp;– unabhängig davon, ob das gelegentlich passiert oder seit Jahren so ist. Der Guide setzt keine Vorkenntnisse voraus.
+          </div>
+        </div>
+        <div class="fd-accordion-item">
+          <button class="fd-accordion-trigger" aria-expanded="false">
+            Reicht der Guide allein aus?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="fd-accordion-body">
+            Für viele Abende kann das bereits spürbar entlastend sein. Sobald etwas benannt und eingeordnet ist, muss es nicht mehr weiterkreisen. Wenn hinter dem Kreisen ein wiederkehrendes Muster steckt, zeigt der Guide ehrlich, wo die tiefere Arbeit beginnt.
+          </div>
+        </div>
+        <div class="fd-accordion-item">
+          <button class="fd-accordion-trigger" aria-expanded="false">
+            Was ist der Unterschied zwischen diesem Guide und einer tieferen Begleitung?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="fd-accordion-body">
+            Der Guide sortiert den Abend. Er verändert keine tief verankerten Schutzprogramme&nbsp;– das ist auch nicht sein Ziel. Wenn Sortieren nicht mehr reicht, begleitet Mental Rising den nächsten Schritt: Muster erkennen, verstehen und neu anordnen.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="fd-footer">
+    <div class="fd-footer-inner">
+      <div>
+        <div class="fd-footer-logo">
+          <img src="https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_Brown900.png"
+               alt="Elfi Achs, Mental Rising®"
+               style="height:40px;width:auto;opacity:0.75;display:block;filter:invert(1) brightness(2)"/>
+        </div>
+        <p class="fd-footer-tagline">Mental Rising® &middot; Institut für emotionale Selbstführung &middot; Praxis seit 2009</p>
+      </div>
+      <nav class="fd-footer-nav">
+        <a href="https://elfi-achs.at/impressum" target="_blank" rel="noopener">Impressum</a>
+        <a href="https://elfi-achs.at/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="fd-footer-copy">&copy; 2026 Elfi Achs &middot; Mental Rising®. Alle Rechte vorbehalten.</div>
+  </footer>
+
+</div><!-- /.fd-wrap -->
+
+<script>
+(function(){
+  var header    = document.getElementById('fdHeader');
+  var logo      = document.getElementById('fdLogo');
+  var logoLight = 'https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png';
+  var logoDark  = 'https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_Brown900.png';
+
+  // GHL fix: move header to body root so position:fixed works
+  document.body.appendChild(header);
+
+  // GHL fix: clear parent backgrounds on the fd-wrap
+  var el = document.querySelector('.fd-wrap');
+  while(el && el !== document.body){
+    el.style.cssText += ';background:transparent!important;padding-top:0!important;margin-top:0!important';
+    el = el.parentElement;
+  }
+
+  // Scroll: header bg + logo swap
+  function onScroll(){
+    var scrolled = window.scrollY > 60;
+    header.classList.toggle('fd-scrolled', scrolled);
+    logo.src = scrolled ? logoDark : logoLight;
+    if(scrolled){
+      logo.style.filter = '';
+    } else {
+      logo.style.filter = '';
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // FAQ accordion
+  var triggers = document.querySelectorAll('.fd-accordion-trigger');
+  triggers.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.fd-accordion-item');
+      var isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.fd-accordion-item.open').forEach(function(i){ i.classList.remove('open'); });
+      if(!isOpen){ item.classList.add('open'); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
