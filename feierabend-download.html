@@ -44,9 +44,10 @@ body{font-family:'Mulish',sans-serif;font-size:16px;line-height:1.6;color:#3A2A1
   transition:background 0.3s ease, box-shadow 0.3s ease;
   background:transparent;
 }
-#fdHeader.fd-scrolled{
-  background:#FAF6F1;
-  box-shadow:0 2px 16px rgba(58,42,30,0.10);
+#fdHeader.fd-scrolled,
+#fdHeader[style*="FAF6F1"]{
+  background:#FAF6F1 !important;
+  box-shadow:0 2px 16px rgba(58,42,30,0.10) !important;
 }
 .fd-nav{
   max-width:1152px;
@@ -852,18 +853,33 @@ body{font-family:'Mulish',sans-serif;font-size:16px;line-height:1.6;color:#3A2A1
     el = el.parentElement;
   }
 
-  // Scroll: header bg + logo swap
+  // Scroll: header bg + logo swap — robust für GHL/iframe-Kontexte
+  function getScrollY(){
+    return window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
   function onScroll(){
-    var scrolled = window.scrollY > 60;
-    header.classList.toggle('fd-scrolled', scrolled);
-    logo.src = scrolled ? logoDark : logoLight;
+    var scrolled = getScrollY() > 60;
     if(scrolled){
-      logo.style.filter = '';
+      header.style.background = '#FAF6F1';
+      header.style.boxShadow = '0 2px 16px rgba(58,42,30,0.10)';
+      logo.src = logoDark;
     } else {
-      logo.style.filter = '';
+      header.style.background = 'transparent';
+      header.style.boxShadow = 'none';
+      logo.src = logoLight;
     }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
+  document.addEventListener('scroll', onScroll, {passive:true});
+  document.documentElement.addEventListener('scroll', onScroll, {passive:true});
+  // Scroll-Container in GHL suchen und dort ebenfalls lauschen
+  (function(){
+    var el = header.parentElement;
+    while(el && el !== document.body){
+      el.addEventListener('scroll', onScroll, {passive:true});
+      el = el.parentElement;
+    }
+  })();
   onScroll();
 
   // FAQ accordion
