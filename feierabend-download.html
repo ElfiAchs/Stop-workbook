@@ -843,22 +843,9 @@ body{font-family:'Mulish',sans-serif;font-size:16px;line-height:1.6;color:#3A2A1
   var logoLight = 'https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png';
   var logoDark  = 'https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_Brown900.png';
 
-  // GHL fix: move header to body root so position:fixed works
-  document.body.appendChild(header);
-
-  // GHL fix: clear parent backgrounds on the fd-wrap
-  var el = document.querySelector('.fd-wrap');
-  while(el && el !== document.body){
-    el.style.cssText += ';background:transparent!important;padding-top:0!important;margin-top:0!important';
-    el = el.parentElement;
-  }
-
-  // Scroll: header bg + logo swap — robust für GHL/iframe-Kontexte
-  function getScrollY(){
-    return window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  }
+  // Scroll: header bg + logo swap
   function onScroll(){
-    var scrolled = getScrollY() > 60;
+    var scrolled = (window.scrollY || window.pageYOffset || 0) > 60;
     if(scrolled){
       header.style.background = '#FAF6F1';
       header.style.boxShadow = '0 2px 16px rgba(58,42,30,0.10)';
@@ -870,16 +857,6 @@ body{font-family:'Mulish',sans-serif;font-size:16px;line-height:1.6;color:#3A2A1
     }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
-  document.addEventListener('scroll', onScroll, {passive:true});
-  document.documentElement.addEventListener('scroll', onScroll, {passive:true});
-  // Scroll-Container in GHL suchen und dort ebenfalls lauschen
-  (function(){
-    var el = header.parentElement;
-    while(el && el !== document.body){
-      el.addEventListener('scroll', onScroll, {passive:true});
-      el = el.parentElement;
-    }
-  })();
   onScroll();
 
   // FAQ accordion
@@ -888,7 +865,6 @@ body{font-family:'Mulish',sans-serif;font-size:16px;line-height:1.6;color:#3A2A1
     btn.addEventListener('click', function(){
       var item = btn.closest('.fd-accordion-item');
       var isOpen = item.classList.contains('open');
-      // close all
       document.querySelectorAll('.fd-accordion-item.open').forEach(function(i){ i.classList.remove('open'); });
       if(!isOpen){ item.classList.add('open'); }
     });
