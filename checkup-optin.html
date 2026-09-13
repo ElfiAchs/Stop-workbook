@@ -11,31 +11,23 @@
 
 /* ── Hero ── */
 .ck-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
-.ck-hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(to bottom,rgba(61,46,32,0.82) 0%,rgba(61,46,32,0.62) 50%,rgba(61,46,32,0.87) 100%),url('https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png') center/cover no-repeat;background-color:#3D2E20;}
+.ck-hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(to bottom,rgba(61,46,32,0.72) 0%,rgba(61,46,32,0.55) 40%,rgba(61,46,32,0.80) 100%),url('https://elfi-achs.at/wp-content/uploads/2026/09/Hero-Shot-dunkel_Selbst-Check-scaled.png') center/cover no-repeat;background-color:#3D2E20;}
 .ck-hero-inner{position:relative;z-index:1;max-width:896px;margin:0 auto;width:100%;padding:80px 24px 56px;display:flex;flex-direction:column;align-items:center;text-align:center;}
 .ck-logo{height:auto!important;width:128px!important;max-width:160px!important;display:block!important;margin-bottom:20px;}
 .ck-hero-h2{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.25rem);font-weight:600;color:#FAF6F0;margin:0 0 8px;}
 .ck-hero-sub{font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,221,206,0.60);margin:0 0 32px;}
-.ck-hero-content{display:flex;flex-direction:column;align-items:center;transform:translateY(-7%);}
+.ck-hero-content{display:flex;flex-direction:column;align-items:center;}
 .ck-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,3.75rem);font-weight:600;line-height:1.15;color:#FAF6F0;margin:0 0 20px;}
-.ck-hero-text{font-size:1.1rem;line-height:1.7;color:rgba(250,246,240,0.90);max-width:672px;margin:0 0 8px;}
-.ck-hero-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:32px;background:#5C4232;color:#FAF6F0!important;font-size:1rem;font-weight:600;padding:14px 32px;border-radius:8px;transition:transform 0.2s,background 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.30);}
-.ck-hero-btn:hover{transform:scale(1.05);background:#6A4E3A;color:#FAF6F0!important;}
+.ck-hero-text{font-size:1.1rem;line-height:1.7;color:rgba(250,246,240,0.90);max-width:672px;margin:0 0 28px;}
+.ck-hero-form-box{background:rgba(255,255,255,0.10);border:1px solid rgba(232,216,196,0.25);border-radius:14px;padding:28px 32px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);width:100%;max-width:540px;}
+.ck-hero-trust{margin-top:16px;display:flex;flex-direction:column;gap:6px;}
+.ck-hero-trust-item{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:rgba(250,246,240,0.65);}
+.ck-hero-trust-item svg{width:14px;height:14px;stroke:rgba(200,147,74,0.85);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
 @media(max-width:640px){
   .ck-hero-inner{padding:72px 20px 48px;}
   .ck-logo{width:104px!important;}
 }
 
-/* ── Checkup Form Section ── */
-.ck-form-section{background:#F0EAE3;padding:72px 24px;}
-.ck-form-inner{max-width:640px;margin:0 auto;text-align:center;}
-.ck-form-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#C8934A;margin:0 0 12px;}
-.ck-form-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;color:#1C1210;margin:0 0 12px;line-height:1.25;}
-.ck-form-lead{font-size:1rem;line-height:1.75;color:#7A6258;margin:0 0 36px;}
-.ck-form-box{background:#fff;border:1px solid #E5D9CF;border-radius:14px;padding:32px;box-shadow:0 4px 16px rgba(92,66,50,0.09);}
-.ck-form-trust{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
-.ck-form-trust-item{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:#7A6258;}
-.ck-form-trust-item svg{width:15px;height:15px;stroke:#C8934A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
 
 /* ── Footer ── */
 .ck-footer{background:#3D2E20;padding:36px 24px 24px;}
@@ -59,34 +51,25 @@
       <div class="ck-hero-content">
         <h1>Was will dein System dir sagen?</h1>
         <p class="ck-hero-text">Mach den kostenlosen Selbst-Check-up und finde in wenigen Minuten heraus, was du gerade wirklich brauchst. Mit deiner Auswertung erhältst du direkt den Signal-Guide und unseren 9-minütigen Body &amp; Mind Scan.</p>
-        <a href="#ck-checkup" class="ck-hero-btn">Jetzt den Selbst-Check-up starten</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Formular ── -->
-  <section id="ck-checkup" class="ck-form-section">
-    <div class="ck-form-inner">
-      <p class="ck-form-eyebrow">Kostenloser Selbst-Check-up</p>
-      <h2>Trag dich ein und starte deinen Check-up</h2>
-      <p class="ck-form-lead">Du erhältst sofort deinen Zugang zum Selbst-Check-up sowie den Signal-Guide und den 9-minütigen Body &amp; Mind Scan direkt in dein Postfach.</p>
-      <div class="ck-form-box">
-        [klicktipp_form_id form_id="form_rdrfggsc"]
-        <div class="ck-form-trust">
-          <div class="ck-form-trust-item">
-            <svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-            Kein Spam · Jederzeit abmeldbar
-          </div>
-          <div class="ck-form-trust-item">
-            <svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-            Kostenlos · Kein Abo
+        <div class="ck-hero-form-box">
+          [klicktipp_form_id form_id="form_rdrfggsc"]
+          <div class="ck-hero-trust">
+            <div class="ck-hero-trust-item">
+              <svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+              Kein Spam · Jederzeit abmeldbar
+            </div>
+            <div class="ck-hero-trust-item">
+              <svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+              Kostenlos · Kein Abo
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Footer ── -->
+
+<!-- ── Footer ── -->
   <footer class="ck-footer">
     <div class="ck-footer-inner">
       <img src="https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png" alt="Mental Rising" style="height:26px!important;width:auto!important;max-width:120px!important;opacity:0.55;display:block!important;"/>
