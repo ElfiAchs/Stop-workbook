@@ -1,0 +1,177 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Mulish:wght@400;500;600;700&display=swap');
+
+/* ── Base ── */
+.dk-wrap{width:100vw;position:relative;left:50%;margin-left:-50vw;overflow-x:hidden;font-family:'Mulish',sans-serif;background:#FAF6F0;}
+.dk-wrap *,
+.dk-wrap *::before,
+.dk-wrap *::after{box-sizing:border-box;}
+.dk-wrap img{max-width:100%;height:auto;}
+.dk-wrap a{text-decoration:none;}
+
+/* ── Hero ── */
+.dk-hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.dk-hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(to bottom,rgba(61,46,32,0.80) 0%,rgba(61,46,32,0.60) 50%,rgba(61,46,32,0.75) 100%),url('https://elfi-achs.at/wp-content/uploads/2026/09/Hero-Shot-dunkel_Selbst-Check-scaled.png') center/cover no-repeat;background-color:#3D2E20;}
+.dk-hero-inner{position:relative;z-index:1;max-width:768px;margin:0 auto;width:100%;padding:96px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;}
+.dk-logo{height:auto!important;width:auto!important;max-height:48px!important;max-width:200px!important;display:block!important;}
+.dk-hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(250,246,240,0.30);background:rgba(250,246,240,0.10);padding:6px 16px;border-radius:8px;font-size:11px;font-weight:500;letter-spacing:0.10em;text-transform:uppercase;color:#FAF6F0;}
+.dk-hero-badge svg{width:16px;height:16px;stroke:#FAF6F0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.dk-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,3rem);font-weight:700;line-height:1.2;color:#FAF6F0;margin:0;}
+.dk-hero-subtitle{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:600;color:#E8C9A8;margin:0;}
+.dk-hero-text{font-size:1rem;line-height:1.75;color:rgba(250,246,240,0.85);max-width:560px;margin:0;}
+
+/* ── Cards Section ── */
+.dk-cards{background:#FAF6F0;padding:80px 24px;}
+.dk-cards-inner{max-width:1000px;margin:0 auto;}
+.dk-cards-head{max-width:640px;margin:0 auto 48px;text-align:center;}
+.dk-cards-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;color:#1C1210;margin:0 0 16px;}
+.dk-cards-head p{font-size:1rem;line-height:1.75;color:#7A6258;margin:0;}
+.dk-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.dk-card{background:#fff;border:1px solid #E5D9CF;border-radius:12px;padding:32px;box-shadow:0 4px 16px rgba(92,66,50,0.09);}
+.dk-card-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(200,147,74,0.15);margin-bottom:20px;}
+.dk-card-icon svg{width:24px;height:24px;stroke:#C8934A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.dk-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#1C1210;margin:0 0 8px;}
+.dk-card p{font-size:0.95rem;line-height:1.7;color:#7A6258;margin:0;}
+@media(max-width:720px){
+  .dk-cards-grid{grid-template-columns:1fr;}
+}
+
+/* ── Email Reminder ── */
+.dk-reminder{background:#F0EAE3;padding:80px 24px;position:relative;overflow:hidden;}
+.dk-reminder-inner{max-width:720px;margin:0 auto;}
+.dk-reminder-card{background:#fff;border:1px solid #E5D9CF;border-radius:14px;padding:40px;box-shadow:0 4px 16px rgba(92,66,50,0.09);display:flex;gap:20px;align-items:flex-start;}
+.dk-reminder-icon{width:48px;height:48px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(92,66,50,0.10);}
+.dk-reminder-icon svg{width:24px;height:24px;stroke:#5C4232;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.dk-reminder-card h2{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,1.75rem);font-weight:700;color:#1C1210;margin:0 0 12px;}
+.dk-reminder-note{display:flex;align-items:flex-start;gap:8px;font-size:0.95rem;line-height:1.7;color:#7A6258;}
+.dk-reminder-note svg{width:20px;height:20px;stroke:#C8934A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px;}
+@media(max-width:640px){
+  .dk-reminder-card{flex-direction:column;}
+}
+
+/* ── Trust Badges ── */
+.dk-trust{background:#FAF6F0;padding:64px 24px;}
+.dk-trust-inner{max-width:900px;margin:0 auto;text-align:center;}
+.dk-trust-label{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#7A6258;margin:0 0 32px;}
+.dk-trust-badges{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;}
+.dk-trust-badge{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E5D9CF;border-radius:10px;padding:12px 20px;box-shadow:0 2px 8px rgba(92,66,50,0.08);}
+.dk-trust-badge svg{width:20px;height:20px;stroke:#C8934A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.dk-trust-badge span{font-size:0.9rem;font-weight:700;color:#1C1210;}
+
+/* ── Footer ── */
+.dk-footer{background:#3D2E20;padding:48px 24px 28px;}
+.dk-footer-inner{max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
+.dk-footer-tagline{font-size:13px;line-height:1.6;color:rgba(250,246,240,0.55);margin:0;}
+.dk-footer-links{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;}
+.dk-footer-links a{color:#8A6E5A;font-size:13px;text-decoration:none;}
+.dk-footer-links a:hover{color:#E8D0B8;}
+.dk-footer-links span{color:#4A3228;}
+.dk-footer-copy{font-size:12px;color:#5A4234;margin:0;}
+</style>
+
+<div class="dk-wrap" id="dk-top">
+
+  <!-- ── Hero ── -->
+  <section class="dk-hero">
+    <div class="dk-hero-bg"></div>
+    <div class="dk-hero-inner">
+      <img src="https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png" alt="Elfi Achs · Mental Rising® Logo" class="dk-logo" style="height:auto!important;width:auto!important;max-height:48px!important;max-width:200px!important;display:block!important;"/>
+      <span class="dk-hero-badge">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        Institut für emotionale Selbstführung
+      </span>
+      <h1>Vielen Dank für deine Eintragung</h1>
+      <p class="dk-hero-subtitle">Dein Ergebnis ist unterwegs</p>
+      <p class="dk-hero-text">In den nächsten Minuten erhältst du dein vollständiges Ergebnis aus dem Selbst-Check-up, den Signal-Guide und den 9-minütigen Body &amp; Mind Scan per E-Mail.</p>
+    </div>
+  </section>
+
+  <!-- ── Cards ── -->
+  <section class="dk-cards">
+    <div class="dk-cards-inner">
+      <div class="dk-cards-head">
+        <h2>Das erwartet dich in deiner E-Mail</h2>
+        <p>Drei persönliche Bausteine, die dir helfen, dich selbst besser zu verstehen und zu führen.</p>
+      </div>
+      <div class="dk-cards-grid">
+        <div class="dk-card">
+          <div class="dk-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+          </div>
+          <h3>Dein Ergebnis</h3>
+          <p>Das vollständige Ergebnis aus deinem Selbst-Check-up, persönlich für dich ausgewertet.</p>
+        </div>
+        <div class="dk-card">
+          <div class="dk-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg>
+          </div>
+          <h3>Signal-Guide</h3>
+          <p>Ein Leitfaden, der dir hilft, die Signale deines Körpers und deiner Gefühle richtig zu deuten.</p>
+        </div>
+        <div class="dk-card">
+          <div class="dk-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/><path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
+          </div>
+          <h3>Body &amp; Mind Scan</h3>
+          <p>Eine geführte, 9-minütige Übung mit Biofeedback-Ansatz zum direkten Ausprobieren.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── E-Mail Reminder ── -->
+  <section class="dk-reminder">
+    <div class="dk-reminder-inner">
+      <div class="dk-reminder-card">
+        <div class="dk-reminder-icon">
+          <svg viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        </div>
+        <div>
+          <h2>Schau jetzt in dein E-Mail-Postfach</h2>
+          <p class="dk-reminder-note">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+            <span>Manchmal dauert es ein paar Minuten, bis alles bei dir ankommt. Wenn du keine Nachricht findest, wirf bitte auch einen Blick in deinen Spam- oder Werbeordner.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Trust Badges ── -->
+  <section class="dk-trust">
+    <div class="dk-trust-inner">
+      <p class="dk-trust-label">Institut für emotionale Selbstführung</p>
+      <div class="dk-trust-badges">
+        <div class="dk-trust-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 18V5"/><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"/><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/><path d="M18 18a4 4 0 0 0 2-7.464"/><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/><path d="M6 18a4 4 0 0 1-2-7.464"/><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/></svg>
+          <span>Mentaltraining</span>
+        </div>
+        <div class="dk-trust-badge">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+          <span>Biofeedback</span>
+        </div>
+        <div class="dk-trust-badge">
+          <svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Hypnose</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="dk-footer">
+    <div class="dk-footer-inner">
+      <img src="https://elfi-achs.at/wp-content/uploads/2026/08/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png" alt="Mental Rising" style="height:auto!important;width:auto!important;max-height:36px!important;max-width:160px!important;opacity:0.55;display:block!important;"/>
+      <p class="dk-footer-tagline">Institut für emotionale Selbstführung<br/>Mentaltraining mit Biofeedback &amp; Hypnose</p>
+      <nav class="dk-footer-links">
+        <a href="https://elfi-achs.at/impressum/">Impressum</a>
+        <span>|</span>
+        <a href="https://elfi-achs.at/datenschutz/">Datenschutz</a>
+        <span>|</span>
+        <a href="https://elfi-achs.at/agb/">AGB</a>
+      </nav>
+      <p class="dk-footer-copy">© 2026 Institut für emotionale Selbstführung · Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+</div>
