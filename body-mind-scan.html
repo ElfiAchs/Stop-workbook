@@ -1,0 +1,129 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Mulish:wght@400;500;600;700&display=swap');
+
+/* ── Base ── */
+.bm-wrap{width:100vw;position:relative;left:50%;margin-left:-50vw;overflow-x:hidden;font-family:'Mulish',sans-serif;color:#FAF6F0;background:#4A3426;}
+.bm-wrap *,
+.bm-wrap *::before,
+.bm-wrap *::after{box-sizing:border-box;}
+.bm-wrap img{max-width:100%;height:auto;}
+.bm-wrap a{text-decoration:none;}
+
+/* ── Hero ── */
+.bm-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.bm-hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(to bottom,rgba(61,46,32,0.72) 0%,rgba(61,46,32,0.55) 40%,rgba(61,46,32,0.80) 100%),url('https://mentalrising.com/wp-content/uploads/2026/09/Hero-Shot-dunkel_Selbst-Check-scaled.png') center/cover no-repeat;background-color:#3D2E20;}
+.bm-hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;width:100%;padding:80px 24px 64px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.bm-logo{height:auto!important;width:128px!important;max-width:160px!important;display:block!important;margin-bottom:20px;}
+.bm-hero-tagline{font-size:1rem;font-weight:600;color:#FAF6F0;margin:0 0 4px;}
+.bm-hero-sub{font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,221,206,0.60);margin:0 0 40px;}
+.bm-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,3.2rem);font-weight:700;line-height:1.15;color:#FAF6F0;margin:0 0 20px;}
+.bm-hero-text{font-size:1.05rem;line-height:1.75;color:rgba(250,246,240,0.85);max-width:600px;margin:0 0 36px;}
+
+/* ── Audio Player ── */
+.bm-audio-wrap{width:100%;max-width:560px;background:rgba(250,246,240,0.10);border:1px solid rgba(232,216,196,0.25);border-radius:16px;padding:28px 32px;backdrop-filter:blur(6px);}
+.bm-audio-label{font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(232,201,168,0.70);margin:0 0 10px;}
+.bm-audio-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:#FAF6F0;margin:0 0 16px;}
+.bm-audio-wrap audio{width:100%;height:44px;border-radius:8px;outline:none;}
+.bm-audio-wrap audio::-webkit-media-controls-panel{background:#5C3E28;}
+.bm-audio-note{margin-top:12px;font-size:11px;color:rgba(250,246,240,0.40);}
+@media(max-width:640px){
+  .bm-hero-inner{padding:72px 20px 52px;}
+  .bm-logo{width:104px!important;}
+  .bm-audio-wrap{padding:22px 20px;}
+}
+
+/* ── Upsell (Minikurs) ── */
+.bm-upsell{background:linear-gradient(160deg,#4A3220 0%,#5C3E28 40%,#6A4830 70%,#5C4232 100%);padding:80px 40px;}
+.bm-upsell-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.bm-upsell-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.20em;text-transform:uppercase;color:rgba(232,201,168,0.80);margin:0 0 20px;}
+.bm-upsell h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.15;color:#FAF6F0;margin:0 0 12px;}
+.bm-upsell-subtitle{font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;color:rgba(232,201,168,0.80);margin:0 0 20px;}
+.bm-upsell-text{font-size:1rem;line-height:1.75;color:rgba(250,246,240,0.78);max-width:520px;margin:0 0 28px;}
+.bm-upsell-price{display:flex;align-items:baseline;gap:12px;margin-bottom:24px;}
+.bm-upsell-price-main{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.6rem);font-weight:700;color:#FAF6F0;}
+.bm-upsell-price-old{font-size:1.1rem;color:rgba(250,246,240,0.40);text-decoration:line-through;}
+.bm-upsell-btn{display:inline-flex;align-items:center;gap:8px;background:#C8934A;color:#fff!important;font-size:0.95rem;font-weight:700;padding:14px 28px;border-radius:8px;transition:all 0.2s;text-decoration:none;}
+.bm-upsell-btn:hover{background:#D4A96A;transform:scale(1.03);color:#fff!important;}
+.bm-upsell-btn svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.bm-upsell-byline{margin-top:16px;font-size:12px;color:rgba(250,246,240,0.45);line-height:1.6;}
+.bm-upsell-visual{display:flex;align-items:center;justify-content:center;}
+.bm-upsell-visual img{width:85%;max-width:420px;filter:drop-shadow(0 16px 32px rgba(0,0,0,0.40));}
+@media(max-width:860px){
+  .bm-upsell{padding:60px 24px;}
+  .bm-upsell-inner{grid-template-columns:1fr;gap:32px;}
+  .bm-upsell-visual{display:none;}
+}
+
+/* ── Footer ── */
+.bm-footer{background:#2A1E14;padding:32px 24px 24px;}
+.bm-footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
+.bm-footer-copy{font-size:12px;color:#5A4234;margin:0;}
+.bm-footer-links{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;}
+.bm-footer-links a{color:#7A5A48;font-size:13px;text-decoration:none;}
+.bm-footer-links a:hover{color:#E8D0B8;}
+.bm-footer-links span{color:#3A2A1E;}
+</style>
+
+<div class="bm-wrap" id="bm-top">
+
+  <!-- ── Hero: Body & Mind Scan ── -->
+  <section class="bm-hero">
+    <div class="bm-hero-bg"></div>
+    <div class="bm-hero-inner">
+      <img src="https://mentalrising.com/wp-content/uploads/2026/09/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png" alt="Elfi Achs · Mental Rising® Logo" class="bm-logo" style="height:auto!important;width:128px!important;max-width:160px!important;display:block!important;"/>
+      <p class="bm-hero-tagline">Institut für emotionale Selbstführung</p>
+      <p class="bm-hero-sub">Mentaltraining mit Biofeedback &amp; Hypnose</p>
+      <h1>Dein Body &amp; Mind Scan ist da</h1>
+      <p class="bm-hero-text">Hier kannst du dir jetzt den 9-minütigen Body &amp; Mind Scan anhören. Er unterstützt dich dabei, nach deinem Selbst-Check-up nicht nur zu verstehen, was gerade in dir aktiv ist, sondern auch wieder mehr Ruhe, Wahrnehmung und innere Orientierung zu finden.</p>
+      <div class="bm-audio-wrap">
+        <p class="bm-audio-label">9 Minuten · Geführte Audio-Übung</p>
+        <p class="bm-audio-title">Body &amp; Mind Scan</p>
+        <audio controls preload="none">
+          <source src="https://mentalrising.com/wp-content/uploads/2026/09/Body-Mind-Scan.mp3" type="audio/mpeg"/>
+          Dein Browser unterstützt kein Audio. Bitte aktualisiere deinen Browser.
+        </audio>
+        <p class="bm-audio-note">Kopfhörer empfohlen · Nimm dir einen ruhigen Moment</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Upsell: Muster unterbrechen ── -->
+  <section class="bm-upsell">
+    <div class="bm-upsell-inner">
+      <div>
+        <p class="bm-upsell-eyebrow">3-Tage-Minikurs · Dein nächster Schritt</p>
+        <h2>Du reagierst anders, als du willst. Das ist kein Disziplinproblem.</h2>
+        <p class="bm-upsell-subtitle">»Muster unterbrechen«</p>
+        <p class="bm-upsell-text">Der Body &amp; Mind Scan hilft dir beim ersten Spüren und Einordnen. Der Minikurs zeigt dir, wie du automatische Reaktionen früher bemerkst und im entscheidenden Moment unterbrichst – alltagsnah, ohne Vorwissen, ohne persönliche Begleitung.</p>
+        <div class="bm-upsell-price">
+          <span class="bm-upsell-price-main">37 €</span>
+          <span class="bm-upsell-price-old">97 €</span>
+        </div>
+        <a href="https://www.digistore24.com/product/732667" class="bm-upsell-btn">
+          Minikurs jetzt für 37 Euro sichern
+          <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <p class="bm-upsell-byline">Elfi Achs · Mental Rising® · Über 17 Jahre Praxis mit Biofeedback-Messtechnik, Mentaltraining und Hypnose</p>
+      </div>
+      <div class="bm-upsell-visual">
+        <img src="https://mentalrising.com/wp-content/uploads/2026/09/Mock-up_Gesamt_Muster-unterbrechen.png" alt="Minikurs Muster unterbrechen Mock-up"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="bm-footer">
+    <div class="bm-footer-inner">
+      <img src="https://mentalrising.com/wp-content/uploads/2026/09/ELFI_ACHS_MENTALRISING_Logo_EA_CREAM50.png" alt="Mental Rising" style="height:26px!important;width:auto!important;max-width:120px!important;opacity:0.50;display:block!important;"/>
+      <nav class="bm-footer-links">
+        <a href="https://elfi-achs.at/impressum/">Impressum</a>
+        <span>|</span>
+        <a href="https://elfi-achs.at/datenschutz/">Datenschutz</a>
+        <span>|</span>
+        <a href="https://elfi-achs.at/agb/">AGB</a>
+      </nav>
+      <p class="bm-footer-copy">© 2026 Mental Rising® · Elfi Achs. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+</div>
